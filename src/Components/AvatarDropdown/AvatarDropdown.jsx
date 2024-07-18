@@ -26,14 +26,7 @@ const profileMenuItems = [
     label: "Edit Profile",
     icon: Cog6ToothIcon,
   },
-  {
-    label: "Inbox",
-    icon: InboxArrowDownIcon,
-  },
-  {
-    label: "Help",
-    icon: LifebuoyIcon,
-  },
+
   {
     label: "Sign Out",
     icon: PowerIcon,
@@ -57,7 +50,6 @@ export function AvatarDropdown() {
             variant="circular"
             size="md"
             alt="tania andrew"
-            withBorder={true}
             color="blue-gray"
             className=" p-0.5"
             src="https://docs.material-tailwind.com/img/face-2.jpg"
