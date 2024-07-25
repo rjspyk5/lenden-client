@@ -9,18 +9,24 @@ export const Login = () => {
     user && navigate("/");
   }, [user]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login();
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = (data) => console.log(data);
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <div className="border p-10 rounded-lg backdrop-blur-md bg-[#aeaeae38]">
-        <form action="">
-          <button type="submit" onClick={handleSubmit}>
-            Login
-          </button>
+    <div>
+      <div>
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
+          <input defaultValue="test" {...register("example")} />
+          <input {...register("exampleRequired", { required: true })} />
+          {/* errors will return when field validation fails  */}
+          {errors.exampleRequired && <span>This field is required</span>}
+
+          <input type="submit" value="Login" />
         </form>
       </div>
     </div>
