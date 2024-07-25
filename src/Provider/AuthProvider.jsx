@@ -10,22 +10,12 @@ export const AuthProvider = ({ children }) => {
     name: "rakib",
   };
 
-  const login = (number, pass) => {
-    setloading(true);
-    localStorage.setItem("lenden_user", JSON.stringify(test));
-  };
-
-  const logout = () => {
-    setloading(true);
-    localStorage.removeItem("lenden_user");
-  };
-
-  const registration = (name, email, number, pass) => {
-    console.log("registration");
-  };
-
-  const { isPending, data, refetch } = useQuery({
-    queryKey: [login, logout, registration],
+  const {
+    isPending,
+    data,
+    refetch: authRefetch,
+  } = useQuery({
+    queryKey: ["login", "registration"],
     queryFn: async () => {
       const info = localStorage.getItem("lenden_user") || null;
       setuser(info);
@@ -34,7 +24,24 @@ export const AuthProvider = ({ children }) => {
     },
   });
 
-  const providerValue = { loading, user };
+  const logout = () => {
+    localStorage.removeItem("lenden_user");
+    setloading(true);
+    authRefetch();
+  };
+
+  const login = (number, pass) => {
+    setloading(true);
+    localStorage.setItem("lenden_user", JSON.stringify(test));
+    authRefetch();
+  };
+
+  const registration = (name, email, number, pass) => {
+    setloading(true);
+    authRefetch();
+  };
+
+  const providerValue = { loading, user, login, logout, authRefetch };
   return (
     <AuthContext.Provider value={providerValue}>
       {children}

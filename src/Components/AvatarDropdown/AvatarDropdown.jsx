@@ -34,8 +34,7 @@ const profileMenuItems = [
 
 export function AvatarDropdown() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { user } = useAuth();
-  console.log(user);
+  const { logout, user } = useAuth();
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
@@ -62,7 +61,7 @@ export function AvatarDropdown() {
           return (
             <MenuItem
               key={label}
-              onClick={closeMenu}
+              onClick={isLastItem ? logout : closeMenu}
               className={`flex items-center gap-2 rounded ${
                 isLastItem
                   ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
