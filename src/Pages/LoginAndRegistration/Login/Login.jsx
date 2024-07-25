@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { useAuth } from "../../Hooks/useAuth";
-import { Navigate, useNavigate } from "react-router-dom";
-import { TabsCustomAnimation } from "../../Components/Tabs/TabsCustomAnimation";
-
+import { useEffect } from "react";
+import { useAuth } from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 export const Login = () => {
   const { user, login } = useAuth();
   const navigate = useNavigate();
@@ -19,7 +18,6 @@ export const Login = () => {
     <div className="min-h-screen flex justify-center items-center">
       <div className="border p-10 rounded-lg backdrop-blur-md bg-[#aeaeae38]">
         <form action="">
-          <TabsCustomAnimation />
           <button type="submit" onClick={handleSubmit}>
             Login
           </button>
