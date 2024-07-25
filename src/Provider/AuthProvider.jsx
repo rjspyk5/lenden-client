@@ -6,22 +6,28 @@ export const AuthProvider = ({ children }) => {
   const [loading, setloading] = useState(true);
   const [user, setuser] = useState(null);
 
+  const test = {
+    name: "rakib",
+  };
+
   const login = (number, pass) => {
-    console.log("login");
+    setloading(true);
+    localStorage.setItem("lenden_user", JSON.stringify(test));
+  };
+
+  const logout = () => {
+    setloading(true);
+    localStorage.removeItem("lenden_user");
   };
 
   const registration = (name, email, number, pass) => {
     console.log("registration");
   };
 
-  const logout = () => {
-    console.log("logout");
-  };
-
   const { isPending, data, refetch } = useQuery({
     queryKey: [login, logout, registration],
     queryFn: async () => {
-      const info = localStorage.getItem("lenden_user_info") || null;
+      const info = localStorage.getItem("lenden_user") || null;
       setuser(info);
       setloading(false);
       return info;

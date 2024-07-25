@@ -10,11 +10,10 @@ import {
 } from "@material-tailwind/react";
 import {
   Cog6ToothIcon,
-  InboxArrowDownIcon,
-  LifebuoyIcon,
   PowerIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
+import { useAuth } from "../../Hooks/useAuth";
 
 // profile menu component
 const profileMenuItems = [
@@ -35,7 +34,8 @@ const profileMenuItems = [
 
 export function AvatarDropdown() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+  const { user } = useAuth();
+  console.log(user);
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
