@@ -4,18 +4,20 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 export const Login = () => {
-  const { user, login } = useAuth();
-  const navigate = useNavigate();
-  useEffect(() => {
-    user && navigate("/");
-  }, [user]);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data) => console.log(data);
+  const navigate = useNavigate();
+  const { user, login } = useAuth();
+  useEffect(() => {
+    user && navigate("/");
+  }, [user]);
+  const onSubmit = (data) => {
+    console.log(data);
+    login();
+  };
   return (
     <div>
       <Card color="transparent" shadow={false}>
@@ -31,18 +33,18 @@ export const Login = () => {
         >
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Your Email or Your Number
+              Email or Number
             </Typography>
             <Input
-              {...register("email", { required: true })}
+              {...register("emailOrNumber", { required: true })}
               size="lg"
-              placeholder="name@mail.com"
+              placeholder="Enter your email or number"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
             />
-            {errors.email && (
+            {errors.emailOrNumber && (
               <span className="text-red-500">This field is required</span>
             )}
 
@@ -50,7 +52,11 @@ export const Login = () => {
               Password
             </Typography>
             <Input
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: true,
+                maxLength: 6,
+                minLength: 6,
+              })}
               type="password"
               size="lg"
               placeholder="Enter six digit pin"
@@ -59,8 +65,14 @@ export const Login = () => {
                 className: "before:content-none after:content-none",
               }}
             />
-            {errors.password && (
+            {errors.password?.type === "required" && (
               <span className="text-red-500">This field is required</span>
+            )}
+            {(errors.password?.type === "maxLength" ||
+              errors.password?.type === "minLength") && (
+              <span className="text-red-500">
+                Password can be six digit number only
+              </span>
             )}
           </div>
           <Button type="submit" className="mt-6" fullWidth>
