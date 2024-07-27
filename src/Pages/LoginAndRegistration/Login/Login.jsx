@@ -33,7 +33,7 @@ export const Login = () => {
         >
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Email or Number
+              Email or Number <span className="text-red-500">*</span>
             </Typography>
             <Input
               {...register("emailOrNumber", { required: true })}
@@ -49,7 +49,7 @@ export const Login = () => {
             )}
 
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Password
+              Password <span className="text-red-500">*</span>
             </Typography>
             <Input
               {...register("password", {

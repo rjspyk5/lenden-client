@@ -24,7 +24,7 @@ export const Registration = () => {
         >
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Your Name
+              Your Name <span className="text-red-500">*</span>
             </Typography>
             <Input
               {...register("name", { required: true })}
@@ -39,7 +39,7 @@ export const Registration = () => {
               <span className="text-red-500">This field is required</span>
             )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Your Email
+              Your Email <span className="text-red-500">*</span>
             </Typography>
             <Input
               {...register("email", {
@@ -57,8 +57,11 @@ export const Registration = () => {
             {errors.email?.type === "required" && (
               <span className="text-red-500">This field is required</span>
             )}
+            {errors.email?.type === "pattern" && (
+              <span className="text-red-500">Enter a valid email </span>
+            )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Your Number
+              Your Number <span className="text-red-500">*</span>
             </Typography>
             <Input
               {...register("number", {
@@ -83,7 +86,7 @@ export const Registration = () => {
               </span>
             )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Password
+              Password <span className="text-red-500">*</span>
             </Typography>
             <Input
               {...register("password", {
