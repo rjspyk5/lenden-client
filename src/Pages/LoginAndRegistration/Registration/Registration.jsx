@@ -44,8 +44,7 @@ export const Registration = () => {
             <Input
               {...register("email", {
                 required: true,
-                pattern:
-                  "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/",
+                pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
               })}
               size="lg"
               type="email"
@@ -55,7 +54,7 @@ export const Registration = () => {
                 className: "before:content-none after:content-none",
               }}
             />
-            {errors.email && (
+            {errors.email?.type === "required" && (
               <span className="text-red-500">This field is required</span>
             )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
