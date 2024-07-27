@@ -42,8 +42,13 @@ export const Registration = () => {
               Your Email
             </Typography>
             <Input
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: true,
+                pattern:
+                  "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/",
+              })}
               size="lg"
+              type="email"
               placeholder="name@mail.com"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
@@ -57,7 +62,11 @@ export const Registration = () => {
               Your Number
             </Typography>
             <Input
-              {...register("number", { required: true })}
+              {...register("number", {
+                required: true,
+                maxLength: 11,
+                minLength: 11,
+              })}
               size="lg"
               placeholder="01700000000"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -65,14 +74,24 @@ export const Registration = () => {
                 className: "before:content-none after:content-none",
               }}
             />
-            {errors.number && (
+            {errors.number?.type === "required" && (
               <span className="text-red-500">This field is required</span>
+            )}
+            {(errors.number?.type === "maxLength" ||
+              errors.number?.type === "minLength") && (
+              <span className="text-red-500">
+                Enter eleven digit number only
+              </span>
             )}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Password
             </Typography>
             <Input
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: true,
+                maxLength: 6,
+                minLength: 6,
+              })}
               type="password"
               size="lg"
               placeholder="Enter six digit pin"
@@ -81,8 +100,14 @@ export const Registration = () => {
                 className: "before:content-none after:content-none",
               }}
             />
-            {errors.password && (
+            {errors.password?.type === "required" && (
               <span className="text-red-500">This field is required</span>
+            )}
+            {(errors.password?.type === "maxLength" ||
+              errors.password?.type === "minLength") && (
+              <span className="text-red-500">
+                Only six digit number are allowed for password
+              </span>
             )}
           </div>
           <Button type="submit" className="mt-6" fullWidth>
