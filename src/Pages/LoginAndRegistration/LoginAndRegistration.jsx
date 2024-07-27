@@ -25,7 +25,7 @@ export const LoginAndRegistration = () => {
   return (
     <>
       <div>
-        <Tabs className="max-w-72" value="login">
+        <Tabs className="max-w-md" value="login">
           <TabsHeader>
             {data.map(({ label, value }) => (
               <Tab key={value} value={value}>
