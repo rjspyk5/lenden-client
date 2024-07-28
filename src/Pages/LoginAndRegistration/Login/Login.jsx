@@ -21,16 +21,13 @@ export const Login = () => {
   return (
     <div>
       <Card color="transparent" shadow={false}>
-        <Typography variant="h4" color="blue-gray">
-          Login
+        <Typography variant="h4" className="text-center" color="blue-gray">
+          Sign In
         </Typography>
-        <Typography color="gray" className="mt-1 font-normal">
+        <Typography color="gray" className="mt-1 text-center font-normal">
           Nice to meet you! Enter your details to register.
         </Typography>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2 ">
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Email or Number <span className="text-red-500">*</span>
@@ -71,7 +68,7 @@ export const Login = () => {
             {(errors.password?.type === "maxLength" ||
               errors.password?.type === "minLength") && (
               <span className="text-red-500">
-                Password can be six digit number only
+                Password can't be less than or more than six
               </span>
             )}
           </div>

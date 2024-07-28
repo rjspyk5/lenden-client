@@ -23,9 +23,9 @@ export const LoginAndRegistration = () => {
     },
   ];
   return (
-    <>
-      <div>
-        <Tabs className="max-w-md" value="login">
+    <div className="min-h-screen flex justify-center items-center">
+      <div className="md:max-w-lg p-10 md:p-0 w-full bg-[#c0c0c037] rounded-lg backdrop-blur-lg">
+        <Tabs className="" value="login">
           <TabsHeader>
             {data.map(({ label, value }) => (
               <Tab key={value} value={value}>
@@ -42,6 +42,6 @@ export const LoginAndRegistration = () => {
           </TabsBody>
         </Tabs>
       </div>
-    </>
+    </div>
   );
 };

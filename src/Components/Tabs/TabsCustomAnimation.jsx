@@ -24,7 +24,7 @@ export function TabsCustomAnimation() {
   ];
 
   return (
-    <Tabs className="max-w-72" value="html">
+    <Tabs value="html">
       <TabsHeader>
         {data.map(({ label, value }) => (
           <Tab key={value} value={value}>
