@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const navigate = useNavigate();
-
   return (
     <div className="mt-10">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-16">
