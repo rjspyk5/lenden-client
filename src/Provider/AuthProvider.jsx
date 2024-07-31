@@ -22,15 +22,15 @@ export const AuthProvider = ({ children }) => {
       const info = localStorage.getItem("lenden_user") || null;
       setuser(info);
       setloading(false);
-      if (user) {
-        axiosPublic
-          .post("/jwt", { email: user?.email })
-          .then((res) => console.log(res.data));
-      } else {
-        axiosPublic
-          .post("/logout", { email: user?.email })
-          .then((res) => console.log(res.data));
-      }
+      // if (user) {
+      //   axiosPublic
+      //     .post("/jwt", { email: user?.email })
+      //     .then((res) => console.log(res.data));
+      // } else {
+      //   axiosPublic
+      //     .post("/logout", { email: user?.email })
+      //     .then((res) => console.log(res.data));
+      // }
       return info;
     },
   });
