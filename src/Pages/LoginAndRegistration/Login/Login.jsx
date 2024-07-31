@@ -3,7 +3,9 @@ import { useAuth } from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
+import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
 export const Login = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -15,8 +17,7 @@ export const Login = () => {
     user && navigate("/");
   }, [user]);
   const onSubmit = (data) => {
-    console.log(data);
-    login();
+    axiosPublic.post("/login", data).then((res) => console.log(res.data));
   };
   return (
     <div>
