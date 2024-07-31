@@ -11,7 +11,14 @@ export const Registration = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    axiosPublic.post("/reg", data).then((res) => console.log(res.data));
+    data.accountStatus = "pending";
+    axiosPublic.post("/reg", data).then((res) => {
+      if (res.data.insertedId) {
+        console.log("sucess");
+      } else {
+        console.log("already have an account");
+      }
+    });
   };
   return (
     <div>
