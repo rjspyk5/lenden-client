@@ -1,14 +1,18 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 
 import { useForm } from "react-hook-form";
+import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
 export const Registration = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    axiosPublic.post("/reg", data).then((res) => console.log(res.data));
+  };
   return (
     <div>
       <Card color="transparent" shadow={false}>
