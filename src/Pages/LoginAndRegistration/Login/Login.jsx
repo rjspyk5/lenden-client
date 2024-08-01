@@ -17,7 +17,7 @@ export const Login = () => {
     user && navigate("/");
   }, [user]);
   const onSubmit = (data) => {
-    axiosPublic.post("/login", data).then((res) => console.log(res.data));
+    axiosPublic.post("/login", data).then((res) => login());
   };
   return (
     <div>
