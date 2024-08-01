@@ -7,18 +7,14 @@ export const AuthProvider = ({ children }) => {
   const [user, setuser] = useState(null);
   const axiosPublic = useAxiosPublic();
 
-  const test = {
-    name: "rakib",
-  };
-
   const logout = () => {
     localStorage.removeItem("lenden_user");
     setloading(true);
   };
 
-  const login = (number, pass) => {
+  const login = (data) => {
     setloading(true);
-    localStorage.setItem("lenden_user", JSON.stringify(test));
+    localStorage.setItem("lenden_user", JSON.stringify(data));
   };
 
   const registration = (data) => {
@@ -37,7 +33,14 @@ export const AuthProvider = ({ children }) => {
     }
   }, [login, registration, logout]);
 
-  const providerValue = { loading, user, login, logout, registration };
+  const providerValue = {
+    loading,
+    user,
+    login,
+    logout,
+    registration,
+    setloading,
+  };
   return (
     <AuthContext.Provider value={providerValue}>
       {children}

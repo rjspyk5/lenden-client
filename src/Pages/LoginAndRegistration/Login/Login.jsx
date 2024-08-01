@@ -6,18 +6,26 @@ import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
 export const Login = () => {
   const axiosPublic = useAxiosPublic();
+  const { user, login, setloading } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    user && navigate("/");
+  }, [user]);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
-  const { user, login } = useAuth();
-  useEffect(() => {
-    user && navigate("/");
-  }, [user]);
-  const onSubmit = (data) => {
-    axiosPublic.post("/login", data).then((res) => login());
+
+  const onSubmit = async (data) => {
+    setloading(true);
+    const result = await axiosPublic.post("/login", data);
+    if (result.data.result === true) {
+      login(result.data?.result?.data);
+    } else {
+      alert(result.data?.result);
+    }
   };
   return (
     <div>
