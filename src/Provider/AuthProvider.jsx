@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { createContext, useEffect, useState } from "react";
 import { useAxiosPublic } from "../Hooks/useAxiosPublic";
 
@@ -22,8 +21,9 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("lenden_user", JSON.stringify(test));
   };
 
-  const registration = (name, email, number, pass) => {
+  const registration = (data) => {
     setloading(true);
+    return axiosPublic.post("/reg", data);
   };
 
   useEffect(() => {
@@ -37,30 +37,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, [login, registration, logout]);
 
-  // const {
-  //   isPending,
-  //   data,
-  //   refetch: authRefetch,
-  // } = useQuery({
-  //   queryKey: ["login", "registration", login, registration, logout],
-  //   queryFn: async () => {
-  //     const info = localStorage.getItem("lenden_user") || null;
-  //     setuser(info);
-  //     setloading(false);
-  //     if (user) {
-  //       axiosPublic
-  //         .post("/jwt", { email: user?.email })
-  //         .then((res) => console.log(res.data));
-  //     } else {
-  //       axiosPublic
-  //         .post("/logout", { email: user?.email })
-  //         .then((res) => console.log(res.data));
-  //     }
-  //     return info;
-  //   },
-  // });
-
-  const providerValue = { loading, user, login, logout };
+  const providerValue = { loading, user, login, logout, registration };
   return (
     <AuthContext.Provider value={providerValue}>
       {children}

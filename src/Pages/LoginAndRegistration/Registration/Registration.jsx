@@ -2,7 +2,12 @@ import { Card, Input, Button, Typography } from "@material-tailwind/react";
 
 import { useForm } from "react-hook-form";
 import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
+import { useAuth } from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
 export const Registration = () => {
+  const { registration, logout } = useAuth();
+  const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const {
     register,
@@ -10,15 +15,16 @@ export const Registration = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     data.accountStatus = "pending";
-    axiosPublic.post("/reg", data).then((res) => {
-      if (res.data.insertedId) {
-        console.log("sucess");
-      } else {
-        console.log("already have an account");
-      }
-    });
+    const result = await registration(data);
+    if (result.data?.insertedId) {
+      alert("succssfully Registration complete now you may have login");
+      logout();
+      navigate("/");
+    } else {
+      alert("already have and account");
+    }
   };
   return (
     <div>
