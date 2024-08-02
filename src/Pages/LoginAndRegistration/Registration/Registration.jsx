@@ -1,15 +1,19 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-import { useForm } from "react-hook-form";
-import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
+import { useForm, Controller } from "react-hook-form";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 export const Registration = () => {
   const { registration, logout } = useAuth();
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
+
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -142,6 +146,43 @@ export const Registration = () => {
                   </span>
                 )}
               </div>
+            </div>
+            <div className="md:w-1/2">
+              <Typography variant="h6" color="blue-gray">
+                Select Role <span className="text-red-500">*</span>
+              </Typography>
+              <Controller
+                name="role"
+                control={control}
+                defaultValue=""
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <FormControl
+                    className="active:outline-black active:border"
+                    fullWidth
+                  >
+                    <InputLabel
+                      className="active:outline-black active:border"
+                      id="demo-simple-select-label"
+                    >
+                      Role
+                    </InputLabel>
+                    <Select
+                      className="active:outline-black active:border"
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      {...field}
+                      label="Role"
+                    >
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                    </Select>
+                  </FormControl>
+                )}
+              />
+              {errors.role && (
+                <span className="text-red-500">This field is required</span>
+              )}
             </div>
           </div>
           <Button type="submit" className="mt-6" fullWidth>
