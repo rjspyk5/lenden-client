@@ -20,11 +20,15 @@ export const Login = () => {
 
   const onSubmit = async (data) => {
     setloading(true);
-    const result = await axiosPublic.post("/login", data);
-    if (result.data.result === true) {
-      login(result.data?.result?.data);
-    } else {
-      alert(result.data?.result);
+    try {
+      const result = await axiosPublic.post("/login", data);
+      if (result.data.result === true) {
+        login(result.data?.result?.data);
+      } else {
+        alert(result.data?.result);
+      }
+    } catch (error) {
+      alert("something went wrong");
     }
   };
   return (

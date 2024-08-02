@@ -17,13 +17,17 @@ export const Registration = () => {
 
   const onSubmit = async (data) => {
     data.accountStatus = "pending";
-    const result = await registration(data);
-    if (result.data?.insertedId) {
-      alert("succssfully Registration complete now you may have login");
-      logout();
-      navigate("/");
-    } else {
-      alert("already have and account");
+    try {
+      const result = await registration(data);
+      if (result.data?.insertedId) {
+        alert("succssfully Registration complete now you may have login");
+        logout();
+        navigate("/");
+      } else {
+        alert("already have and account");
+      }
+    } catch (error) {
+      alert("Something Went Wrong");
     }
   };
   return (
