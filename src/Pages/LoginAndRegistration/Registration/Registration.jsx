@@ -1,13 +1,42 @@
+import React from "react";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
+import { useForm, Controller } from "react-hook-form";
+import { useAuth } from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { styled } from "@mui/material/styles";
 
-import { useForm, Controller } from "react-hook-form";
-import { useAuth } from "../../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+// Create a custom styled Select component using Material-UI's styled API
+const CustomSelect = styled(Select)(({ theme }) => ({
+  // When the Select is focused, change the border color to black
+  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: "black",
+  },
+  // Change the text color to black
+  "& .MuiSelect-select": {
+    color: "black",
+    height: "25px",
+    minHeight: "10px",
+    maxHeight: "25px",
+  },
+  // When the Select is hovered over, change the border color to black
+  "&:hover .MuiOutlinedInput-notchedOutline": {
+    borderColor: "black",
+  },
+  "& .MuiOutlinedInput-input": {
+    height: "40px", // Adjust height here
+    padding: "10px", // Adjust padding to ensure vertical alignment
+  },
+}));
 
+const CustomInputLabel = styled(InputLabel)(({ theme }) => ({
+  "&.Mui-focused": {
+    color: "black", // Change the label color when focused
+  },
+}));
 export const Registration = () => {
   const { registration, logout } = useAuth();
   const navigate = useNavigate();
@@ -22,18 +51,20 @@ export const Registration = () => {
   const onSubmit = async (data) => {
     data.accountStatus = "pending";
     try {
-      const result = await registration(data);
-      if (result.data?.insertedId) {
-        alert("succssfully Registration complete now you may have login");
-        logout();
-        navigate("/");
-      } else {
-        alert("already have and account");
-      }
+      // const result = await registration(data);
+      // if (result.data?.insertedId) {
+      //   alert("Successfully registered. You may now log in.");
+      //   logout();
+      //   navigate("/");
+      // } else {
+      //   alert("You already have an account.");
+      // }
+      console.log(data);
     } catch (error) {
-      alert("Something Went Wrong");
+      alert("Something went wrong.");
     }
   };
+
   return (
     <div>
       <Card color="transparent" shadow={false}>
@@ -65,11 +96,11 @@ export const Registration = () => {
               </div>
               <div className="md:w-1/2">
                 <Typography variant="h6" color="blue-gray">
-                  Your Email <span className="text-red-500">*</span>
+                  Your Email
                 </Typography>
                 <Input
                   {...register("email", {
-                    required: true,
+                    required: false,
                     pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
                   })}
                   size="lg"
@@ -79,9 +110,7 @@ export const Registration = () => {
                     className: "before:content-none after:content-none",
                   }}
                 />
-                {errors.email?.type === "required" && (
-                  <span className="text-red-500">This field is required</span>
-                )}
+
                 {errors.email?.type === "pattern" && (
                   <span className="text-red-500">Enter a valid email </span>
                 )}
@@ -90,7 +119,6 @@ export const Registration = () => {
 
             <div className="flex flex-col md:flex-row gap-6">
               <div className="md:w-1/2">
-                {" "}
                 <Typography variant="h6" color="blue-gray">
                   Your Number <span className="text-red-500">*</span>
                 </Typography>
@@ -118,7 +146,6 @@ export const Registration = () => {
                 )}
               </div>
               <div className="md:w-1/2">
-                {" "}
                 <Typography variant="h6" color="blue-gray">
                   Password <span className="text-red-500">*</span>
                 </Typography>
@@ -147,6 +174,7 @@ export const Registration = () => {
                 )}
               </div>
             </div>
+
             <div className="md:w-1/2">
               <Typography variant="h6" color="blue-gray">
                 Select Role <span className="text-red-500">*</span>
@@ -157,36 +185,29 @@ export const Registration = () => {
                 defaultValue=""
                 rules={{ required: true }}
                 render={({ field }) => (
-                  <FormControl
-                    className="active:outline-black active:border"
-                    fullWidth
-                  >
-                    <InputLabel
-                      className="active:outline-black active:border"
-                      id="demo-simple-select-label"
-                    >
+                  <FormControl fullWidth>
+                    <CustomInputLabel id="demo-simple-select-label">
                       Role
-                    </InputLabel>
-                    <Select
-                      className="active:outline-black active:border"
+                    </CustomInputLabel>
+                    <CustomSelect
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       {...field}
                       label="Role"
                     >
-                      <MenuItem value={10}>Ten</MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                    </Select>
+                      <MenuItem value="user">User</MenuItem>
+                      <MenuItem value="agent">Agent</MenuItem>
+                    </CustomSelect>
                   </FormControl>
                 )}
               />
-              {errors.role && (
+              {errors.age && (
                 <span className="text-red-500">This field is required</span>
               )}
             </div>
           </div>
           <Button type="submit" className="mt-6" fullWidth>
-            sign up
+            Sign Up
           </Button>
         </form>
       </Card>
