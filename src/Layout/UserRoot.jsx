@@ -1,10 +1,11 @@
-import { Outlet } from "react-router-dom";
-import { Navbarr } from "../Shared/Navbarr";
+import { Navbar } from "@material-tailwind/react";
 
-export const Root = () => {
+import { Outlet } from "react-router-dom";
+
+export const UserRoot = () => {
   return (
     <div>
-      <Navbarr />
+      <Navbar />
       <Outlet />
     </div>
   );

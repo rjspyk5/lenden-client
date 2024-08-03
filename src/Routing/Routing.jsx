@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Root } from "../Layout/Root";
+
 import { PrivateRoute } from "../Pages/PrivateRoute/PrivateRoute";
 import { LoginAndRegistration } from "../Pages/LoginAndRegistration/LoginAndRegistration";
 import { Home } from "../Pages/Home/Home";
@@ -7,13 +7,14 @@ import { SendMoney } from "../Pages/SendMoney/SendMoney";
 import { CashIn } from "../Pages/CashIn/CashIn";
 import { CashOut } from "../Pages/CashOut/CashOut";
 import { AddMoney } from "../Pages/AddMoney/AddMoney";
+import { MainRoot } from "../Layout/MainRoot";
 
 export const Routing = createBrowserRouter([
   {
     path: "/",
     element: (
       <PrivateRoute>
-        <Root />
+        <MainRoot />
       </PrivateRoute>
     ),
     children: [
@@ -60,7 +61,7 @@ export const Routing = createBrowserRouter([
     ],
   },
   {
-    path: "/login",
+    path: "login",
     element: <LoginAndRegistration />,
   },
 ]);

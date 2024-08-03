@@ -51,15 +51,14 @@ export const Registration = () => {
   const onSubmit = async (data) => {
     data.accountStatus = "pending";
     try {
-      // const result = await registration(data);
-      // if (result.data?.insertedId) {
-      //   alert("Successfully registered. You may now log in.");
-      //   logout();
-      //   navigate("/");
-      // } else {
-      //   alert("You already have an account.");
-      // }
-      console.log(data);
+      const result = await registration(data);
+      if (result.data?.insertedId) {
+        alert("Successfully registered. You may now log in.");
+        logout();
+        navigate("/");
+      } else {
+        alert("You already have an account.");
+      }
     } catch (error) {
       alert("Something went wrong.");
     }
