@@ -1,6 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-
-import { PrivateRoute } from "../Pages/PrivateRoute/PrivateRoute";
 import { LoginAndRegistration } from "../Pages/LoginAndRegistration/LoginAndRegistration";
 import { Home } from "../Pages/Home/Home";
 import { SendMoney } from "../Pages/SendMoney/SendMoney";
@@ -8,54 +6,57 @@ import { CashIn } from "../Pages/CashIn/CashIn";
 import { CashOut } from "../Pages/CashOut/CashOut";
 import { AddMoney } from "../Pages/AddMoney/AddMoney";
 import { MainRoot } from "../Layout/MainRoot";
+import { UserPrivateRoute } from "../Pages/PrivateRoutes/UserPrivateRoute/UserPrivateRoute";
+import { AgentPrivateRoute } from "../Pages/PrivateRoutes/AgentPrivateRoute/AgentPrivateRoute";
 
 export const Routing = createBrowserRouter([
   {
     path: "/",
     element: (
-      <PrivateRoute>
+      <UserPrivateRoute>
+        {" "}
         <MainRoot />
-      </PrivateRoute>
+      </UserPrivateRoute>
     ),
     children: [
       {
         path: "/",
         element: (
-          <PrivateRoute>
+          <UserPrivateRoute>
             <Home />
-          </PrivateRoute>
+          </UserPrivateRoute>
         ),
       },
       {
         path: "/sendmoney",
         element: (
-          <PrivateRoute>
+          <UserPrivateRoute>
             <SendMoney />
-          </PrivateRoute>
+          </UserPrivateRoute>
         ),
       },
       {
         path: "/cashin",
         element: (
-          <PrivateRoute>
+          <UserPrivateRoute>
             <CashIn />
-          </PrivateRoute>
+          </UserPrivateRoute>
         ),
       },
       {
         path: "/cashout",
         element: (
-          <PrivateRoute>
+          <UserPrivateRoute>
             <CashOut />
-          </PrivateRoute>
+          </UserPrivateRoute>
         ),
       },
       {
         path: "/addmoney",
         element: (
-          <PrivateRoute>
+          <UserPrivateRoute>
             <AddMoney />
-          </PrivateRoute>
+          </UserPrivateRoute>
         ),
       },
     ],

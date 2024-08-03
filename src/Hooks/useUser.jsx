@@ -11,6 +11,7 @@ export const useUser = () => {
     data: userRole,
     refetch,
     isLoading,
+    isPending,
   } = useQuery({
     queryKey: [user],
     queryFn: async () => {
@@ -21,5 +22,5 @@ export const useUser = () => {
       return result.data;
     },
   });
-  return { userRole, refetch, isLoading };
+  return { userRole, refetch, isLoading, isPending };
 };
