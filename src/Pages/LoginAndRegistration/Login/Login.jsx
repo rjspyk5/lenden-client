@@ -23,7 +23,7 @@ export const Login = () => {
     try {
       const result = await axiosPublic.post("/login", data);
       if (result.data.result === true) {
-        login(result.data?.result?.data);
+        login(result.data?.data);
       } else {
         alert(result.data?.result);
       }

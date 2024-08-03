@@ -1,11 +1,16 @@
-import { Outlet } from "react-router-dom";
-import { Navbarr } from "../Shared/Navbarr";
+import { useUser } from "../Hooks/useUser";
+import { UserRoot } from "./UserRoot";
+import { AgentRoot } from "./AgentRoot";
+import { AdminRoot } from "./AdminRoot";
 
 export const MainRoot = () => {
-  return (
-    <div>
-      <Navbarr />
-      <Outlet />
-    </div>
-  );
+  const { userRole } = useUser();
+
+  let stucture;
+  userRole?.role === "user"
+    ? (stucture = <UserRoot />)
+    : userRole?.role === "agent"
+    ? (stucture = <AgentRoot />)
+    : (stucture = <AdminRoot />);
+  return <div>{stucture}</div>;
 };

@@ -5,6 +5,7 @@ export const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [loading, setloading] = useState(true);
   const [user, setuser] = useState(null);
+
   const axiosPublic = useAxiosPublic();
 
   const logout = () => {
@@ -24,6 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const info = localStorage.getItem("lenden_user") || null;
+
     setuser(info);
     setloading(false);
     if (user) {

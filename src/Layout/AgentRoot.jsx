@@ -1,5 +1,11 @@
-import React from "react";
+import { Navbarr } from "../Shared/Navbarr";
+import { Outlet } from "react-router-dom";
 
 export const AgentRoot = () => {
-  return <div>AgentRoot</div>;
+  return (
+    <div>
+      <Navbarr />
+      <Outlet />
+    </div>
+  );
 };
