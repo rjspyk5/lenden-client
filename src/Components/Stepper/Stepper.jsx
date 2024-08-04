@@ -12,6 +12,8 @@ import {
   SendMoneyFromStepThree,
   SendMoneyFromStepTwo,
 } from "../SendMoneyForm/SendMoneyForm";
+import { useAuth } from "../../Hooks/useAuth";
+import { useUser } from "./../../Hooks/useUser";
 
 export default function Stepper() {
   const theme = useTheme();
@@ -21,6 +23,19 @@ export default function Stepper() {
   const [error, seterror] = useState(null);
   const [reciverDetails, setreciverDetails] = useState(null);
   const axiosSequre = useAxiosSequre();
+  const { userRole } = useUser();
+  console.log(userRole);
+  const handleConfrim = (e) => {
+    e.preventDefault();
+    const pin = e.target.pin.value;
+    axiosSequre
+      .post("/sendmoney", {
+        ...reciverDetails,
+        pin: pin,
+        senderNumber: userRole.number,
+      })
+      .then((res) => console.log(res.data));
+  };
 
   const steps = [
     {
@@ -30,7 +45,9 @@ export default function Stepper() {
       description: <SendMoneyFromStepTwo amount={amount} />,
     },
     {
-      description: <SendMoneyFromStepThree />,
+      description: (
+        <SendMoneyFromStepThree handleConfrim={handleConfrim} error={error} />
+      ),
     },
   ];
 
@@ -73,6 +90,9 @@ export default function Stepper() {
       const updateUserDetails = { ...reciverDetails, amount: givenAmount };
       setreciverDetails(updateUserDetails);
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
+    if (activeStep === 2) {
+      console.log("test");
     }
   };
 

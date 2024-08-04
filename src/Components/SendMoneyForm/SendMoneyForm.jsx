@@ -88,16 +88,16 @@ export const SendMoneyFromStepTwo = ({ amount }) => {
   );
 };
 
-export const SendMoneyFromStepThree = ({ error }) => {
+export const SendMoneyFromStepThree = ({ handleConfrim, error }) => {
   return (
     <div>
       <div className="mb-1 flex flex-col gap-6">
-        <form action="">
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
+        <form onSubmit={handleConfrim} action="">
+          <Typography variant="h6" color="blue-gray" className="mb-3">
             Pin <span className="text-red-500">*</span>
           </Typography>
           <Input
-            name="number"
+            name="pin"
             size="lg"
             placeholder="Enter your email or number"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
