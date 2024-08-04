@@ -2,7 +2,6 @@ import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import MobileStepper from "@mui/material/MobileStepper";
 import Paper from "@mui/material/Paper";
-import { Input, Typography } from "@material-tailwind/react";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
@@ -10,6 +9,7 @@ import { useRef, useState } from "react";
 import { useAxiosSequre } from "./../../Hooks/useAxiosSequre";
 import {
   SendMoneyFrom,
+  SendMoneyFromStepThree,
   SendMoneyFromStepTwo,
 } from "../SendMoneyForm/SendMoneyForm";
 
@@ -30,17 +30,13 @@ export default function Stepper() {
       description: <SendMoneyFromStepTwo amount={amount} />,
     },
     {
-      description: `Try out different ad text to see what brings in the most customers,
-                and learn how to enhance your ads using features like ad extensions.
-                If you run into any problems with your ads, find out how to tell if
-                they're running and how to resolve approval issues.`,
+      description: <SendMoneyFromStepThree />,
     },
   ];
 
   const maxSteps = steps.length;
 
   const handleNext = async () => {
-    console.log(activeStep);
     if (activeStep === 0) {
       const givenNumber = number?.current?.firstChild?.value;
       if (!givenNumber) {
@@ -58,7 +54,10 @@ export default function Stepper() {
       if (!result.data) {
         return seterror("No account found with this number");
       }
-      if (result.data.role !== "user") {
+      if (
+        result.data.role !== "user" ||
+        result.data?.accountStatus === "pending"
+      ) {
         return seterror("You can send money to an user only");
       }
       if (result.data.role === "user") {
@@ -66,7 +65,6 @@ export default function Stepper() {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
       }
     }
-
     if (activeStep === 1) {
       const givenAmount = amount.current.value;
       if (givenAmount < 50) {

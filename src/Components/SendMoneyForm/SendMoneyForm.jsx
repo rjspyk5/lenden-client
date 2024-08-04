@@ -1,4 +1,5 @@
 import { Input, Typography } from "@material-tailwind/react";
+import { Button } from "@mui/material";
 
 export const SendMoneyFrom = ({ number, error }) => {
   return (
@@ -82,6 +83,30 @@ export const SendMoneyFromStepTwo = ({ amount }) => {
             type="text"
           />
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const SendMoneyFromStepThree = ({ error }) => {
+  return (
+    <div>
+      <div className="mb-1 flex flex-col gap-6">
+        <form action="">
+          <Typography variant="h6" color="blue-gray" className="-mb-3">
+            Pin <span className="text-red-500">*</span>
+          </Typography>
+          <Input
+            name="number"
+            size="lg"
+            placeholder="Enter your email or number"
+            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+          />
+          <Button type="submit" className="mt-6" fullWidth>
+            Login
+          </Button>
+          {error && <h1 className="text-red-500">{error}</h1>}
+        </form>
       </div>
     </div>
   );
