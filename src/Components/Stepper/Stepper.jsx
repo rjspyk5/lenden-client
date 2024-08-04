@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import MobileStepper from "@mui/material/MobileStepper";
@@ -7,51 +6,28 @@ import { Input, Typography } from "@material-tailwind/react";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import { SendMoneyFrom } from "../SendMoneyForm/SendMoneyForm";
 import { useRef, useState } from "react";
+import { useAxiosSequre } from "./../../Hooks/useAxiosSequre";
+import {
+  SendMoneyFrom,
+  SendMoneyFromStepTwo,
+} from "../SendMoneyForm/SendMoneyForm";
 
 export default function Stepper() {
   const theme = useTheme();
   const number = useRef(null);
-  const [activeStep, setActiveStep] = React.useState(0);
+  const amount = useRef(null);
+  const [activeStep, setActiveStep] = useState(0);
   const [error, seterror] = useState(null);
-  const [numberr, setnumberr] = useState();
+  const [reciverDetails, setreciverDetails] = useState(null);
+  const axiosSequre = useAxiosSequre();
 
   const steps = [
     {
-      description: (
-        <div>
-          <Typography variant="h4" className="text-center" color="blue-gray">
-            Sign In
-          </Typography>
-          <Typography color="gray" className="mt-1 text-center font-normal">
-            Nice to meet you! Enter your details to register.
-          </Typography>
-          <div className="mb-1 flex flex-col gap-6">
-            <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Email or Number <span className="text-red-500">*</span>
-            </Typography>
-            <Input
-              name="number"
-              ref={number}
-              value={numberr}
-              onChange={(e) => setnumberr(e.target.value)}
-              size="lg"
-              placeholder="Enter your email or number"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
-            {error && <h1>{error}</h1>}
-          </div>
-        </div>
-      ),
+      description: <SendMoneyFrom error={error} number={number} />,
     },
     {
-      label: "Create an ad group",
-      description:
-        "An ad group contains one or more ads which target a shared set of keywords.",
+      description: <SendMoneyFromStepTwo amount={amount} />,
     },
     {
       description: `Try out different ad text to see what brings in the most customers,
@@ -63,17 +39,43 @@ export default function Stepper() {
 
   const maxSteps = steps.length;
 
-  const handleNext = () => {
-    const givenNumber = number?.current?.firstChild?.value;
-    console.log(givenNumber);
-    if (!(givenNumber.length === 11)) {
-      return seterror("Number must be eleven digit");
-    }
-    if (givenNumber.length === 11) {
-      seterror(null);
+  const handleNext = async () => {
+    console.log(activeStep);
+    if (activeStep === 0) {
+      const givenNumber = number?.current?.firstChild?.value;
+      if (!givenNumber) {
+        return seterror("Required Field");
+      }
+      if (!(givenNumber.length === 11)) {
+        return seterror("Number must be eleven digit");
+      }
+      if (givenNumber.length === 11) {
+        seterror(null);
+      }
+      const result = await axiosSequre.get(
+        `/checkrole?emailOrNumber=${givenNumber}`
+      );
+      if (!result.data) {
+        return seterror("No account found with this number");
+      }
+      if (result.data.role !== "user") {
+        return seterror("You can send money to an user only");
+      }
+      if (result.data.role === "user") {
+        setreciverDetails(result.data);
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      }
     }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (activeStep === 1) {
+      const givenAmount = amount.current.value;
+      if (givenAmount < 50) {
+        return alert("give minimum 50 tk");
+      }
+      const updateUserDetails = { ...reciverDetails, amount: givenAmount };
+      setreciverDetails(updateUserDetails);
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {

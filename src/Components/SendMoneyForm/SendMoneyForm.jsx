@@ -1,6 +1,6 @@
 import { Input, Typography } from "@material-tailwind/react";
 
-export const SendMoneyFrom = () => {
+export const SendMoneyFrom = ({ number, error }) => {
   return (
     <div>
       <Typography variant="h4" className="text-center" color="blue-gray">
@@ -14,13 +14,74 @@ export const SendMoneyFrom = () => {
           Email or Number <span className="text-red-500">*</span>
         </Typography>
         <Input
+          name="number"
+          ref={number}
           size="lg"
           placeholder="Enter your email or number"
           className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-          labelProps={{
-            className: "before:content-none after:content-none",
-          }}
         />
+        {error && <h1 className="text-red-500">{error}</h1>}
+      </div>
+    </div>
+  );
+};
+
+export const SendMoneyFromStepTwo = ({ amount }) => {
+  return (
+    <div>
+      <div className="mb-1 flex justify-between ">
+        <div>
+          {" "}
+          <Typography
+            variant="h6"
+            color="blue-gray"
+            className="-mb-3 flex justify-between"
+          >
+            Reciver Name
+          </Typography>
+        </div>
+        <div className="w-6/12">
+          {" "}
+          <h1>Rakibul Islam</h1>
+        </div>
+      </div>
+      <div className="mb-1 flex justify-between ">
+        <div>
+          {" "}
+          <Typography
+            variant="h6"
+            color="blue-gray"
+            className="-mb-3  flex justify-between"
+          >
+            Reciver Number
+          </Typography>
+        </div>
+        <div className="w-6/12">
+          {" "}
+          <h1>01684883865</h1>
+        </div>
+      </div>
+      <div className="mb-1 flex justify-between ">
+        <div>
+          {" "}
+          <Typography
+            variant="h6"
+            color="blue-gray"
+            className="-mb-3  flex justify-between"
+          >
+            Amount
+          </Typography>
+        </div>
+        <div className="w-6/12">
+          {" "}
+          <input
+            ref={amount}
+            name="amount"
+            placeholder="amount"
+            className="px-2 py-1 border rounded-sm outline-none"
+            type="text"
+          />
+        </div>
       </div>
     </div>
   );
