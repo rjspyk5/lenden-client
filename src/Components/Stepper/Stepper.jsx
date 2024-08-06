@@ -28,11 +28,13 @@ export default function Stepper() {
   const handleConfrim = (e) => {
     e.preventDefault();
     const pin = e.target.pin.value;
+    const method = "send_money";
     axiosSequre
       .post("/sendmoney", {
         ...reciverDetails,
         pin: pin,
         senderNumber: userRole.number,
+        method,
       })
       .then((res) => console.log(res.data));
   };
@@ -85,10 +87,10 @@ export default function Stepper() {
     if (activeStep === 1) {
       const givenAmount = amount.current.value;
       if (givenAmount < 50) {
-        return alert("give minimum 50 tk");
+        return alert("give minimum 50 tk only");
       }
-      const updateUserDetails = { ...reciverDetails, amount: givenAmount };
-      setreciverDetails(updateUserDetails);
+
+      setreciverDetails({ ...reciverDetails, amount: givenAmount });
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
     if (activeStep === 2) {
