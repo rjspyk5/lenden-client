@@ -94,7 +94,7 @@ export default function Stepper() {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
     if (activeStep === 2) {
-      console.log("unknown");
+      alert("unknwon");
     }
   };
 
