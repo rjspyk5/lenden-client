@@ -61,7 +61,7 @@ export const Registration = () => {
         alert("You already have an account.");
       }
     } catch (error) {
-      alert("Something went wrong.");
+      alert("Something went wrong.Please try again");
     }
   };
 
