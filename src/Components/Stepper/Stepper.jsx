@@ -24,7 +24,7 @@ export default function Stepper() {
   const [reciverDetails, setreciverDetails] = useState(null);
   const axiosSequre = useAxiosSequre();
   const { userRole } = useUser();
-  console.log(userRole);
+
   const handleConfrim = (e) => {
     e.preventDefault();
     const pin = e.target.pin.value;
@@ -44,7 +44,9 @@ export default function Stepper() {
       description: <SendMoneyFrom error={error} number={number} />,
     },
     {
-      description: <SendMoneyFromStepTwo amount={amount} />,
+      description: (
+        <SendMoneyFromStepTwo reciverDetails={reciverDetails} amount={amount} />
+      ),
     },
     {
       description: (
@@ -63,6 +65,10 @@ export default function Stepper() {
       }
       if (!(givenNumber.length === 11)) {
         return seterror("Number must be eleven digit");
+      }
+
+      if (givenNumber === userRole.number) {
+        return seterror("You can't send money to your own number");
       }
       if (givenNumber.length === 11) {
         seterror(null);

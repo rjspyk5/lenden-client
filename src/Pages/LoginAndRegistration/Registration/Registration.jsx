@@ -51,6 +51,7 @@ export const Registration = () => {
   const onSubmit = async (data) => {
     data.accountStatus = "pending";
     data.transictionHistory = [];
+    data.amount = 50;
     try {
       const result = await registration(data);
       if (result.data?.insertedId) {

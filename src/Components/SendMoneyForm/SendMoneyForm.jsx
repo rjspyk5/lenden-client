@@ -27,7 +27,7 @@ export const SendMoneyFrom = ({ number, error }) => {
   );
 };
 
-export const SendMoneyFromStepTwo = ({ amount }) => {
+export const SendMoneyFromStepTwo = ({ amount, reciverDetails }) => {
   return (
     <div>
       <div className="mb-1 flex justify-between ">
@@ -43,7 +43,7 @@ export const SendMoneyFromStepTwo = ({ amount }) => {
         </div>
         <div className="w-6/12">
           {" "}
-          <h1>Rakibul Islam</h1>
+          <h1>{reciverDetails?.name}</h1>
         </div>
       </div>
       <div className="mb-1 flex justify-between ">
@@ -59,7 +59,7 @@ export const SendMoneyFromStepTwo = ({ amount }) => {
         </div>
         <div className="w-6/12">
           {" "}
-          <h1>01684883865</h1>
+          <h1>{reciverDetails?.number}</h1>
         </div>
       </div>
       <div className="mb-1 flex justify-between ">
