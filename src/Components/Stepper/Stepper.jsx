@@ -100,7 +100,7 @@ export default function Stepper() {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
     if (activeStep === 2) {
-      alert("unknwon");
+      alert("test");
     }
   };
 
@@ -124,6 +124,7 @@ export default function Stepper() {
       <Box sx={{ maxWidth: 400, width: "100%", p: 2 }}>
         {steps[activeStep].description}
       </Box>
+
       <MobileStepper
         variant="progress"
         steps={maxSteps}
