@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useForm, Controller } from "react-hook-form";
 import { useAuth } from "../../../Hooks/useAuth";
@@ -8,7 +7,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
-
 // Create a custom styled Select component using Material-UI's styled API
 const CustomSelect = styled(Select)(({ theme }) => ({
   // When the Select is focused, change the border color to black
@@ -51,7 +49,11 @@ export const Registration = () => {
   const onSubmit = async (data) => {
     data.accountStatus = "pending";
     data.transictionHistory = [];
+
     data.amount = 50;
+    if (data.role === "agent") {
+      data.amount = 10000;
+    }
     try {
       const result = await registration(data);
       if (result.data?.insertedId) {
