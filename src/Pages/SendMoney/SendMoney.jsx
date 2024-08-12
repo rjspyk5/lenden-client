@@ -35,7 +35,6 @@ export const SendMoney = () => {
       })
       .then((res) => console.log(res.data));
   };
-
   const steps = [
     {
       description: <SendMoneyFrom error={error} number={number} />,
@@ -53,56 +52,62 @@ export const SendMoney = () => {
   ];
   const maxSteps = steps.length;
 
-  const handleNext = async () => {
-    if (activeStep === 0) {
-      const givenNumber = number?.current?.firstChild?.value;
-      if (!givenNumber) {
-        return seterror("Required Field");
-      }
-      if (!(givenNumber.length === 11)) {
-        return seterror("Number must be eleven digit");
-      }
-
-      if (givenNumber === userRole.number) {
-        return seterror("You can't send money to your own number");
-      }
-      if (givenNumber.length === 11) {
-        seterror(null);
-      }
-      const result = await axiosSequre.get(
-        `/checkrole?emailOrNumber=${givenNumber}`
-      );
-      if (!result.data) {
-        return seterror("No account found with this number");
-      }
-      if (
-        result.data.role !== "user" ||
-        result.data?.accountStatus === "pending"
-      ) {
-        return seterror("You can send money to an user only");
-      }
-      if (result.data.role === "user") {
-        setreciverDetails(result.data);
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-      }
+  const firstStep = async () => {
+    const givenNumber = number?.current?.firstChild?.value;
+    if (!givenNumber) {
+      return seterror("Required Field");
     }
-    if (activeStep === 1) {
-      const givenAmount = amount.current.value;
-      if (givenAmount < 50) {
-        return alert("give minimum 50 tk only");
-      }
+    if (!(givenNumber.length === 11)) {
+      return seterror("Number must be eleven digit");
+    }
 
-      setreciverDetails({ ...reciverDetails, amount: givenAmount });
+    if (givenNumber === userRole.number) {
+      return seterror("You can't send money to your own number");
+    }
+    if (givenNumber.length === 11) {
+      seterror(null);
+    }
+    const result = await axiosSequre.get(
+      `/checkrole?emailOrNumber=${givenNumber}`
+    );
+    if (!result.data) {
+      return seterror("No account found with this number");
+    }
+    if (
+      result.data.role !== "user" ||
+      result.data?.accountStatus === "pending"
+    ) {
+      return seterror("You can send money to an user only");
+    }
+    if (result.data.role === "user") {
+      setreciverDetails(result.data);
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
-    if (activeStep === 2) {
-      alert("test");
+  };
+
+  const stepTwo = () => {
+    const givenAmount = amount.current.value;
+    if (givenAmount < 50) {
+      return alert("give minimum 50 tk only");
+    }
+
+    setreciverDetails({ ...reciverDetails, amount: givenAmount });
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleNext = async () => {
+    if (activeStep === 0) {
+      firstStep();
+    }
+    if (activeStep === 1) {
+      stepTwo();
     }
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+
   return (
     <div>
       <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
