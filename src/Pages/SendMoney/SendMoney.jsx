@@ -12,7 +12,7 @@ import { Box, MobileStepper, Paper } from "@mui/material";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
-export const SendMoney = () => {
+export const SendMoney = ({ methodparam }) => {
   const theme = useTheme();
   const number = useRef(null);
   const amount = useRef(null);
@@ -25,7 +25,7 @@ export const SendMoney = () => {
   const handleConfrim = (e) => {
     e.preventDefault();
     const pin = e.target.pin.value;
-    const method = "send_money";
+    const method = methodparam;
     axiosSequre
       .post("/sendmoney", {
         ...reciverDetails,
@@ -33,6 +33,7 @@ export const SendMoney = () => {
         senderNumber: userRole.number,
         method,
       })
+      // todo: success message die history teh nie jabe
       .then((res) => console.log(res.data));
   };
   const steps = [
@@ -62,7 +63,7 @@ export const SendMoney = () => {
     }
 
     if (givenNumber === userRole.number) {
-      return seterror("You can't send money to your own number");
+      return seterror("You can't do this operation to your own number");
     }
     if (givenNumber.length === 11) {
       seterror(null);
@@ -73,16 +74,16 @@ export const SendMoney = () => {
     if (!result.data) {
       return seterror("No account found with this number");
     }
-    if (
-      result.data.role !== "user" ||
-      result.data?.accountStatus === "pending"
-    ) {
-      return seterror("You can send money to an user only");
+    if (methodparam === "send_money" && result.data.role !== "user") {
+      return seterror("Give a valid user number");
     }
-    if (result.data.role === "user") {
-      setreciverDetails(result.data);
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+
+    if (methodparam === "cash_out" && result.data.role !== "agent") {
+      return seterror("Give a valid agent number");
     }
+
+    setreciverDetails(result.data);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const stepTwo = () => {
@@ -90,7 +91,6 @@ export const SendMoney = () => {
     if (givenAmount < 50) {
       return alert("give minimum 50 tk only");
     }
-
     setreciverDetails({ ...reciverDetails, amount: givenAmount });
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
