@@ -12,6 +12,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
 import { useUser } from "../../Hooks/useUser";
+import Swal from "sweetalert2";
 
 export const SendOrCashout = ({ methodparam }) => {
   const theme = useTheme();
@@ -73,14 +74,24 @@ export const SendOrCashout = ({ methodparam }) => {
       `/checkrole?emailOrNumber=${givenNumber}`
     );
     if (!result.data) {
-      return seterror("No account found with this number");
+      return Swal.fire({
+        icon: "error",
+        text: "No account found with this number",
+      });
+      // seterror("No account found with this number");
     }
     if (methodparam === "send_money" && result.data.role !== "user") {
-      return seterror("Give a valid user number");
+      return Swal.fire({
+        icon: "error",
+        text: "Give a valid user number",
+      });
     }
 
     if (methodparam === "cash_out" && result.data.role !== "agent") {
-      return seterror("Give a valid agent number");
+      return Swal.fire({
+        icon: "error",
+        text: "Give a valid user agent number",
+      });
     }
 
     setreciverDetails(result.data);
@@ -90,7 +101,7 @@ export const SendOrCashout = ({ methodparam }) => {
   const stepTwo = () => {
     const givenAmount = amount.current.value;
     if (givenAmount < 50) {
-      return alert("give minimum 50 tk only");
+      return Swal.fire("You can't send less than 50 tk");
     }
     setreciverDetails({ ...reciverDetails, amount: givenAmount });
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
