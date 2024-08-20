@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import Button from "@mui/material/Button";
-
 import { useTheme } from "@mui/material/styles";
 import {
   SendMoneyFrom,
@@ -121,7 +120,7 @@ export const SendOrCashout = ({ methodparam }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen justify-center items-center">
       <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
         <Paper
           square
