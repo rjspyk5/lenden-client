@@ -25,8 +25,11 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const info = localStorage.getItem("lenden_user") || null;
-
+    if (typeof info === "string") {
+      JSON.parse(info);
+    }
     setuser(info);
+    console.log(info);
     setloading(false);
     if (user) {
       axiosPublic.post("/jwt", { email: user?.email }).then((res) => res.data);
