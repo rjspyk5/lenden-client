@@ -7,7 +7,8 @@ import { CashOut } from "../Pages/CashOut/CashOut";
 import { AddMoney } from "../Pages/AddMoney/AddMoney";
 import { MainRoot } from "../Layout/MainRoot";
 import { UserPrivateRoute } from "../Pages/PrivateRoutes/UserPrivateRoute/UserPrivateRoute";
-import { AgentPrivateRoute } from "../Pages/PrivateRoutes/AgentPrivateRoute/AgentPrivateRoute";
+import { AgentDashboard } from "../Pages/Dashboard/AgentDashboard/AgentDashboard";
+import { AdminDashboard } from "../Pages/Dashboard/AdminDashboard/AdminDashboard";
 
 export const Routing = createBrowserRouter([
   {
@@ -64,5 +65,13 @@ export const Routing = createBrowserRouter([
   {
     path: "login",
     element: <LoginAndRegistration />,
+  },
+  {
+    path: "agent",
+    element: <AgentDashboard />,
+  },
+  {
+    path: "admin",
+    element: <AdminDashboard />,
   },
 ]);

@@ -10,7 +10,7 @@ export const Home = () => {
         <OptionCard name="Cash Out" link="/cashout" />
         <OptionCard name="Cash In" link="/cashin" />
         <OptionCard name="Savings" link="/savings" />
-        <OptionCard name="Loan" link="loan" />
+        <OptionCard name="Loan" link="/loan" />
         <OptionCard name="Transcition History" link="/transictionhistory" />
       </div>
     </div>
