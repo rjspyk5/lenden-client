@@ -25,6 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const info = localStorage.getItem("lenden_user") || null;
+    // todo:parse json data into object data
     if (typeof info === "string") {
       JSON.parse(info);
     }
