@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useAxiosPublic } from "../Hooks/useAxiosPublic";
+import { info } from "autoprefixer";
 
 export const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
@@ -9,13 +10,19 @@ export const AuthProvider = ({ children }) => {
   const axiosPublic = useAxiosPublic();
 
   const logout = () => {
-    localStorage.removeItem("lenden_user");
     setloading(true);
+    localStorage.removeItem("lenden_user");
+    setuser(null);
+    setloading(false);
+    axiosPublic.post("/logout").then((res) => console.log(res.data));
   };
 
   const login = (data) => {
     setloading(true);
     localStorage.setItem("lenden_user", JSON.stringify(data));
+    setuser(data);
+    setloading(false);
+    axiosPublic.post("/jwt", { email: user?.email }).then((res) => res.data);
   };
 
   const registration = (data) => {
@@ -24,20 +31,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const info = localStorage.getItem("lenden_user") || null;
-    // todo:parse json data into object data
-    if (typeof info === "string") {
-      JSON.parse(info);
-    }
+    const storedUser = localStorage.getItem("lenden_user") || null;
+    const info = storedUser ? JSON.parse(storedUser) : null;
     setuser(info);
-    console.log(info);
     setloading(false);
-    if (user) {
-      axiosPublic.post("/jwt", { email: user?.email }).then((res) => res.data);
-    } else {
-      axiosPublic.post("/logout").then((res) => console.log(res.data));
-    }
-  }, [login, registration, logout]);
+  }, []);
 
   const providerValue = {
     loading,

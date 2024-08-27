@@ -5,7 +5,6 @@ import { useAuth } from "./useAuth";
 export const useUser = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  const userParsed = JSON.parse(user);
 
   const {
     data: userRole,
@@ -16,7 +15,7 @@ export const useUser = () => {
     queryKey: [user],
     queryFn: async () => {
       const result = await axiosPublic.get(
-        `/checkrole?emailOrNumber=${userParsed?.email || userParsed?.number}`
+        `/checkrole?emailOrNumber=${user?.email || user?.number}`
       );
 
       return result.data;
