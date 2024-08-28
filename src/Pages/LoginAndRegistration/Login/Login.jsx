@@ -10,7 +10,9 @@ export const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    user && navigate("/");
+    if (user) {
+      user.role === "user" ? navigate("/") : navigate("/agent");
+    }
   }, [user]);
   const {
     register,
