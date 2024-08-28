@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { AgentNavbar } from "./AgentNavbar";
 
 export const AgentDashboard = () => {
   return (
@@ -26,7 +27,9 @@ export const AgentDashboard = () => {
           </ul>
         </div>
         <div className="ml-[20%] flex-grow ">
-          <div className="sticky top-0 bg-purple-500">Dashboard</div>
+          <div className="sticky top-0 bg-purple-500">
+            <AgentNavbar />
+          </div>
           <Outlet />
         </div>
       </div>
