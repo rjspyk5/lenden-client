@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import { useAxiosPublic } from "../Hooks/useAxiosPublic";
-import { info } from "autoprefixer";
 
 export const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
@@ -34,6 +33,14 @@ export const AuthProvider = ({ children }) => {
     const storedUser = localStorage.getItem("lenden_user") || null;
     const info = storedUser ? JSON.parse(storedUser) : null;
     setuser(info);
+    // todo: rolebased naviagate route
+    // if (info) {
+    //   const role = info?.role;
+    //   role === "user"
+    //     ? (window.location.href = "/")
+    //     : (window.location.href = "/agent");
+    // }
+
     setloading(false);
   }, []);
 

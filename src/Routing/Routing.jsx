@@ -15,7 +15,6 @@ export const Routing = createBrowserRouter([
     path: "/",
     element: (
       <UserPrivateRoute>
-        {" "}
         <MainRoot />
       </UserPrivateRoute>
     ),
