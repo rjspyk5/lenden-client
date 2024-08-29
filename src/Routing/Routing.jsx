@@ -9,6 +9,10 @@ import { MainRoot } from "../Layout/MainRoot";
 import { UserPrivateRoute } from "../Pages/PrivateRoutes/UserPrivateRoute/UserPrivateRoute";
 import { AgentDashboard } from "../Pages/Dashboard/AgentDashboard/AgentDashboard";
 import { AdminDashboard } from "../Pages/Dashboard/AdminDashboard/AdminDashboard";
+import { AgentAddMoney } from "../Pages/Dashboard/AgentDashboard/AgentAddMoney";
+import { CashInReq } from "../Pages/Dashboard/AgentDashboard/CashInReq";
+import { WithdrawMoney } from "../Pages/Dashboard/AgentDashboard/WithdrawMoney";
+import { CashOutReq } from "../Pages/Dashboard/AgentDashboard/CashOutReq";
 
 export const Routing = createBrowserRouter([
   {
@@ -65,9 +69,29 @@ export const Routing = createBrowserRouter([
     path: "login",
     element: <LoginAndRegistration />,
   },
+
+  // Agent Dashboard Routing
   {
     path: "agent",
     element: <AgentDashboard />,
+    children: [
+      {
+        path: "addmoney",
+        element: <AgentAddMoney />,
+      },
+      {
+        path: "cashinreq",
+        element: <CashInReq />,
+      },
+      {
+        path: "withdrawmoney",
+        element: <WithdrawMoney />,
+      },
+      {
+        path: "cashoutreq",
+        element: <CashOutReq />,
+      },
+    ],
   },
   {
     path: "admin",
