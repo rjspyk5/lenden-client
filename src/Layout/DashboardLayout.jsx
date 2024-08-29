@@ -1,8 +1,7 @@
-import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { AgentNavbar } from "./AgentNavbar";
+import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
 
-export const AgentDashboard = () => {
+export const DashboardLayout = () => {
   return (
     <>
       <div className="flex">
@@ -38,7 +37,9 @@ export const AgentDashboard = () => {
         </div>
         <div className="ml-[20%] flex-grow ">
           <div className="sticky top-0 bg-purple-500">
-            <AgentNavbar />
+            <div className="flex justify-end">
+              <AvatarDropdown />
+            </div>
           </div>
           <Outlet />
         </div>

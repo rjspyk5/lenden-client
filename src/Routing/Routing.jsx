@@ -7,12 +7,13 @@ import { CashOut } from "../Pages/CashOut/CashOut";
 import { AddMoney } from "../Pages/AddMoney/AddMoney";
 import { MainRoot } from "../Layout/MainRoot";
 import { UserPrivateRoute } from "../Pages/PrivateRoutes/UserPrivateRoute/UserPrivateRoute";
-import { AgentDashboard } from "../Pages/Dashboard/AgentDashboard/AgentDashboard";
+
 import { AdminDashboard } from "../Pages/Dashboard/AdminDashboard/AdminDashboard";
 import { AgentAddMoney } from "../Pages/Dashboard/AgentDashboard/AgentAddMoney";
 import { CashInReq } from "../Pages/Dashboard/AgentDashboard/CashInReq";
 import { WithdrawMoney } from "../Pages/Dashboard/AgentDashboard/WithdrawMoney";
 import { CashOutReq } from "../Pages/Dashboard/AgentDashboard/CashOutReq";
+import { DashboardLayout } from "../Layout/DashboardLayout";
 
 export const Routing = createBrowserRouter([
   {
@@ -73,7 +74,7 @@ export const Routing = createBrowserRouter([
   // Agent Dashboard Routing
   {
     path: "agent",
-    element: <AgentDashboard />,
+    element: <DashboardLayout />,
     children: [
       {
         path: "addmoney",
