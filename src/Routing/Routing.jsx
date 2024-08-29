@@ -12,7 +12,6 @@ import { CashInReq } from "../Pages/Dashboard/AgentDashboard/CashInReq";
 import { WithdrawMoney } from "../Pages/Dashboard/AgentDashboard/WithdrawMoney";
 import { CashOutReq } from "../Pages/Dashboard/AgentDashboard/CashOutReq";
 import { DashboardLayout } from "../Layout/DashboardLayout";
-
 export const Routing = createBrowserRouter([
   {
     path: "/",
@@ -92,6 +91,7 @@ export const Routing = createBrowserRouter([
       },
     ],
   },
+  // Admin related dashboard
   {
     path: "admin",
     element: <DashboardLayout />,
