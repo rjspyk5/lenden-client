@@ -47,7 +47,7 @@ export const DashboardLayout = () => {
               <AvatarDropdown />
             </div>
           </div>
-          <CustomTable />
+
           <Outlet />
         </div>
       </div>
