@@ -31,12 +31,9 @@ const rows = [
 const head = ["Sender Name", "Sender Number", "Amount", "Action"];
 
 export default function CustomTable({ method }) {
-  const headingText = method + " Request";
-
   return (
     <>
-      <div className="p-5">
-        <SectionHeader heading={headingText} />
+      <div className="">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>

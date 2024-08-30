@@ -4,7 +4,7 @@ import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
 
 export const AgentAddMoney = () => {
   return (
-    <div>
+    <div className="m-10 rounded-lg shadow-lg shadow-gray-500 ">
       <SectionHeader heading="Add Money" />
       <AgentAddOrWithdrawMoney />
     </div>
