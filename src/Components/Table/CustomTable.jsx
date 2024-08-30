@@ -6,6 +6,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material";
+import { SectionHeader } from "../SectionHeader/SectionHeader";
 
 function createData(name, calories, fat, carbs) {
   return { name, calories, fat, carbs };
@@ -30,12 +31,12 @@ const rows = [
 const head = ["Sender Name", "Sender Number", "Amount", "Action"];
 
 export default function CustomTable({ method }) {
+  const headingText = method + " Request";
+
   return (
     <>
       <div className="p-5">
-        <h1 className="text-2xl py-5 text-center font-bold">
-          {method} Request
-        </h1>
+        <SectionHeader heading={headingText} />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
