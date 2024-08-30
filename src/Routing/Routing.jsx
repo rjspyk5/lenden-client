@@ -12,6 +12,7 @@ import { CashInReq } from "../Pages/Dashboard/AgentDashboard/CashInReq";
 import { WithdrawMoney } from "../Pages/Dashboard/AgentDashboard/WithdrawMoney";
 import { CashOutReq } from "../Pages/Dashboard/AgentDashboard/CashOutReq";
 import { DashboardLayout } from "../Layout/DashboardLayout";
+import { AgentTransictionHistory } from "../Pages/Dashboard/AgentDashboard/AgentTransictionHistory";
 export const Routing = createBrowserRouter([
   {
     path: "/",
@@ -88,6 +89,10 @@ export const Routing = createBrowserRouter([
       {
         path: "cashoutreq",
         element: <CashOutReq />,
+      },
+      {
+        path: "history",
+        element: <AgentTransictionHistory />,
       },
     ],
   },

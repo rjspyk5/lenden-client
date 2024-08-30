@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
+import CustomTable from "../Components/Table/CustomTable";
 
 export const DashboardLayout = () => {
   return (
@@ -33,6 +34,11 @@ export const DashboardLayout = () => {
                 Withdraw Money
               </NavLink>
             </li>
+            <li className="p-2 hover:bg-purple-600 rounded-lg">
+              <NavLink to="/agent/history" className="text-white">
+                Transiction History
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className="ml-[20%] flex-grow ">
@@ -41,6 +47,7 @@ export const DashboardLayout = () => {
               <AvatarDropdown />
             </div>
           </div>
+          <CustomTable />
           <Outlet />
         </div>
       </div>
