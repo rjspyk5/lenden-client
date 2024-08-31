@@ -13,6 +13,9 @@ import { WithdrawMoney } from "../Pages/Dashboard/AgentDashboard/WithdrawMoney";
 import { CashOutReq } from "../Pages/Dashboard/AgentDashboard/CashOutReq";
 import { DashboardLayout } from "../Layout/DashboardLayout";
 import { AgentTransictionHistory } from "../Pages/Dashboard/AgentDashboard/AgentTransictionHistory";
+
+import { TransictionHistory } from "../Pages/TransictionHistory/TransictionHistory";
+
 export const Routing = createBrowserRouter([
   {
     path: "/",
@@ -61,6 +64,10 @@ export const Routing = createBrowserRouter([
             <AddMoney />
           </UserPrivateRoute>
         ),
+      },
+      {
+        path: "/history",
+        element: <TransictionHistory />,
       },
     ],
   },

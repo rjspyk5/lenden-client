@@ -14,6 +14,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
 import { useAuth } from "../../Hooks/useAuth";
+import { useUser } from "../../Hooks/useUser";
 
 // profile menu component
 const profileMenuItems = [
@@ -34,7 +35,8 @@ const profileMenuItems = [
 
 export function AvatarDropdown() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { logout, user } = useAuth();
+  const { logout } = useAuth();
+  const { userDetails } = useUser();
   const closeMenu = () => setIsMenuOpen(false);
 
   return (

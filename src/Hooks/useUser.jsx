@@ -5,9 +5,8 @@ import { useAuth } from "./useAuth";
 export const useUser = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-
   const {
-    data: userRole,
+    data: userDetails,
     refetch,
     isLoading,
     isPending,
@@ -15,11 +14,11 @@ export const useUser = () => {
     queryKey: [user],
     queryFn: async () => {
       const result = await axiosPublic.get(
-        `/checkrole?emailOrNumber=${user?.email || user?.number}`
+        `/user?emailOrNumber=${user?.email || user?.number}`
       );
 
       return result.data;
     },
   });
-  return { userRole, refetch, isLoading, isPending };
+  return { userDetails, refetch, isLoading, isPending };
 };

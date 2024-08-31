@@ -101,7 +101,7 @@ export const SendMoneyFromStepThree = ({ handleConfrim, error }) => {
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
           />
           <Button type="submit" className="mt-6" fullWidth>
-            Login
+            Send Money
           </Button>
           {error && <h1 className="text-red-500">{error}</h1>}
         </form>

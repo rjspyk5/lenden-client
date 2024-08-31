@@ -12,6 +12,8 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
 import Swal from "sweetalert2";
 import { useAuth } from "../../Hooks/useAuth";
+import { useUser } from "./../../Hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 export const SendOrCashout = ({ methodparam }) => {
   const theme = useTheme();
@@ -22,11 +24,15 @@ export const SendOrCashout = ({ methodparam }) => {
   const [reciverDetails, setreciverDetails] = useState(null);
   const axiosSequre = useAxiosSequre();
   const { user } = useAuth();
+  const { refetch } = useUser();
+  const navigate = useNavigate();
 
-  const handleConfrim = (e) => {
+  const handleConfrim = async (e) => {
     e.preventDefault();
+
     const pin = e.target.pin.value;
     const method = methodparam;
+
     axiosSequre
       .post("/sendmoney", {
         ...reciverDetails,
@@ -34,8 +40,24 @@ export const SendOrCashout = ({ methodparam }) => {
         senderNumber: user?.number,
         method,
       })
-      // todo: success message die history teh nie jabe
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        if (
+          res?.data?.result?.modifiedCount &&
+          res?.data?.result3?.insertedId &&
+          res?.data?.result2?.modifiedCount
+        ) {
+          return refetch();
+        }
+      })
+      .then(() =>
+        Swal.fire({
+          icon: "success",
+          text: `${methodparam.toUpperCase()} Successfull`,
+        })
+      )
+      .then(() => navigate("/history"));
+
+    // todo: success message die history teh nie jabe
   };
   const steps = [
     {
@@ -69,10 +91,8 @@ export const SendOrCashout = ({ methodparam }) => {
     if (givenNumber.length === 11) {
       seterror(null);
     }
-    const result = await axiosSequre.get(
-      `/checkrole?emailOrNumber=${givenNumber}`
-    );
-    if (!result.data) {
+    const result = await axiosSequre.get(`/user?emailOrNumber=${givenNumber}`);
+    if (!result?.data) {
       return Swal.fire({
         icon: "error",
         text: "No account found with this number",
