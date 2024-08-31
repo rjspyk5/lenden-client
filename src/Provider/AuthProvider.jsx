@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("lenden_user");
     setuser(null);
     setloading(false);
-    axiosPublic.post("/logout").then((res) => console.log(res.data));
+    axiosPublic.post("/logout");
   };
 
   const login = (data) => {
