@@ -33,7 +33,7 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
     data.method = method;
     data.number = "01777777777";
     data.senderNumber = user?.number;
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div>

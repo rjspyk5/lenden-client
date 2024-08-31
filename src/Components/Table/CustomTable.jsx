@@ -28,9 +28,9 @@ const rows = [
   // createData("Cupcake", 305, 3.7, 67),
   // createData("Gingerbread", 356, 16.0, 49),
 ];
-const head = ["Sender Name", "Sender Number", "Amount", "Action"];
+const head = ["Sender Number", "Amount", "Action"];
 
-export default function CustomTable({ method }) {
+export default function CustomTable({ method, data }) {
   return (
     <>
       <div className="">
@@ -49,31 +49,32 @@ export default function CustomTable({ method }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="center">{row.calories}</TableCell>
-                  <TableCell align="center">{row.fat}</TableCell>
-                  <TableCell align="center">
-                    {" "}
-                    <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
-                      Approve
-                    </button>{" "}
-                    <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
-                      Cancel
-                    </button>
-                  </TableCell>
-                </TableRow>
-              ))}
+              {data &&
+                data.map((el) => (
+                  <TableRow
+                    key={el._id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {el?.senderNumber}
+                    </TableCell>
+                    <TableCell align="center">{el.amount}</TableCell>
+
+                    <TableCell align="center">
+                      {" "}
+                      <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
+                        Approve
+                      </button>{" "}
+                      <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
+                        Cancel
+                      </button>
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
-        {rows.length < 1 && (
+        {data?.length < 1 && (
           <h1 className="text-center flex justify-center items-center text-lg  min-h-96">
             You haven't any {method} req
           </h1>

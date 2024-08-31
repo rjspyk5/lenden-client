@@ -7,7 +7,7 @@ export const CashOutReq = () => {
   return (
     <div className="m-10 rounded-lg shadow-lg shadow-gray-500 ">
       <SectionHeader heading="Cash Out Request" />
-      <CustomTable method="Cash Out" />
+      <CustomTable data={cashOutReqList} method="Cash Out" />
     </div>
   );
 };
