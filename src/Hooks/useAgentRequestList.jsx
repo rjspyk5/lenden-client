@@ -9,7 +9,7 @@ export const useAgentRequestList = (method) => {
     queryKey: [user],
     queryFn: async () => {
       const result = await axiossequre.get(
-        `http://localhost:5000/requesttoagent/${user?.number}?method=${method}`
+        `https://lenden-server.vercel.app/requesttoagent/${user?.number}?method=${method}`
       );
       return result.data;
     },

@@ -32,6 +32,10 @@ export const SendOrCashout = ({ methodparam }) => {
 
     const pin = e.target.pin.value;
     const method = methodparam;
+    let msz = " request has been sent";
+    if (method === "send_money") {
+      msz = "Successfull";
+    }
 
     axiosSequre
       .post("/sendmoney", {
@@ -52,7 +56,7 @@ export const SendOrCashout = ({ methodparam }) => {
       .then(() =>
         Swal.fire({
           icon: "success",
-          text: `${methodparam.toUpperCase()} Successfull`,
+          text: `${methodparam.toUpperCase()} ${msz}`,
         })
       )
       .then(() => navigate("/history"));
@@ -106,7 +110,10 @@ export const SendOrCashout = ({ methodparam }) => {
       });
     }
 
-    if (methodparam === "cash_out" && result.data.role !== "agent") {
+    if (
+      (methodparam === "cash_out" || methodparam === "cash_in") &&
+      result.data.role !== "agent"
+    ) {
       return Swal.fire({
         icon: "error",
         text: "Give a valid user agent number",
@@ -119,8 +126,9 @@ export const SendOrCashout = ({ methodparam }) => {
 
   const stepTwo = () => {
     const givenAmount = amount.current.value;
+
     if (givenAmount < 50) {
-      return Swal.fire("You can't send less than 50 tk");
+      return Swal.fire("Less than 50 tk transcition not allowed");
     }
     setreciverDetails({ ...reciverDetails, amount: givenAmount });
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
