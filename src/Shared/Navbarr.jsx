@@ -6,9 +6,7 @@ export const Navbarr = () => {
   return (
     <div className="flex justify-between border items-center">
       <h1>Lenden</h1>
-
       <h1 className="text-black">Balance :{userRole?.amount}</h1>
-
       <AvatarDropdown />
     </div>
   );

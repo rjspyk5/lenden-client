@@ -10,8 +10,8 @@ import { Box, MobileStepper, Paper } from "@mui/material";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
-import { useUser } from "../../Hooks/useUser";
 import Swal from "sweetalert2";
+import { useAuth } from "../../Hooks/useAuth";
 
 export const SendOrCashout = ({ methodparam }) => {
   const theme = useTheme();
@@ -21,7 +21,7 @@ export const SendOrCashout = ({ methodparam }) => {
   const [error, seterror] = useState(null);
   const [reciverDetails, setreciverDetails] = useState(null);
   const axiosSequre = useAxiosSequre();
-  const { userRole } = useUser();
+  const { user } = useAuth();
 
   const handleConfrim = (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ export const SendOrCashout = ({ methodparam }) => {
       .post("/sendmoney", {
         ...reciverDetails,
         pin: pin,
-        senderNumber: userRole.number,
+        senderNumber: user?.number,
         method,
       })
       // todo: success message die history teh nie jabe
@@ -63,7 +63,7 @@ export const SendOrCashout = ({ methodparam }) => {
       return seterror("Number must be eleven digit");
     }
 
-    if (givenNumber === userRole.number) {
+    if (givenNumber === user?.number) {
       return seterror("You can't do this operation to your own number");
     }
     if (givenNumber.length === 11) {
