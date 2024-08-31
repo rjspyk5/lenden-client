@@ -74,7 +74,7 @@ export default function CustomTable({ method }) {
           </Table>
         </TableContainer>
         {rows.length < 1 && (
-          <h1 className="text-center flex justify-center items-center text-lg  min-h-[200px]">
+          <h1 className="text-center flex justify-center items-center text-lg  min-h-96">
             You haven't any {method} req
           </h1>
         )}
