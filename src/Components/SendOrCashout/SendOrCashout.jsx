@@ -150,19 +150,17 @@ export const SendOrCashout = ({ methodparam }) => {
   };
 
   return (
-    <div className="flex flex-col  justify-center items-center">
-      <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-        <Box sx={{ maxWidth: 400, width: "100%", p: 2 }}>
-          {steps[activeStep].description}
-        </Box>
+    <div className="flex flex-col w-auto justify-center min-h-screen items-center">
+      <div className="p-10 md:w-[500px] w-96 bg-gradient-to-tl from-[#140918] to-[#4c205c] rounded-lg border-gray-800">
+        {steps[activeStep].description}
         <MobileStepper
-          variant="progress"
+          sx={{ bgcolor: "transparent", marginTop: "20px" }}
           steps={maxSteps}
           position="static"
           activeStep={activeStep}
           nextButton={
-            <Button
-              size="small"
+            <button
+              className=" bg-gradient-to-r from-purple-500 to-purple-400 px-2 py-1  rounded-md flex justify-center items-center text-white"
               onClick={handleNext}
               disabled={activeStep === maxSteps - 1}
             >
@@ -172,11 +170,11 @@ export const SendOrCashout = ({ methodparam }) => {
               ) : (
                 <KeyboardArrowRight />
               )}
-            </Button>
+            </button>
           }
           backButton={
-            <Button
-              size="small"
+            <button
+              className="bg-gradient-to-r from-purple-700 to-purple-500 px-2 py-1  rounded-md flex justify-center items-center text-white"
               onClick={handleBack}
               disabled={activeStep === 0}
             >
@@ -186,10 +184,10 @@ export const SendOrCashout = ({ methodparam }) => {
                 <KeyboardArrowLeft />
               )}
               Back
-            </Button>
+            </button>
           }
         />
-      </Box>
+      </div>
     </div>
   );
 };

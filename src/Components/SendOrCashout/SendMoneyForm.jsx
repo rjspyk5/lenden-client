@@ -3,19 +3,25 @@ import { Button } from "@mui/material";
 
 export const SendMoneyFrom = ({ number, error, name }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-tl from-[#140918] to-[#4c205c] rounded-lg border-gray-800">
+    <div className=" ">
       <h1 className="text-center text-white font-bold text-2xl">{name}</h1>
-      <div className="mb-1 flex flex-col gap-6">
-        <Typography variant="h6" color="blue-gray" className="-mb-3">
+      <div className="mb-1 flex flex-col gap-6 text-white">
+        <h1 className="-mb-3">
           Number <span className="text-red-500">*</span>
-        </Typography>
+        </h1>
         <Input
           name="number"
           ref={number}
           size="lg"
           placeholder="Enter your email or number"
-          className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+          className=" !border-t-gray focus:!border-t-gray  "
         />
+        {/* <input
+        
+          placeholder="Enter your email or number"
+          className="bg-transparent p-2 border-white border rounded-md"
+          type="text"
+        /> */}
         {error && <h1 className="text-red-500">{error}</h1>}
       </div>
     </div>
