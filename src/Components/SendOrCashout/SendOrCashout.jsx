@@ -57,7 +57,7 @@ export const SendOrCashout = ({ methodparam }) => {
         } else {
           Swal.fire({
             icon: "error",
-            text: `Wrong Password`,
+            text: res?.data?.result,
           });
         }
       })
