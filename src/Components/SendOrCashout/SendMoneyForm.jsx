@@ -1,13 +1,10 @@
 import { Input, Typography } from "@material-tailwind/react";
 import { Button } from "@mui/material";
 
-export const SendMoneyFrom = ({ number, error }) => {
+export const SendMoneyFrom = ({ number, error, name }) => {
   return (
-    <div>
-      <Typography variant="h4" className="text-center" color="blue-gray">
-        Send Money
-      </Typography>
-
+    <div className="min-h-screen bg-gradient-to-tl from-[#140918] to-[#4c205c] rounded-lg border-gray-800">
+      <h1 className="text-center text-white font-bold text-2xl">{name}</h1>
       <div className="mb-1 flex flex-col gap-6">
         <Typography variant="h6" color="blue-gray" className="-mb-3">
           Number <span className="text-red-500">*</span>

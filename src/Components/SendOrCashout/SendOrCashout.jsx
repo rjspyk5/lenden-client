@@ -65,7 +65,9 @@ export const SendOrCashout = ({ methodparam }) => {
   };
   const steps = [
     {
-      description: <SendMoneyFrom error={error} number={number} />,
+      description: (
+        <SendMoneyFrom name={methodparam} error={error} number={number} />
+      ),
     },
     {
       description: (
@@ -148,23 +150,11 @@ export const SendOrCashout = ({ methodparam }) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center">
+    <div className="flex flex-col  justify-center items-center">
       <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-        <Paper
-          square
-          elevation={0}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            height: 50,
-            pl: 2,
-            bgcolor: "background.default",
-          }}
-        ></Paper>
         <Box sx={{ maxWidth: 400, width: "100%", p: 2 }}>
           {steps[activeStep].description}
         </Box>
-
         <MobileStepper
           variant="progress"
           steps={maxSteps}
