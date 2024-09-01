@@ -150,7 +150,7 @@ export const SendOrCashout = ({ methodparam }) => {
   };
 
   return (
-    <div className="flex flex-col w-auto justify-center min-h-screen items-center">
+    <div className="flex flex-col w-auto justify-center min-h-[450px] items-center">
       <div className="p-10 md:w-[500px] w-96 bg-gradient-to-tl from-[#140918] to-[#4c205c] rounded-lg border-gray-800">
         {steps[activeStep].description}
         <MobileStepper

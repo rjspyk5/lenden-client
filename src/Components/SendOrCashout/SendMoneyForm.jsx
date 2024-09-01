@@ -30,49 +30,37 @@ export const SendMoneyFrom = ({ number, error, name }) => {
 
 export const SendMoneyFromStepTwo = ({ amount, reciverDetails }) => {
   return (
-    <div>
+    <div className="space-y-5">
       <div className="mb-1 flex justify-between ">
         <div>
           {" "}
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3 flex justify-between"
-          >
+          <h1 className="-mb-3 flex justify-between text-white font-bold">
             Reciver Name
-          </Typography>
+          </h1>
         </div>
         <div className="w-6/12">
           {" "}
-          <h1>{reciverDetails?.name}</h1>
+          <h1 className="text-white opacity-50">{reciverDetails?.name}</h1>
         </div>
       </div>
       <div className="mb-1 flex justify-between ">
         <div>
           {" "}
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3  flex justify-between"
-          >
+          <h1 className="-mb-3  flex justify-between text-white font-bold">
             Reciver Number
-          </Typography>
+          </h1>
         </div>
         <div className="w-6/12">
           {" "}
-          <h1>{reciverDetails?.number}</h1>
+          <h1 className="text-white opacity-50">{reciverDetails?.number}</h1>
         </div>
       </div>
       <div className="mb-1 flex justify-between ">
         <div>
           {" "}
-          <Typography
-            variant="h6"
-            color="blue-gray"
-            className="-mb-3  flex justify-between"
-          >
+          <h1 className="-mb-3  flex justify-between text-white font-bold">
             Amount
-          </Typography>
+          </h1>
         </div>
         <div className="w-6/12">
           {" "}
@@ -80,7 +68,7 @@ export const SendMoneyFromStepTwo = ({ amount, reciverDetails }) => {
             ref={amount}
             name="amount"
             placeholder="amount"
-            className="px-2 py-1 border rounded-sm outline-none"
+            className="px-2 py-1 border rounded-sm outline-none w-20"
             type="text"
           />
         </div>
