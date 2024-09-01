@@ -57,7 +57,7 @@ export function AvatarDropdown() {
           />
         </Button>
       </MenuHandler>
-      <MenuList className="p-1">
+      <MenuList className="p-1  backdrop-blur-xl bg-[#6e6e6e28]">
         {profileMenuItems.map(({ label, icon }, key) => {
           const isLastItem = key === profileMenuItems.length - 1;
           return (

@@ -80,20 +80,28 @@ export const SendMoneyFromStepTwo = ({ amount, reciverDetails }) => {
 export const SendMoneyFromStepThree = ({ handleConfrim, error }) => {
   return (
     <div>
-      <div className="mb-1 flex flex-col gap-6">
-        <form onSubmit={handleConfrim} action="">
-          <Typography variant="h6" color="blue-gray" className="mb-3">
-            Pin <span className="text-red-500">*</span>
-          </Typography>
-          <Input
-            name="pin"
-            size="lg"
-            placeholder="Enter your email or number"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-          />
-          <Button type="submit" className="mt-6" fullWidth>
-            Send Money
-          </Button>
+      <div className="mb-1 ">
+        <form className="" onSubmit={handleConfrim} action="">
+          <h1 className="mb-9 text-white  text-center text-3xl">
+            Enter Your Pin
+          </h1>
+          <div className="flex justify-center items-center ">
+            <div className="flex flex-col items-cener justify-center w-72">
+              <input
+                name="pin"
+                placeholder="
+******"
+                className="py-2 px-3 rounded-md bg-transparent border border-white text-white placeholder:text-gray-600"
+              />
+              <button
+                type="submit"
+                className="mt-6 p-2 rounded-md text-white bg-[#50155b] hover:bg-[#691d76] "
+              >
+                Send Money
+              </button>
+            </div>
+          </div>
+
           {error && <h1 className="text-red-500">{error}</h1>}
         </form>
       </div>

@@ -45,21 +45,28 @@ export const SendOrCashout = ({ methodparam }) => {
         method,
       })
       .then((res) => {
-        if (
-          res?.data?.result?.modifiedCount &&
-          res?.data?.result3?.insertedId &&
-          res?.data?.result2?.modifiedCount
-        ) {
-          return refetch();
+        if (res?.data?.result3?.insertedId) {
+          refetch()
+            .then(() =>
+              Swal.fire({
+                icon: "success",
+                text: `${methodparam.toUpperCase()} ${msz}`,
+              })
+            )
+            .then(() => navigate("/history"));
+        } else {
+          Swal.fire({
+            icon: "error",
+            text: `Wrong Password`,
+          });
         }
       })
-      .then(() =>
+      .catch((err) =>
         Swal.fire({
-          icon: "success",
-          text: `${methodparam.toUpperCase()} ${msz}`,
+          icon: "error",
+          text: `Have Server isse,try again`,
         })
-      )
-      .then(() => navigate("/history"));
+      );
 
     // todo: success message die history teh nie jabe
   };
@@ -160,7 +167,11 @@ export const SendOrCashout = ({ methodparam }) => {
           activeStep={activeStep}
           nextButton={
             <button
-              className=" bg-gradient-to-r from-purple-500 to-purple-400 px-2 py-1  rounded-md flex justify-center items-center text-white"
+              className={`${
+                activeStep !== maxSteps - 1
+                  ? "bg-gradient-to-r from-purple-800 to-purple-500"
+                  : "opacity-0"
+              }  px-2 py-1  rounded-md flex justify-center items-center text-white`}
               onClick={handleNext}
               disabled={activeStep === maxSteps - 1}
             >
@@ -174,7 +185,11 @@ export const SendOrCashout = ({ methodparam }) => {
           }
           backButton={
             <button
-              className="bg-gradient-to-r from-purple-700 to-purple-500 px-2 py-1  rounded-md flex justify-center items-center text-white"
+              className={`${
+                activeStep !== 0
+                  ? "bg-gradient-to-r from-purple-800 to-purple-500"
+                  : "bg-purple-100"
+              }  px-2 py-1  rounded-md flex justify-center items-center text-white`}
               onClick={handleBack}
               disabled={activeStep === 0}
             >
