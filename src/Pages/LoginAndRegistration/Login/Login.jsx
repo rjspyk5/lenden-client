@@ -36,22 +36,22 @@ export const Login = () => {
   return (
     <div>
       <Card color="transparent" shadow={false}>
-        <Typography variant="h4" className="text-center" color="blue-gray">
+        <Typography variant="h4" className="text-center" color="white">
           Sign In
         </Typography>
-        <Typography color="gray" className="mt-1 text-center font-normal">
+        <Typography color="white" className="mt-1 text-center font-normal">
           Nice to meet you! Enter your details to register.
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2 ">
           <div className="mb-1 flex flex-col gap-6">
-            <Typography variant="h6" color="blue-gray" className="-mb-3">
+            <Typography variant="h6" color="white" className="-mb-3">
               Email or Number <span className="text-red-500">*</span>
             </Typography>
             <Input
               {...register("emailOrNumber", { required: true })}
               size="lg"
               placeholder="Enter your email or number"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -60,7 +60,7 @@ export const Login = () => {
               <span className="text-red-500">This field is required</span>
             )}
 
-            <Typography variant="h6" color="blue-gray" className="-mb-3">
+            <Typography variant="h6" color="white" className="-mb-3">
               Password <span className="text-red-500">*</span>
             </Typography>
             <Input
@@ -72,7 +72,7 @@ export const Login = () => {
               type="password"
               size="lg"
               placeholder="Enter six digit pin"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -87,7 +87,7 @@ export const Login = () => {
               </span>
             )}
           </div>
-          <Button type="submit" className="mt-6" fullWidth>
+          <Button type="submit" className="mt-6 " fullWidth>
             Login
           </Button>
         </form>

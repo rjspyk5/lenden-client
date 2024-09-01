@@ -7,6 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
+import "./Registration.css";
 import Swal from "sweetalert2";
 // Create a custom styled Select component using Material-UI's styled API
 const CustomSelect = styled(Select)(({ theme }) => ({
@@ -72,24 +73,24 @@ export const Registration = () => {
   return (
     <div>
       <Card color="transparent" shadow={false}>
-        <Typography className="text-center" variant="h4" color="blue-gray">
+        <Typography className="text-center" variant="h4" color="white">
           Sign Up
         </Typography>
-        <Typography color="gray" className="mt-1 text-center font-normal">
+        <Typography color="white" className="mt-1 text-center font-normal">
           Nice to meet you! Enter your details to register.
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2">
           <div className="mb-1 flex flex-col gap-6">
             <div className="flex gap-5 flex-col md:flex-row">
               <div className="md:w-1/2">
-                <Typography variant="h6" color="blue-gray">
+                <Typography variant="h6" color="white">
                   Your Name <span className="text-red-500">*</span>
                 </Typography>
                 <Input
                   {...register("name", { required: true })}
                   size="lg"
                   placeholder="Your Name"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -99,7 +100,7 @@ export const Registration = () => {
                 )}
               </div>
               <div className="md:w-1/2">
-                <Typography variant="h6" color="blue-gray">
+                <Typography variant="h6" color="white">
                   Your Email
                 </Typography>
                 <Input
@@ -109,7 +110,7 @@ export const Registration = () => {
                   })}
                   size="lg"
                   placeholder="name@mail.com"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -123,7 +124,7 @@ export const Registration = () => {
 
             <div className="flex flex-col md:flex-row gap-6">
               <div className="md:w-1/2">
-                <Typography variant="h6" color="blue-gray">
+                <Typography variant="h6" color="white">
                   Your Number <span className="text-red-500">*</span>
                 </Typography>
                 <Input
@@ -134,7 +135,7 @@ export const Registration = () => {
                   })}
                   size="lg"
                   placeholder="01700000000"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -150,7 +151,7 @@ export const Registration = () => {
                 )}
               </div>
               <div className="md:w-1/2">
-                <Typography variant="h6" color="blue-gray">
+                <Typography variant="h6" color="white">
                   Password <span className="text-red-500">*</span>
                 </Typography>
                 <Input
@@ -162,7 +163,7 @@ export const Registration = () => {
                   type="password"
                   size="lg"
                   placeholder="Enter six digit pin"
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -180,7 +181,7 @@ export const Registration = () => {
             </div>
 
             <div className="md:w-1/2">
-              <Typography variant="h6" color="blue-gray">
+              <Typography variant="h6" color="white">
                 Select Role <span className="text-red-500">*</span>
               </Typography>
               <Controller
@@ -190,7 +191,10 @@ export const Registration = () => {
                 rules={{ required: true }}
                 render={({ field }) => (
                   <FormControl fullWidth>
-                    <CustomInputLabel id="demo-simple-select-label">
+                    <CustomInputLabel
+                      sx={{ color: "white" }}
+                      id="demo-simple-select-label"
+                    >
                       Role
                     </CustomInputLabel>
                     <CustomSelect
