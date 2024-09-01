@@ -90,7 +90,8 @@ export const SendOrCashout = ({ methodparam }) => {
   const maxSteps = steps.length;
 
   const firstStep = async () => {
-    const givenNumber = number?.current?.firstChild?.value;
+    const givenNumber = number?.current?.value;
+
     if (!givenNumber) {
       return seterror("Required Field");
     }
@@ -161,7 +162,7 @@ export const SendOrCashout = ({ methodparam }) => {
       <div className="p-10 md:w-[500px] w-96 bg-gradient-to-tl from-[#140918] to-[#4c205c] rounded-lg border-gray-800">
         {steps[activeStep].description}
         <MobileStepper
-          sx={{ bgcolor: "transparent", marginTop: "20px" }}
+          sx={{ bgcolor: "transparent", marginTop: "40px" }}
           steps={maxSteps}
           position="static"
           activeStep={activeStep}
