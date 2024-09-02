@@ -15,6 +15,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { useAuth } from "../../Hooks/useAuth";
 import { useUser } from "../../Hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 // profile menu component
 const profileMenuItems = [
@@ -38,6 +39,7 @@ export function AvatarDropdown() {
   const { logout } = useAuth();
   const { userDetails } = useUser();
   const closeMenu = () => setIsMenuOpen(false);
+  const navigate = useNavigate();
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -63,7 +65,14 @@ export function AvatarDropdown() {
           return (
             <MenuItem
               key={label}
-              onClick={isLastItem ? logout : closeMenu}
+              onClick={
+                isLastItem
+                  ? () => {
+                      logout();
+                      return navigate("/login");
+                    }
+                  : closeMenu
+              }
               className={`flex items-center gap-2 rounded ${
                 isLastItem
                   ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"

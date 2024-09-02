@@ -5,16 +5,16 @@ import CustomTable from "../Components/Table/CustomTable";
 export const DashboardLayout = () => {
   return (
     <>
-      <div className="flex">
-        <div className="w-[20%] fixed min-h-screen bg-purple-500">
+      <div className="flex  min-h-screen">
+        <div className="w-[20%] fixed min-h-screen bg-[#211128] shadow-xl shadow-[#3b2346]">
           <h1 className="text-center">Agent Dashboard</h1>
           <ul className="p-3">
-            <li className="p-2  hover:bg-purple-600  rounded-lg">
+            <li className="p-2  hover:bg-purple-500  rounded-lg">
               <NavLink to="/agent" className="text-white  ">
                 Home
               </NavLink>
             </li>
-            <li className="p-2 hover:bg-purple-600 rounded-lg">
+            <li className="p-2 hover:bg-purple-500 rounded-lg">
               <NavLink to="/agent/cashinreq" className="text-white">
                 Cash In Request
               </NavLink>
@@ -42,7 +42,7 @@ export const DashboardLayout = () => {
           </ul>
         </div>
         <div className="ml-[20%] flex-grow ">
-          <div className="sticky top-0 bg-purple-500">
+          <div className="sticky top-0 bg-[#211128] shadow shadow-[#3b2346]">
             <div className="flex justify-end">
               <AvatarDropdown />
             </div>

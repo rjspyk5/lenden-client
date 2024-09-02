@@ -1,8 +1,6 @@
-import React from "react";
 import { SectionHeader } from "./../../Components/SectionHeader/SectionHeader";
 import { useHistory } from "../../Hooks/useHistory";
 import { useAuth } from "../../Hooks/useAuth";
-
 export const TransictionHistory = () => {
   const { data, isLoading } = useHistory();
   const { user } = useAuth();
@@ -37,7 +35,6 @@ export const TransictionHistory = () => {
                   el.ReciverNumber === user.number
                     ? el.senderNumber
                     : el.ReciverNumber;
-
                 return (
                   <tr
                     key={el._id}
