@@ -90,7 +90,7 @@ export const SendMoneyFromStepTwo = ({ amount, reciverDetails }) => {
   );
 };
 
-export const SendMoneyFromStepThree = ({ handleConfrim, error }) => {
+export const SendMoneyFromStepThree = ({ handleConfrim, error, method }) => {
   return (
     <div>
       <div className="mb-1 ">
@@ -110,7 +110,11 @@ export const SendMoneyFromStepThree = ({ handleConfrim, error }) => {
                 type="submit"
                 className="mt-6 p-2 rounded-md text-white bg-[#50155b] hover:bg-[#691d76] "
               >
-                Send Money
+                {method === "send_money"
+                  ? "Send Money"
+                  : method === "cash_in"
+                  ? "Cash In"
+                  : "Cash Out"}
               </button>
             </div>
           </div>
