@@ -179,7 +179,6 @@ export const Registration = () => {
                 )}
               </div>
             </div>
-
             <div className="md:w-1/2">
               <Typography variant="h6" color="white">
                 Select Role <span className="text-red-500">*</span>
