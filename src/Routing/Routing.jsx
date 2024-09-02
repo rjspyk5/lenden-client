@@ -10,7 +10,7 @@ import { UserPrivateRoute } from "../Pages/PrivateRoutes/UserPrivateRoute/UserPr
 import { AgentAddMoney } from "../Pages/Dashboard/AgentDashboard/AgentAddMoney";
 import { CashInReq } from "../Pages/Dashboard/AgentDashboard/CashInReq";
 import { WithdrawMoney } from "../Pages/Dashboard/AgentDashboard/WithdrawMoney";
-import { CashOutReq } from "../Pages/Dashboard/AgentDashboard/CashOutReq";
+
 import { DashboardLayout } from "../Layout/DashboardLayout";
 import { AgentTransictionHistory } from "../Pages/Dashboard/AgentDashboard/AgentTransictionHistory";
 
@@ -93,10 +93,7 @@ export const Routing = createBrowserRouter([
         path: "withdrawmoney",
         element: <WithdrawMoney />,
       },
-      {
-        path: "cashoutreq",
-        element: <CashOutReq />,
-      },
+
       {
         path: "history",
         element: <AgentTransictionHistory />,

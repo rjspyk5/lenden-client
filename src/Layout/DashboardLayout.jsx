@@ -19,11 +19,7 @@ export const DashboardLayout = () => {
                 Cash In Request
               </NavLink>
             </li>
-            <li className="p-2 hover:bg-purple-600 rounded-lg">
-              <NavLink to="/agent/cashoutreq" className="text-white">
-                Cash Out Request
-              </NavLink>
-            </li>
+
             <li className="p-2 hover:bg-purple-600 rounded-lg">
               <NavLink to="/agent/addmoney" className="text-white">
                 Add Money
