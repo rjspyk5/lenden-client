@@ -1,6 +1,7 @@
 import { SectionHeader } from "./../../Components/SectionHeader/SectionHeader";
 import { useHistory } from "../../Hooks/useHistory";
 import { useAuth } from "../../Hooks/useAuth";
+import { Loading } from "../../Components/Loading/Loading";
 export const TransictionHistory = () => {
   const { data, isLoading } = useHistory();
   const { user } = useAuth();
@@ -10,7 +11,7 @@ export const TransictionHistory = () => {
         Transition History
       </h1>
       {isLoading ? (
-        <h1>Loading..............</h1>
+        <Loading />
       ) : (
         <div className="overflow-auto shadow-xl shadow-[#190e1c] min-h-60 rounded-xl">
           <table className="table-auto w-full min-w-[600px] ">
