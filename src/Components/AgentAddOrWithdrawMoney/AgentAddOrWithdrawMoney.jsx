@@ -31,7 +31,7 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
   } = useForm();
   const onSubmit = (data) => {
     data.method = method;
-    data.number = "01777777777";
+    data.number = "01684883865";
     data.senderNumber = user?.number;
     // console.log(data);
   };
@@ -51,7 +51,6 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
             startAdornment={<InputAdornment position="start">৳</InputAdornment>}
             label="Amount"
           />
-
           {errors?.amount?.type === "required" && (
             <span className="text-red-500">This field is required</span>
           )}
@@ -59,10 +58,10 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
             <span className="text-red-500">Give more that 1000 tk</span>
           )}
 
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+          <FormControl sx={{ m: 1 }} variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">PIN</InputLabel>
             <OutlinedInput
-              {...register("pin", { required: true, min: 1000 })}
+              {...register("pin", { required: true })}
               id="outlined-adornment-password"
               type={showPassword ? "text" : "password"}
               endAdornment={
@@ -82,9 +81,6 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
             />
             {errors?.pin?.type === "required" && (
               <span className="text-red-500">This field is required</span>
-            )}
-            {errors?.amount?.type === "min" && (
-              <span className="text-red-500">Give more that 1000 tk</span>
             )}
           </FormControl>
           <Button type="submit" variant="contained" endIcon={"send"}>
