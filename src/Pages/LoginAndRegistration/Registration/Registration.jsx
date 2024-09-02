@@ -50,8 +50,6 @@ export const Registration = () => {
 
   const onSubmit = async (data) => {
     data.accountStatus = "pending";
-    data.transictionHistory = [];
-
     data.amount = 50;
     if (data.role === "agent") {
       data.amount = 10000;
