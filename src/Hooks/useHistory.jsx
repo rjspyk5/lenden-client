@@ -9,13 +9,12 @@ export const useHistory = (method) => {
   let url = `/history?number=${user?.number}`;
   if (method) {
     url = `/history?method=${method}&number=${user?.number}`;
-    console.log(url);
   }
   const { data, refetch, isLoading } = useQuery({
     queryKey: [method, user],
     queryFn: async () => {
       const result = await axiosSequre.get(url);
-      console.log(result.data);
+
       return result.data;
     },
   });
