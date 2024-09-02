@@ -6,11 +6,12 @@ export const useAgentRequestList = (method) => {
   const { user } = useAuth();
   const axiossequre = useAxiosSequre();
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ["agentrequestlist"],
+    queryKey: ["agentReqData", user],
     queryFn: async () => {
       const result = await axiossequre.get(
         `/requesttoagent/${user?.number}?method=${method}`
       );
+
       return result.data;
     },
   });

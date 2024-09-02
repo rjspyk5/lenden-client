@@ -15,6 +15,7 @@ import { DashboardLayout } from "../Layout/DashboardLayout";
 import { AgentTransictionHistory } from "../Pages/Dashboard/AgentDashboard/AgentTransictionHistory";
 
 import { TransictionHistory } from "../Pages/TransictionHistory/TransictionHistory";
+import { AgentPrivateRoute } from "./../Pages/PrivateRoutes/AgentPrivateRoute/AgentPrivateRoute";
 
 export const Routing = createBrowserRouter([
   {
@@ -79,7 +80,11 @@ export const Routing = createBrowserRouter([
   // Agent Dashboard Routing
   {
     path: "agent",
-    element: <DashboardLayout />,
+    element: (
+      <AgentPrivateRoute>
+        <DashboardLayout />
+      </AgentPrivateRoute>
+    ),
     children: [
       {
         path: "addmoney",

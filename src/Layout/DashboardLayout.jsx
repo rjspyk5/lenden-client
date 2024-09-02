@@ -7,7 +7,9 @@ export const DashboardLayout = () => {
     <>
       <div className="flex  min-h-screen">
         <div className="w-[20%] fixed min-h-screen bg-[#211128] shadow-xl shadow-[#3b2346]">
-          <h1 className="text-center">Agent Dashboard</h1>
+          <h1 className="text-center font-bold text-white md:text-2xl mb-5 py-2">
+            Agent Dashboard
+          </h1>
           <ul className="p-3">
             <li className="p-2  hover:bg-purple-500  rounded-lg">
               <NavLink to="/agent" className="text-white  ">
@@ -38,8 +40,8 @@ export const DashboardLayout = () => {
           </ul>
         </div>
         <div className="ml-[20%] flex-grow ">
-          <div className="sticky top-0 bg-[#211128] shadow shadow-[#3b2346]">
-            <div className="flex justify-end">
+          <div className="sticky top-0 py-2 bg-[#211128] shadow shadow-[#3b2346]">
+            <div className="flex justify-end me-5">
               <AvatarDropdown />
             </div>
           </div>

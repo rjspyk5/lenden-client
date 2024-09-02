@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 export const Login = () => {
   const axiosPublic = useAxiosPublic();
   const { user, login, setloading } = useAuth();
@@ -26,8 +27,15 @@ export const Login = () => {
       const result = await axiosPublic.post("/login", data);
       if (result.data.result === true) {
         login(result.data?.data);
+        Swal.fire({
+          icon: "success",
+          text: "Successfully Login",
+        });
       } else {
-        alert(result.data?.result);
+        Swal.fire({
+          icon: "error",
+          text: result.data?.result,
+        });
       }
     } catch (error) {
       alert("something went wrong");

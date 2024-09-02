@@ -57,14 +57,23 @@ export const Registration = () => {
     try {
       const result = await registration(data);
       if (result.data?.insertedId) {
-        alert("Successfully registered. You may now log in.");
+        Swal.fire({
+          icon: "success",
+          text: "Successfully registered. You may now log in.",
+        });
         logout();
         navigate("/");
       } else {
-        alert("You already have an account.");
+        Swal.fire({
+          icon: "error",
+          text: "You Already Have an Account.",
+        });
       }
     } catch (error) {
-      alert("Something went wrong.Please try again");
+      Swal.fire({
+        icon: "error",
+        text: "Something went wrong.Please try again.",
+      });
     }
   };
 

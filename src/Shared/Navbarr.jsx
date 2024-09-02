@@ -11,7 +11,7 @@ export const Navbarr = () => {
           Lenden
         </Link>
         <h1 className="font-bold text-white ">
-          Balance : {userDetails?.amount}
+          Balance : {parseFloat(userDetails?.amount.toFixed(2))}
         </h1>
         <AvatarDropdown />
       </div>
