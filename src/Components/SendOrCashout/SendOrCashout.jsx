@@ -32,9 +32,9 @@ export const SendOrCashout = ({ methodparam }) => {
 
     const pin = e.target.pin.value;
     const method = methodparam;
-    let msz = " request has been sent";
-    if (method === "send_money") {
-      msz = "Successfull";
+    let msz = " Successfull";
+    if (method === "cash_in") {
+      msz = "request has been sent";
     }
 
     axiosSequre
@@ -50,7 +50,7 @@ export const SendOrCashout = ({ methodparam }) => {
             .then(() =>
               Swal.fire({
                 icon: "success",
-                text: `${methodparam.toUpperCase()} ${msz}`,
+                text: `${methodparam.replace("_", " ")} ${msz}`,
               })
             )
             .then(() => navigate("/history"));

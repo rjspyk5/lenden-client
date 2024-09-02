@@ -16,7 +16,7 @@ export const Home = () => {
         <OptionCard name="Send Money" link="/sendmoney" logo={sendmoney} />
         <OptionCard name="Cash Out" link="/cashout" logo={cashout} />
         <OptionCard name="Cash In" link="/cashin" logo={cashin} />
-        <OptionCard name="Savings" link="/savings" logo={savings} />
+        {/* <OptionCard name="Savings" link="/savings" logo={savings} /> */}
         <OptionCard name="Loan" link="/loan" logo={loan} />
         <OptionCard name="Transcition History" link="/history" logo={history} />
       </div>

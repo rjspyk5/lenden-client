@@ -6,14 +6,16 @@ export const TransictionHistory = () => {
   const { user } = useAuth();
   return (
     <div>
-      <SectionHeader heading="Transition History" />
+      <h1 className="text-center font-bold text-2xl py-8  text-white">
+        Transition History
+      </h1>
       {isLoading ? (
         <h1>Loading..............</h1>
       ) : (
-        <div className="overflow-auto">
+        <div className="overflow-auto shadow-xl shadow-[#190e1c] min-h-60 rounded-xl">
           <table className="table-auto w-full min-w-[600px] ">
-            <thead>
-              <tr className="text-left text-white font-bold">
+            <thead className="bg-[#70147080] ">
+              <tr className="text-left text-white font-semibold *:p-2">
                 <th> Number</th>
                 <th>Amount</th>
                 <th>Charge</th>
@@ -47,12 +49,29 @@ export const TransictionHistory = () => {
 
                     <td>date</td>
                     <td>time</td>
-                    <td>{el.status}</td>
+                    <td>
+                      <span
+                        className={`${
+                          el.status === "success"
+                            ? "text-[#32e632]  py-1 px-2 rounded-md  bg-[#62b56274]"
+                            : el.status === "cancel"
+                            ? "text-red-500 font-body py-1 px-2 rounded-md  bg-[#df3f2374]"
+                            : "text-[#3737ff] font-body py-1 px-2 rounded-md  bg-[#4d5a8f74]"
+                        }`}
+                      >
+                        {el.status}
+                      </span>
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
+          {data.length < 1 && (
+            <h1 className="flex min-h-60 justify-center text-white items-center">
+              No Transition Found
+            </h1>
+          )}
         </div>
       )}
     </div>
