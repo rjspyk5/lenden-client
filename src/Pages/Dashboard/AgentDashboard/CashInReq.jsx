@@ -8,11 +8,13 @@ export const CashInReq = () => {
   const { data, refetch, isLoading } = useAgentRequestList("cash_in");
 
   const axiossequre = useAxiosSequre();
-  const handleButton = (id, action) => {
+  const handleButton = (id, sender, rcver, action, amount) => {
     axiossequre
-      .patch(`/reqesttoagent/${id}?status=${action}`)
-      .then(() => {
-        refetch();
+      .patch(
+        `/reqesttoagent/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}`
+      )
+      .then((res) => {
+        return refetch();
       })
       .then(() =>
         Swal.fire({

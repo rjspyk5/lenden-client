@@ -10,9 +10,7 @@ export const AgentTransictionHistory = () => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: [],
     queryFn: async () => {
-      const result = await axiossequre.get(
-        `http://localhost:5000/history?number=${user?.number}`
-      );
+      const result = await axiossequre.get(`/history?number=${user?.number}`);
       return result.data;
     },
   });
