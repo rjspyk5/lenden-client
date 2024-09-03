@@ -16,6 +16,10 @@ import { AgentTransictionHistory } from "../Pages/Dashboard/AgentDashboard/Agent
 
 import { TransictionHistory } from "../Pages/TransictionHistory/TransictionHistory";
 import { AgentPrivateRoute } from "./../Pages/PrivateRoutes/AgentPrivateRoute/AgentPrivateRoute";
+import { AllTransiction } from "../Pages/Dashboard/Admin/AllTransiction";
+import { AllUser } from "../Pages/Dashboard/Admin/AllUser";
+import { WithdrawReqeust } from "../Pages/Dashboard/Admin/WithdrawReqeust";
+import { AddMoneyRequest } from "../Pages/Dashboard/Admin/AddMoneyRequest";
 
 export const Routing = createBrowserRouter([
   {
@@ -109,5 +113,23 @@ export const Routing = createBrowserRouter([
   {
     path: "admin",
     element: <DashboardLayout />,
+    children: [
+      {
+        path: "history",
+        element: <AllTransiction />,
+      },
+      {
+        path: "users",
+        element: <AllUser />,
+      },
+      {
+        path: "withdrawreq",
+        element: <WithdrawReqeust />,
+      },
+      {
+        path: "addmoneyreq",
+        element: <AddMoneyRequest />,
+      },
+    ],
   },
 ]);

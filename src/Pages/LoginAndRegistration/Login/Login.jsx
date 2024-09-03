@@ -12,7 +12,11 @@ export const Login = () => {
 
   useEffect(() => {
     if (user) {
-      user.role === "user" ? navigate("/") : navigate("/agent");
+      user.role === "user"
+        ? navigate("/")
+        : user.role === "agent"
+        ? navigate("/agent")
+        : navigate("/admin");
     }
   }, [user]);
   const {
