@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
-import CustomTable from "../Components/Table/CustomTable";
 
 export const DashboardLayout = () => {
   return (

@@ -10,7 +10,7 @@ export const CashInReq = () => {
   const axiossequre = useAxiosSequre();
   const handleButton = (id, action) => {
     axiossequre
-      .patch(`/reqesttoagent/${id}?${action}`)
+      .patch(`/reqesttoagent/${id}?status=${action}`)
       .then(() => {
         refetch();
       })
