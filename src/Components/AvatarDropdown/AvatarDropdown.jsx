@@ -18,21 +18,6 @@ import { useUser } from "../../Hooks/useUser";
 import { useNavigate } from "react-router-dom";
 
 // profile menu component
-const profileMenuItems = [
-  {
-    label: "My Profile",
-    icon: UserCircleIcon,
-  },
-  {
-    label: "Edit Profile",
-    icon: Cog6ToothIcon,
-  },
-
-  {
-    label: "Sign Out",
-    icon: PowerIcon,
-  },
-];
 
 export function AvatarDropdown() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -40,7 +25,21 @@ export function AvatarDropdown() {
   const { userDetails } = useUser();
   const closeMenu = () => setIsMenuOpen(false);
   const navigate = useNavigate();
+  const profileMenuItems = [
+    {
+      label: userDetails?.name || "Anonymous",
+      icon: UserCircleIcon,
+    },
+    {
+      label: "Edit Profile",
+      icon: Cog6ToothIcon,
+    },
 
+    {
+      label: "Sign Out",
+      icon: PowerIcon,
+    },
+  ];
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>

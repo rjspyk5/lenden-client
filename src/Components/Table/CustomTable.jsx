@@ -9,7 +9,7 @@ import { styled } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "black",
+    backgroundColor: "#211128",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -52,13 +52,29 @@ export default function CustomTable({ method, data, loading, handleButton }) {
                     <TableCell align="center">
                       {" "}
                       <button
-                        onClick={() => handleButton(el._id, "success")}
+                        onClick={() =>
+                          handleButton(
+                            el._id,
+                            el.senderNumber,
+                            el.ReciverNumber,
+                            "success",
+                            el.amount
+                          )
+                        }
                         className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg"
                       >
                         Approve
                       </button>{" "}
                       <button
-                        onClick={() => handleButton(el._id, "cancel")}
+                        onClick={() =>
+                          handleButton(
+                            el._id,
+                            el.senderNumber,
+                            el.ReciverNumber,
+                            "cancel",
+                            0
+                          )
+                        }
                         className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg"
                       >
                         Cancel

@@ -1,11 +1,12 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
+import { Loading } from "../../../Components/Loading/Loading";
 
 export const UserPrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <h1>Loading................</h1>;
+    return <Loading />;
   }
   if (!loading && user) {
     return children;

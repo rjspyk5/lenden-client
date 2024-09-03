@@ -14,9 +14,11 @@ import Swal from "sweetalert2";
 import { useAuth } from "../../Hooks/useAuth";
 import { useUser } from "./../../Hooks/useUser";
 import { useNavigate } from "react-router-dom";
+import { BackDropLoading } from "../Loading/BackDropLoading";
 
 export const SendOrCashout = ({ methodparam }) => {
   const theme = useTheme();
+  const [loading, setloading] = useState(false);
   const number = useRef(null);
   const amount = useRef(null);
   const [activeStep, setActiveStep] = useState(0);
@@ -26,16 +28,20 @@ export const SendOrCashout = ({ methodparam }) => {
   const { user } = useAuth();
   const { refetch } = useUser();
   const navigate = useNavigate();
+  const [loadingmsz, setloadingmsz] = useState("Loading");
 
   const handleConfrim = async (e) => {
     e.preventDefault();
 
     const pin = e.target.pin.value;
     const method = methodparam;
-    let msz = " request has been sent";
-    if (method === "send_money") {
-      msz = "Successfull";
+    let msz = " Successfull";
+    if (method === "cash_in") {
+      msz = "request has been sent";
     }
+
+    setloading(true);
+    setloadingmsz("Processing");
 
     axiosSequre
       .post("/sendmoney", {
@@ -47,12 +53,13 @@ export const SendOrCashout = ({ methodparam }) => {
       .then((res) => {
         if (res?.data?.result3?.insertedId) {
           refetch()
-            .then(() =>
-              Swal.fire({
+            .then(() => {
+              setloading(false);
+              return Swal.fire({
                 icon: "success",
-                text: `${methodparam.toUpperCase()} ${msz}`,
-              })
-            )
+                text: `${methodparam.replace("_", " ")} ${msz}`,
+              });
+            })
             .then(() => navigate("/history"));
         } else {
           Swal.fire({
@@ -61,12 +68,13 @@ export const SendOrCashout = ({ methodparam }) => {
           });
         }
       })
-      .catch((err) =>
+      .catch((err) => {
+        setloading(false);
         Swal.fire({
           icon: "error",
           text: `Have Server isse,try again`,
-        })
-      );
+        });
+      });
 
     // todo: success message die history teh nie jabe
   };
@@ -83,7 +91,11 @@ export const SendOrCashout = ({ methodparam }) => {
     },
     {
       description: (
-        <SendMoneyFromStepThree handleConfrim={handleConfrim} error={error} />
+        <SendMoneyFromStepThree
+          method={methodparam}
+          handleConfrim={handleConfrim}
+          error={error}
+        />
       ),
     },
   ];
@@ -105,7 +117,10 @@ export const SendOrCashout = ({ methodparam }) => {
     if (givenNumber.length === 11) {
       seterror(null);
     }
+    setloading(true);
+    setloadingmsz("Loading");
     const result = await axiosSequre.get(`/user?emailOrNumber=${givenNumber}`);
+    setloading(false);
     if (!result?.data) {
       return Swal.fire({
         icon: "error",
@@ -159,7 +174,8 @@ export const SendOrCashout = ({ methodparam }) => {
 
   return (
     <div className="flex flex-col w-auto justify-center min-h-[450px] items-center">
-      <div className="p-10 md:w-[500px] w-96 bg-gradient-to-tl from-[#140918] to-[#4c205c] rounded-lg border-gray-800">
+      {loading && <BackDropLoading msz={loadingmsz} />}
+      <div className="p-10 md:w-[500px] w-96 bg-gradient-to-tl from-[#140918] to-[#4c205c]  rounded-lg border-gray-800">
         {steps[activeStep].description}
         <MobileStepper
           sx={{ bgcolor: "transparent", marginTop: "40px" }}
