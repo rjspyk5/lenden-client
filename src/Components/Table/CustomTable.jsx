@@ -17,7 +17,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-const head = ["Sender Number", "Amount", "Action"];
+const head = ["Receiver Number", "Amount", "Action"];
 
 export default function CustomTable({ method, data, loading, handleButton }) {
   return (
@@ -45,7 +45,7 @@ export default function CustomTable({ method, data, loading, handleButton }) {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      {el?.senderNumber}
+                      {el?.ReciverNumber}
                     </TableCell>
                     <TableCell align="center">{el.amount}</TableCell>
 
