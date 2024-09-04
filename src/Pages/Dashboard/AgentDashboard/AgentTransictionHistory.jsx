@@ -56,7 +56,7 @@ export const AgentTransictionHistory = () => {
                     <td>{parseFloat(el.charge.toFixed(2))}</td>
                     <td>{method}</td>
 
-                    <td>date</td>
+                    <td>date date</td>
                     <td>time</td>
                     <td>
                       <span
