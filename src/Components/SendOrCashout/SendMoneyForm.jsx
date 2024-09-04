@@ -48,7 +48,7 @@ export const SendMoneyFromStepTwo = ({ amount, reciverDetails }) => {
         <div>
           {" "}
           <h1 className="-mb-3 flex justify-between text-white font-bold">
-            Reciver Name
+            Receiver Name
           </h1>
         </div>
         <div className="w-4/12">
@@ -60,7 +60,7 @@ export const SendMoneyFromStepTwo = ({ amount, reciverDetails }) => {
         <div>
           {" "}
           <h1 className="-mb-3  flex justify-between text-white font-bold">
-            Reciver Number
+            Receiver Number
           </h1>
         </div>
         <div className="w-4/12">
