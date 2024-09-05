@@ -87,7 +87,7 @@ export default function CustomTable({ method, data, loading, handleButton }) {
         </TableContainer>
         {data?.length < 1 && (
           <h1 className="text-center flex justify-center items-center text-lg  min-h-96">
-            You haven't any {method} req
+            You havent any {method} req
           </h1>
         )}
         {/* <table className="table-fixed w-full">

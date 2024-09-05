@@ -220,7 +220,11 @@ export const Registration = () => {
               )}
             </div>
           </div>
-          <Button type="submit" className="mt-6" fullWidth>
+          <Button
+            type="submit"
+            className="mt-6 bg-[#681768] hover:bg-[#962896]"
+            fullWidth
+          >
             Sign Up
           </Button>
         </form>
