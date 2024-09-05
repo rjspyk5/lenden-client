@@ -186,6 +186,21 @@ export const Registration = () => {
                 )}
               </div>
             </div>
+
+            {/* <div className="md:w-1/2">
+              <Typography variant="h6" color="white">
+                Select Role <span className="text-red-500">*</span>
+              </Typography>
+              <select
+                className="bg-transparent text-white p-3 border border-white rounded-md w-full"
+                name="role"
+                id=""
+              >
+                <option value="user">User</option>
+                <option value="agent">Agent</option>
+              </select>
+            </div> */}
+
             <div className="md:w-1/2">
               <Typography variant="h6" color="white">
                 Select Role <span className="text-red-500">*</span>
@@ -215,7 +230,7 @@ export const Registration = () => {
                   </FormControl>
                 )}
               />
-              {errors.age && (
+              {errors.role && (
                 <span className="text-red-500">This field is required</span>
               )}
             </div>
