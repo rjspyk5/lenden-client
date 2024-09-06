@@ -5,7 +5,7 @@ export const Navbarr = () => {
   const { userDetails } = useUser();
 
   return (
-    <div className=" shadow  bg-[#4c205c4c] z-50 backdrop-blur-lg py-2 sticky top-0">
+    <div className=" shadow-xl  bg-[#171a547a] backdrop-blur-xl   border-blue-gray-700 z-50  py-2 sticky top-0">
       <div className="flex justify-between lg:max-w-[1100px] lg:mx-auto mx-10 items-center ">
         <Link className="text-white text-2xl font-bold" to="/">
           Lenden
