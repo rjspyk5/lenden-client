@@ -99,7 +99,11 @@ export const Login = () => {
               </span>
             )}
           </div>
-          <Button type="submit" className="mt-6 " fullWidth>
+          <Button
+            type="submit"
+            className="mt-6 bg-[#681768] hover:bg-[#962896]"
+            fullWidth
+          >
             Login
           </Button>
         </form>
