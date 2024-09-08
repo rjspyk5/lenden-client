@@ -95,7 +95,7 @@ export const Login = () => {
             {(errors.password?.type === "maxLength" ||
               errors.password?.type === "minLength") && (
               <span className="text-red-500">
-                Password can't be less than or more than six
+                Password cannot be less than or more than six
               </span>
             )}
           </div>
