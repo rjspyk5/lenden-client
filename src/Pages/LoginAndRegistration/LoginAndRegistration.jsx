@@ -23,9 +23,12 @@ export const LoginAndRegistration = () => {
     },
   ];
   return (
-    <div className="min-h-screen bg-[#211128] flex justify-center items-center">
+    <div className="min-h-screen  flex justify-center items-center">
       <div className="md:max-w-lg p-10 md:p-0 w-full shadow-2xl shadow-[#060407d5]  border border-blue-gray-400 rounded-lg backdrop-blur-lg">
-        <Tabs className="" value="login">
+        <Tabs
+          className="bg-gradient-to-tl from-[#06071ce7] to-[#262b86]"
+          value="login"
+        >
           <TabsHeader className="">
             {data.map(({ label, value }) => (
               <Tab className="font-bold text-xl" key={value} value={value}>
