@@ -11,6 +11,6 @@ export const AllUser = () => {
       return result.data;
     },
   });
-
+  console.log(data);
   return <div>AllUser</div>;
 };
