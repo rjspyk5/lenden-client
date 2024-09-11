@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 
 export const AllUser = () => {
@@ -11,7 +10,7 @@ export const AllUser = () => {
       return result.data;
     },
   });
-  console.log(data);
+
   return (
     <div>
       <table className="table-auto w-full">
