@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
 import { useUser } from "../Hooks/useUser";
+import { useState } from "react";
 export const Navbarr = () => {
+  const [balanceShow, setbalanceShow] = useState(false);
   const { userDetails } = useUser();
+
+  const balance = parseFloat(userDetails?.amount.toFixed(2));
 
   return (
     <div className=" shadow-xl  bg-[#171a547a] backdrop-blur-xl   border-blue-gray-700 z-50  py-2 sticky top-0">
@@ -10,8 +14,11 @@ export const Navbarr = () => {
         <Link className="text-white text-2xl font-bold" to="/">
           Lenden
         </Link>
-        <h1 className="font-bold text-white ">
-          Balance : {parseFloat(userDetails?.amount.toFixed(2))}
+        <h1
+          onClick={() => setbalanceShow(!balanceShow)}
+          className="font-bold text-white rounded-full cursor-pointer bg-gray-500 px-4 py-1"
+        >
+          {balanceShow ? balance : "Tap For Balance"}
         </h1>
         <AvatarDropdown />
       </div>
