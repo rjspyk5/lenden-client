@@ -62,6 +62,7 @@ export const SendOrCashout = ({ methodparam }) => {
             })
             .then(() => navigate("/history"));
         } else {
+          setloading(false);
           Swal.fire({
             icon: "error",
             text: res?.data?.result,
