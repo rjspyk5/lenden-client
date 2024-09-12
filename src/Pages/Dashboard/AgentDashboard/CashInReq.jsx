@@ -11,7 +11,7 @@ export const CashInReq = () => {
   const handleButton = (id, sender, rcver, action, amount) => {
     axiossequre
       .patch(
-        `/reqesttoagent/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}`
+        `/pendingreq/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}`
       )
       .then((res) => {
         return refetch();

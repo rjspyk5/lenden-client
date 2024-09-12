@@ -13,8 +13,8 @@ export const DashboardLayout = () => {
           </NavLink>
         </li>
         <li className="p-2 hover:bg-purple-500 rounded-lg">
-          <NavLink to="/admin/addmoneyreq" className="text-white">
-            Add Money Reqeust
+          <NavLink to="/admin/depositreq" className="text-white">
+            Deposit Money Reqeust
           </NavLink>
         </li>
 
@@ -53,7 +53,7 @@ export const DashboardLayout = () => {
 
         <li className="p-2 hover:bg-purple-600 rounded-lg">
           <NavLink to="/agent/addmoney" className="text-white">
-            Add Money
+            Deposit Money
           </NavLink>
         </li>
         <li className="p-2 hover:bg-purple-600 rounded-lg">

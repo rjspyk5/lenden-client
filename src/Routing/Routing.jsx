@@ -10,16 +10,14 @@ import { UserPrivateRoute } from "../Pages/PrivateRoutes/UserPrivateRoute/UserPr
 import { AgentAddMoney } from "../Pages/Dashboard/AgentDashboard/AgentAddMoney";
 import { CashInReq } from "../Pages/Dashboard/AgentDashboard/CashInReq";
 import { WithdrawMoney } from "../Pages/Dashboard/AgentDashboard/WithdrawMoney";
-
 import { DashboardLayout } from "../Layout/DashboardLayout";
 import { AgentTransictionHistory } from "../Pages/Dashboard/AgentDashboard/AgentTransictionHistory";
-
 import { TransictionHistory } from "../Pages/TransictionHistory/TransictionHistory";
 import { AgentPrivateRoute } from "./../Pages/PrivateRoutes/AgentPrivateRoute/AgentPrivateRoute";
 import { AllTransiction } from "../Pages/Dashboard/Admin/AllTransiction";
 import { AllUser } from "../Pages/Dashboard/Admin/AllUser";
 import { WithdrawReqeust } from "../Pages/Dashboard/Admin/WithdrawReqeust";
-import { AddMoneyRequest } from "../Pages/Dashboard/Admin/AddMoneyRequest";
+import { DepositMoneyReq } from "../Pages/Dashboard/Admin/DepositMoneyReq";
 
 export const Routing = createBrowserRouter([
   {
@@ -127,8 +125,8 @@ export const Routing = createBrowserRouter([
         element: <WithdrawReqeust />,
       },
       {
-        path: "addmoneyreq",
-        element: <AddMoneyRequest />,
+        path: "depositreq",
+        element: <DepositMoneyReq />,
       },
     ],
   },
