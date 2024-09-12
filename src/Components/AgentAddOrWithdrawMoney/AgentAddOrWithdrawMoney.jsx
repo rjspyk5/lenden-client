@@ -10,7 +10,9 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../Hooks/useAuth";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
+import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
 export const AgentAddOrWithdrawMoney = ({ method }) => {
+  const axiosSequre = useAxiosSequre();
   const { user } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -26,14 +28,24 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     data.method = method;
     data.number = "01684883865";
     data.senderNumber = user?.number;
-    // console.log(data);
+
+    try {
+      const result = await axiosSequre.post("/sendmoney", data);
+      if (result.data) {
+        Swal.fire({
+          icon: "success",
+          text: `Req send successfully`,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>

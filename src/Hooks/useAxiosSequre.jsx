@@ -12,7 +12,7 @@ export const useAxiosSequre = () => {
   axiosSequre.interceptors.response.use(
     (res) => res,
     (error) => {
-      (error.response.status === 401 || error.response.status === 403) &&
+      (error.response?.status === 401 || error.response?.status === 403) &&
         logout().then(() => navigate("/login"));
     }
   );
