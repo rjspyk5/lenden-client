@@ -11,6 +11,7 @@ import { useAuth } from "../../Hooks/useAuth";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
+import Swal from "sweetalert2";
 export const AgentAddOrWithdrawMoney = ({ method }) => {
   const axiosSequre = useAxiosSequre();
   const { user } = useAuth();
@@ -37,7 +38,7 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
 
     try {
       const result = await axiosSequre.post("/sendmoney", data);
-      if (result.data) {
+      if (result) {
         Swal.fire({
           icon: "success",
           text: `Req send successfully`,

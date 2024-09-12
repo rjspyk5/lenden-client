@@ -1,18 +1,20 @@
 import CustomTable from "../../../Components/Table/CustomTable";
 import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
-import { useAgentRequestList } from "../../../Hooks/useAgentRequestList";
+
 import Swal from "sweetalert2";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
+import { usePendingReq } from "../../../Hooks/usePendingReq";
 export const CashOutReq = () => {
   const {
     data: cashOutReqList,
     refetch,
     isLoading,
-  } = useAgentRequestList("cash_out");
+  } = usePendingReq("cash_out");
+
   const axiossequre = useAxiosSequre();
   const handleButton = (id, action) => {
     axiossequre
-      .patch(`/reqesttoagent/${id}?${action}`)
+      .patch(`/pendingreq/${id}?${action}`)
       .then(() => {
         return Swal.fire({
           icon: "success",

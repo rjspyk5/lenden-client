@@ -1,14 +1,14 @@
 import { useAuth } from "./useAuth";
 import { useAxiosSequre } from "./useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
-export const useAgentRequestList = (method) => {
+export const usePendingReq = (method) => {
   const { user } = useAuth();
   const axiossequre = useAxiosSequre();
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ["agentReqData", user],
+    queryKey: ["pendingreq", user],
     queryFn: async () => {
       const result = await axiossequre.get(
-        `/requesttoagent/${user?.number}?method=${method}`
+        `/pendingreq/${user?.number}?method=${method}`
       );
       return result.data;
     },

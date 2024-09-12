@@ -1,11 +1,11 @@
 import CustomTable from "../../../Components/Table/CustomTable";
 import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
-import { useAgentRequestList } from "../../../Hooks/useAgentRequestList";
 import Swal from "sweetalert2";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 import { Backdrop, CircularProgress } from "@mui/material";
+import { usePendingReq } from "../../../Hooks/usePendingReq";
 export const CashInReq = () => {
-  const { data, refetch, isLoading } = useAgentRequestList("cash_in");
+  const { data, refetch, isLoading } = usePendingReq("cash_in");
 
   const axiossequre = useAxiosSequre();
   const handleButton = (id, sender, rcver, action, amount) => {
