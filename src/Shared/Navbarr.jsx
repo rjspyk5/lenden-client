@@ -16,7 +16,7 @@ export const Navbarr = () => {
         </Link>
         <h1
           onClick={() => setbalanceShow(!balanceShow)}
-          className="font-bold text-white rounded-full cursor-pointer bg-gray-500 px-4 py-1"
+          className="font-bold text-white rounded-full cursor-pointer bg-transparent border px-4 py-1"
         >
           {balanceShow ? balance : "Tap For Balance"}
         </h1>
