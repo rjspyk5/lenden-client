@@ -61,7 +61,7 @@ export const WithdrawReqeust = () => {
         refetch={refetch}
         loading={isLoading}
         data={data}
-        method="Cash In"
+        method="Withdraw"
       />
     </div>
   );

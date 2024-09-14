@@ -21,7 +21,8 @@ export const DepositMoneyReq = () => {
           icon: "success",
           text: `Success`,
         })
-      );
+      )
+      .catch((er) => console.log(er));
   };
 
   return (
@@ -60,7 +61,7 @@ export const DepositMoneyReq = () => {
         refetch={refetch}
         loading={isLoading}
         data={data}
-        method="Cash In"
+        method="Deposit"
       />
     </div>
   );
