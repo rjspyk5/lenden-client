@@ -44,7 +44,7 @@ export const SendOrCashout = ({ methodparam }) => {
     setloadingmsz("Processing");
 
     axiosSequre
-      .post("/sendmoney", {
+      .post("/transactions", {
         ...reciverDetails,
         pin: pin,
         senderNumber: user?.number,
