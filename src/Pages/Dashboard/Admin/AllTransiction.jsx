@@ -13,7 +13,7 @@ export const AllTransiction = () => {
       return result.data;
     },
   });
-  console.log(data);
+
   return (
     <div>
       <table className="table-auto w-full">

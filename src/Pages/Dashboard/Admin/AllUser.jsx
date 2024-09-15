@@ -1,8 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
+import CustomizableTable from "../../../Components/Table/CustomizableTable";
 
 export const AllUser = () => {
   const axiosSequre = useAxiosSequre();
+  const head = [
+    "Name",
+    "Number",
+    "Email",
+    "Role",
+    "Balance",
+    "Account Status",
+    "Action",
+  ];
   const { data, refetch, isLoading } = useQuery({
     queryKey: ["allusers"],
     queryFn: async () => {
@@ -13,7 +23,8 @@ export const AllUser = () => {
 
   return (
     <div>
-      <table className="table-auto w-full">
+      <CustomizableTable data={data} loading={isLoading} headArray={head} />
+      {/* <table className="table-auto w-full">
         <thead>
           <tr>
             <td>Name</td>
@@ -21,6 +32,7 @@ export const AllUser = () => {
             <td>Email</td>
             <td>Role</td>
             <td>Balance</td>
+            <td>Account Status</td>
             <td>Action</td>
           </tr>
         </thead>
@@ -33,12 +45,13 @@ export const AllUser = () => {
                 <td>{el?.email}</td>
                 <td>{el?.role}</td>
                 <td>{el?.amount}</td>
+                <td>{el?.accountStatus}</td>
                 <td>6test</td>
               </tr>
             );
           })}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 };
