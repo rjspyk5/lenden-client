@@ -20,16 +20,13 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 export default function CustomizableTable({ data, loading, headArray }) {
   return (
     <>
-      <div className="">
+      <div className="m-5">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 {headArray.map((el, idx) => (
-                  <StyledTableCell
-                    align={idx === 0 ? "left" : "center"}
-                    key={idx}
-                  >
+                  <StyledTableCell align="center" key={idx}>
                     {el}
                   </StyledTableCell>
                 ))}
@@ -37,61 +34,40 @@ export default function CustomizableTable({ data, loading, headArray }) {
             </TableHead>
             <TableBody>
               {data &&
-                data.map((el) => (
-                  <TableRow
-                    key={el._id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    {console.log(Object.keys(el).length)}
-                    <TableCell component="th" scope="row">
-                      {el?.ReciverNumber}
-                    </TableCell>
-                    <TableCell align="center">{el.amount}</TableCell>
+                data.map((el) => {
+                  return (
+                    <TableRow
+                      key={el._id}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      {Object.keys(el).map((value, idx) => {
+                        return (
+                          value !== "_id" && (
+                            <TableCell key={idx} align="center">
+                              {el[value]}
+                            </TableCell>
+                          )
+                        );
+                      })}
 
-                    <TableCell align="center">
-                      {" "}
-                      <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
-                        Approve
-                      </button>{" "}
-                      <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
-                        Cancel
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                      <TableCell align="center">
+                        <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
+                          {el.accountStatus === "pending"
+                            ? "Active"
+                            : el.accountStatus == "active"
+                            ? "Hold"
+                            : "Reactive"}
+                        </button>
+                        <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
+                          {el.accountStatus === "pending" ? "Cancel" : "Delete"}
+                        </button>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
             </TableBody>
           </Table>
         </TableContainer>
-
-        {/* <table className="table-fixed w-full">
-        <thead>
-          <tr>
-            {head.map((el, idx) => (
-              <th className="border-b border-t" key={idx}>
-                {el}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr className="border-b" key={row.name}>
-              <td scope="row">{row.name}</td>
-              <td align="center">{row.calories}</td>
-              <td align="center">{row.fat}</td>
-              <td align="center">
-                {" "}
-                <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
-                  Approve
-                </button>{" "}
-                <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
-                  Cancel
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
       </div>
     </>
   );
