@@ -9,7 +9,7 @@ export const Navbarr = () => {
   const balance = parseFloat(userDetails?.amount.toFixed(2));
 
   return (
-    <div className=" shadow-xl  bg-[#171a547a] backdrop-blur-xl   border-blue-gray-700 z-50  py-2 sticky top-0">
+    <div className=" shadow-xl  bg-[#0d1051f2] backdrop-blur-xl   border-blue-gray-700 z-50  py-2 sticky top-0">
       <div className="flex justify-between lg:max-w-[1100px] lg:mx-auto mx-10 items-center ">
         <Link className="text-white text-2xl font-bold" to="/">
           Lenden
