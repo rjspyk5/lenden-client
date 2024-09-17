@@ -30,7 +30,7 @@ export const SendMoneyFrom = ({ number, error, name }) => {
               ref={number}
               size="lg"
               placeholder="Enter number"
-              className="py-2 px-3 rounded-md bg-transparent border border-white  text-white placeholder:text-gray-600"
+              className="py-2 px-3 rounded-md bg-transparent border border-gray-500 focus:outline-none focus:border-white text-white placeholder:text-gray-500"
             />
             {error && <h1 className="text-red-500 mt-4">{error}</h1>}
           </div>
@@ -104,11 +104,11 @@ export const SendMoneyFromStepThree = ({ handleConfrim, error, method }) => {
                 name="pin"
                 placeholder="
 ******"
-                className="py-2 px-3 rounded-md bg-transparent border border-white text-white placeholder:text-gray-600"
+                className="py-2 px-3  rounded-md bg-transparent border border-white text-white placeholder:text-gray-600"
               />
               <button
                 type="submit"
-                className="mt-6 p-2 rounded-md text-white bg-[#50155b] hover:bg-[#691d76] "
+                className="mt-7 p-2 rounded-md text-white bg-[#2d45f5] hover:bg-[#2e85ff] "
               >
                 {method === "send_money"
                   ? "Send Money"

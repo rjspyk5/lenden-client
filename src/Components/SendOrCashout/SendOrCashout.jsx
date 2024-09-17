@@ -176,7 +176,7 @@ export const SendOrCashout = ({ methodparam }) => {
   return (
     <div className="flex flex-col w-auto justify-center min-h-[450px] items-center">
       {loading && <BackDropLoading msz={loadingmsz} />}
-      <div className="p-10 md:w-[500px] w-96 bg-gradient-to-tl  from-[#141863e7] to-[#262b86] shadow-2xl shadow-[#181818]  rounded-lg border-gray-800">
+      <div className="p-10 md:w-[500px] w-96 bg-gradient-to-tl  from-[#090b2ee7] to-[#1c24bd] shadow-2xl shadow-[#181818]  rounded-lg border-gray-800">
         {steps[activeStep].description}
         <MobileStepper
           sx={{ bgcolor: "transparent", marginTop: "40px" }}
@@ -187,7 +187,7 @@ export const SendOrCashout = ({ methodparam }) => {
             <button
               className={`${
                 activeStep !== maxSteps - 1
-                  ? "bg-gradient-to-r from-purple-800 to-purple-500"
+                  ? "bg-gradient-to-r from-blue-800 to-blue-500"
                   : "opacity-0"
               }  px-2 py-1  rounded-md flex justify-center items-center text-white`}
               onClick={handleNext}
@@ -205,8 +205,8 @@ export const SendOrCashout = ({ methodparam }) => {
             <button
               className={`${
                 activeStep !== 0
-                  ? "bg-gradient-to-r from-purple-800 to-purple-500"
-                  : "bg-purple-100"
+                  ? "bg-gradient-to-r from-blue-800 to-blue-500"
+                  : "bg-blue-100"
               }  px-2 py-1  rounded-md flex justify-center items-center text-white`}
               onClick={handleBack}
               disabled={activeStep === 0}
