@@ -72,14 +72,14 @@ export const DashboardLayout = () => {
   return (
     <>
       <div className="flex  min-h-screen">
-        <div className="w-[20%] fixed min-h-screen bg-gradient-to-tr from-[#090b2ee7] to-[#1c24bd]  shadow-xl shadow-[#6368c5]">
+        <div className="w-[20%] fixed min-h-screen bg-gradient-to-tr from-[#090b2ee7] to-[#010441]  shadow-xl shadow-[#6368c5]">
           <h1 className="text-center font-bold text-white md:text-2xl mb-5 py-2">
             {user?.role === "agent" ? "Agent" : "Admin"} Dashboard
           </h1>
           {user?.role === "agent" ? agentMenu : adminMenu}
         </div>
         <div className="ml-[20%] flex-grow ">
-          <div className="sticky top-0 py-2 bg-gradient-to-tl from-[#090b2ee7] to-[#1c24bd]  shadow shadow-[#3b2346]">
+          <div className="sticky top-0 py-2 bg-gradient-to-tl from-[#090b2ee7] to-[#030641]  shadow shadow-[#3b2346]">
             <div className="flex justify-end me-5">
               <AvatarDropdown />
             </div>
