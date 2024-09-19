@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 import { useAuth } from "../../../Hooks/useAuth";
+import CustomizableTable from "../../../Components/Table/CustomizableTable";
 
 export const AllTransiction = () => {
   const axiosSequre = useAxiosSequre();
@@ -14,34 +15,21 @@ export const AllTransiction = () => {
     },
   });
 
+  const head = [
+    "Sender Number",
+    "Reciver Number",
+    "Amount",
+    "Method",
+    "Charge",
+    "Status",
+  ];
+
   return (
     <div>
-      <table className="table-auto w-full">
-        <thead>
-          <tr>
-            <th>senderNumber</th>
-            <th>ReciverNumber</th>
-            <th>amount</th>
-            <th>method</th>
-            <th>charge</th>
-            <th>status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((el) => {
-            return (
-              <tr key={el._id}>
-                <td>{el.senderNumber}</td>
-                <td>{el.ReciverNumber}</td>
-                <td>{el.amount}</td>
-                <td>{el.method}</td>
-                <td>{el.charge}</td>
-                <td>{el.status}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <h1 className="font-bold text-black border-b border-blue-300 mb-5 py-4 text-3xl text-center">
+        All Transition
+      </h1>
+      <CustomizableTable data={data} loading={isLoading} headArray={head} />
     </div>
   );
 };

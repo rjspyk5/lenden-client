@@ -38,7 +38,6 @@ export const DashboardLayout = () => {
   );
   const agentMenu = (
     <>
-      {" "}
       <ul className="p-3">
         <li className="p-2  hover:bg-[#0051ff73]  rounded-lg">
           <NavLink to="/agent" className="text-white  ">

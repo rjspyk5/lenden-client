@@ -23,35 +23,16 @@ export const AllUser = () => {
 
   return (
     <div>
-      <CustomizableTable data={data} loading={isLoading} headArray={head} />
-      {/* <table className="table-auto w-full">
-        <thead>
-          <tr>
-            <td>Name</td>
-            <td>Number</td>
-            <td>Email</td>
-            <td>Role</td>
-            <td>Balance</td>
-            <td>Account Status</td>
-            <td>Action</td>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((el) => {
-            return (
-              <tr key={el._id}>
-                <td>{el?.name}</td>
-                <td>{el?.number}</td>
-                <td>{el?.email}</td>
-                <td>{el?.role}</td>
-                <td>{el?.amount}</td>
-                <td>{el?.accountStatus}</td>
-                <td>6test</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table> */}
+      <h1 className="font-bold text-black border-b border-blue-300 mb-5 py-4 text-3xl text-center">
+        All User
+      </h1>
+
+      <CustomizableTable
+        data={data}
+        loading={isLoading}
+        headArray={head}
+        action={true}
+      />
     </div>
   );
 };

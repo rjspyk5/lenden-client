@@ -9,7 +9,7 @@ import { styled } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#211128",
+    backgroundColor: "#1c24bd",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -17,7 +17,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-export default function CustomizableTable({ data, loading, headArray }) {
+export default function CustomizableTable({
+  data,
+  loading,
+  headArray,
+  action,
+}) {
   return (
     <>
       <div className="m-5">
@@ -50,18 +55,22 @@ export default function CustomizableTable({ data, loading, headArray }) {
                         );
                       })}
 
-                      <TableCell align="center">
-                        <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
-                          {el.accountStatus === "pending"
-                            ? "Active"
-                            : el.accountStatus == "active"
-                            ? "Hold"
-                            : "Reactive"}
-                        </button>
-                        <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
-                          {el.accountStatus === "pending" ? "Cancel" : "Delete"}
-                        </button>
-                      </TableCell>
+                      {action && (
+                        <TableCell align="center">
+                          <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
+                            {el.accountStatus === "pending"
+                              ? "Active"
+                              : el.accountStatus == "active"
+                              ? "Hold"
+                              : "Reactive"}
+                          </button>
+                          <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
+                            {el.accountStatus === "pending"
+                              ? "Cancel"
+                              : "Delete"}
+                          </button>
+                        </TableCell>
+                      )}
                     </TableRow>
                   );
                 })}
