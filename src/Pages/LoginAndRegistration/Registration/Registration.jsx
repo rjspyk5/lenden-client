@@ -237,7 +237,7 @@ export const Registration = () => {
           </div>
           <Button
             type="submit"
-            className="mt-6 bg-[#681768] hover:bg-[#962896]"
+            className="mt-6 bg-gradient-to-tr from-[#0317fc] to-blue-500 hover:bg-gradient-to-tl"
             fullWidth
           >
             Sign Up
