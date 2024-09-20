@@ -12,8 +12,10 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 export const AgentAddOrWithdrawMoney = ({ method }) => {
   const axiosSequre = useAxiosSequre();
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -37,12 +39,13 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
     data.senderNumber = user?.number;
 
     try {
-      const result = await axiosSequre.post("/sendmoney", data);
+      const result = await axiosSequre.post("/transactions", data);
       if (result) {
         Swal.fire({
           icon: "success",
           text: `Req send successfully`,
         });
+        navigate("/agent/history");
       }
     } catch (error) {
       console.log(error);

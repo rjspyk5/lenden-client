@@ -24,7 +24,7 @@ export const AgentTransictionHistory = () => {
         ) : (
           <div className="overflow-auto shadow shadow-gray-500  h-[370px] rounded">
             <table className="table-auto w-full overflow-x-scroll  ">
-              <thead className="bg-[#292ce3]  sticky z-0 top-0">
+              <thead className="bg-[#1c24bd]  sticky z-0 top-0">
                 <tr className="text-left text-white  font-semibold *:p-3">
                   <th> Number</th>
                   <th>Amount</th>
