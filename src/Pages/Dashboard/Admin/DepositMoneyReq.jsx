@@ -30,7 +30,7 @@ export const DepositMoneyReq = () => {
       <h1 className="font-bold text-black border-b  border-blue-300 mb-5 py-4 text-3xl text-center">
         Deposit Money Request
       </h1>
-      <div className="m-10 rounded-lg shadow-lg shadow-gray-500 ">
+      <div className="mx-10 my-5 rounded-lg shadow-lg shadow-gray-500 ">
         <div>
           {isLoading && (
             <div className=" flex flex-col justify-center items-center">
