@@ -14,6 +14,5 @@ export const AddMoneyRequest = () => {
     },
   });
 
-  console.log(data);
   return <div>AddMoneyRequest</div>;
 };

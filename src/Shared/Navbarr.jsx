@@ -5,7 +5,6 @@ import { useState } from "react";
 export const Navbarr = () => {
   const [balanceShow, setbalanceShow] = useState(false);
   const { userDetails } = useUser();
-  console.log(userDetails);
   const balance = userDetails
     ? parseFloat(userDetails?.amount.toFixed(2))
     : "Loading...";

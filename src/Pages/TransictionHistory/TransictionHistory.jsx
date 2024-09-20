@@ -67,7 +67,6 @@ export const TransictionHistory = () => {
                         }}
                       >
                         {Object.keys(el).map((value, idx) => {
-                          console.log(el[value]);
                           if (el[value] === user.number || value === "status")
                             return;
                           return (
