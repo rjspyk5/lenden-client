@@ -22,15 +22,16 @@ const head = ["Receiver Number", "Amount", "Action"];
 export default function CustomTable({ method, data, loading, handleButton }) {
   return (
     <>
-      <div className="">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <div className="min-h-80 ">
+        <TableContainer>
+          <Table aria-label="simple table">
             <TableHead>
               <TableRow>
                 {head.map((el, idx) => (
                   <StyledTableCell
                     align={idx === 0 ? "left" : "center"}
                     key={idx}
+                    sx={{ padding: "12px" }}
                   >
                     {el}
                   </StyledTableCell>
@@ -44,12 +45,17 @@ export default function CustomTable({ method, data, loading, handleButton }) {
                     key={el._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row">
+                    <TableCell
+                      sx={{ padding: "12px" }}
+                      component="th"
+                      scope="row"
+                    >
                       {el?.ReciverNumber}
                     </TableCell>
-                    <TableCell align="center">{el.amount}</TableCell>
-
-                    <TableCell align="center">
+                    <TableCell sx={{ padding: "12px" }} align="center">
+                      {el.amount}
+                    </TableCell>
+                    <TableCell sx={{ padding: "12px" }} align="center">
                       {" "}
                       <button
                         onClick={() =>
@@ -86,39 +92,10 @@ export default function CustomTable({ method, data, loading, handleButton }) {
           </Table>
         </TableContainer>
         {data?.length < 1 && (
-          <h1 className="text-center flex justify-center items-center text-lg  min-h-96">
+          <h1 className="text-center text-gray-700 font-bold flex justify-center items-center min-h-52 text-lg">
             You havent any {method} req
           </h1>
         )}
-        {/* <table className="table-fixed w-full">
-        <thead>
-          <tr>
-            {head.map((el, idx) => (
-              <th className="border-b border-t" key={idx}>
-                {el}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr className="border-b" key={row.name}>
-              <td scope="row">{row.name}</td>
-              <td align="center">{row.calories}</td>
-              <td align="center">{row.fat}</td>
-              <td align="center">
-                {" "}
-                <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
-                  Approve
-                </button>{" "}
-                <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
-                  Cancel
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
       </div>
     </>
   );

@@ -3,9 +3,12 @@ import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
 
 export const WithdrawMoney = () => {
   return (
-    <div className="m-10 rounded-lg shadow-lg shadow-gray-500 ">
+    <>
+      {" "}
       <SectionHeader heading="Withdraw Money" />
-      <AgentAddOrWithdrawMoney method="withdraw_money" />
-    </div>
+      <div className="m-10 rounded-lg  ">
+        <AgentAddOrWithdrawMoney method="withdraw_money" />
+      </div>
+    </>
   );
 };

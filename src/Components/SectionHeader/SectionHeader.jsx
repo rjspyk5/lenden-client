@@ -1,7 +1,7 @@
 export const SectionHeader = ({ heading }) => {
   return (
-    <div className="font-bold text-3xl py-5 bg-gray-200 text-center rounded-t-xl">
-      <h1>{heading}</h1>
-    </div>
+    <h1 className="font-bold text-black border-b  border-blue-300 mb-5 py-4 text-3xl text-center">
+      {heading}
+    </h1>
   );
 };
