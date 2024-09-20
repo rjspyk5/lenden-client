@@ -16,6 +16,7 @@ import {
 export const TransictionHistory = () => {
   const { data, isLoading } = useHistory();
   const { user } = useAuth();
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: "#1c24bd",
@@ -56,6 +57,7 @@ export const TransictionHistory = () => {
               </TableHead>
               <TableBody>
                 {data &&
+                  user &&
                   data.map((el) => {
                     return (
                       <TableRow
@@ -65,10 +67,13 @@ export const TransictionHistory = () => {
                         }}
                       >
                         {Object.keys(el).map((value, idx) => {
+                          console.log(el[value]);
+                          if (el[value] === user.number || value === "status")
+                            return;
                           return (
                             value !== "_id" && (
                               <TableCell key={idx} align="center">
-                                {el[value]}
+                                {el[value] === null ? "test" : el[value]}
                               </TableCell>
                             )
                           );
