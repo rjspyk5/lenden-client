@@ -26,12 +26,19 @@ export default function CustomizableTable({
   return (
     <>
       <div className="m-5">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
+        <TableContainer
+          sx={{ height: "420px", overflow: "auto" }}
+          component={Paper}
+        >
+          <Table aria-label="simple table">
+            <TableHead sx={{ position: "sticky", top: "0px" }}>
               <TableRow>
                 {headArray.map((el, idx) => (
-                  <StyledTableCell align="center" key={idx}>
+                  <StyledTableCell
+                    sx={{ padding: "10px" }}
+                    align="center"
+                    key={idx}
+                  >
                     {el}
                   </StyledTableCell>
                 ))}
@@ -48,15 +55,33 @@ export default function CustomizableTable({
                       {Object.keys(el).map((value, idx) => {
                         return (
                           value !== "_id" && (
-                            <TableCell key={idx} align="center">
-                              {el[value]}
+                            <TableCell
+                              sx={{ padding: "10px" }}
+                              key={idx}
+                              align="center"
+                            >
+                              {value !== "status" ? (
+                                el[value]
+                              ) : (
+                                <span
+                                  className={`${
+                                    el[value] === "success"
+                                      ? "text-[green]  py-1 px-2 rounded-md  bg-[#19b51967]"
+                                      : el[value] === "cancel"
+                                      ? "text-red-500 font-body py-1 px-2 rounded-md  bg-[#ff00004c]"
+                                      : "text-[#3737ff]   font-body py-1 px-2 rounded-md  bg-[#153ddc48]"
+                                  }`}
+                                >
+                                  {el[value]}
+                                </span>
+                              )}
                             </TableCell>
                           )
                         );
                       })}
 
                       {action && (
-                        <TableCell align="center">
+                        <TableCell sx={{ padding: "7px" }} align="center">
                           <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
                             {el.accountStatus === "pending"
                               ? "Active"

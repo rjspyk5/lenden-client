@@ -21,9 +21,10 @@ export const AllTransiction = () => {
     "Amount",
     "Method",
     "Charge",
+    "Date",
+    "Time",
     "Status",
   ];
-
   return (
     <div>
       <h1 className="font-bold text-black border-b border-blue-300 mb-5 py-4 text-3xl text-center">
