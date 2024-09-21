@@ -44,12 +44,19 @@ export const TransictionHistory = () => {
         <Loading />
       ) : (
         <div>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
+          <TableContainer
+            sx={{ height: "380px", overflow: "auto" }}
+            component={Paper}
+          >
+            <Table aria-label="simple table">
+              <TableHead sx={{ position: "sticky", top: "0px" }}>
                 <TableRow>
                   {head.map((el, idx) => (
-                    <StyledTableCell align="center" key={idx}>
+                    <StyledTableCell
+                      sx={{ padding: "10px" }}
+                      align="center"
+                      key={idx}
+                    >
                       {el}
                     </StyledTableCell>
                   ))}
@@ -71,20 +78,24 @@ export const TransictionHistory = () => {
                             return;
                           return (
                             value !== "_id" && (
-                              <TableCell key={idx} align="center">
+                              <TableCell
+                                sx={{ padding: "8px" }}
+                                key={idx}
+                                align="center"
+                              >
                                 {el[value] === null ? "test" : el[value]}
                               </TableCell>
                             )
                           );
                         })}
-                        <TableCell align="center">
+                        <TableCell sx={{ padding: "8px" }} align="center">
                           <span
                             className={`${
                               el.status === "success"
-                                ? "text-[#32e632]  py-2 px-3 rounded-md  bg-[#62b56274]"
+                                ? "text-[green]  py-1 px-2 rounded-md  bg-[#19b51967]"
                                 : el.status === "cancel"
-                                ? "text-red-500 font-body py-2 px-3 rounded-md  bg-[#df3f2374]"
-                                : "text-[#3737ff] font-body py-2 px-3 rounded-md  bg-[#4d5a8f74]"
+                                ? "text-red-500 font-body py-1 px-2 rounded-md  bg-[#ff00004c]"
+                                : "text-[#3737ff]   font-body py-1 px-2 rounded-md  bg-[#153ddc48]"
                             }`}
                           >
                             {el.status}

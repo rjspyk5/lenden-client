@@ -19,7 +19,7 @@ export const Home = () => {
         {/* <OptionCard name="Savings" link="/savings" logo={savings} /> */}
         <OptionCard name="Loan" link="/loan" logo={loan} />
         <OptionCard name="Payment" link="/payment" logo={history} />
-        <OptionCard name="Transcition History" link="/history" logo={history} />
+        <OptionCard name="Transition History" link="/history" logo={history} />
       </div>
     </div>
   );

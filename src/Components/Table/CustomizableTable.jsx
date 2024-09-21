@@ -27,7 +27,7 @@ export default function CustomizableTable({
     <>
       <div className="m-5">
         <TableContainer
-          sx={{ height: "420px", overflow: "auto" }}
+          sx={{ height: "380px", overflow: "auto" }}
           component={Paper}
         >
           <Table aria-label="simple table">

@@ -18,6 +18,8 @@ import { AllTransiction } from "../Pages/Dashboard/Admin/AllTransiction";
 import { AllUser } from "../Pages/Dashboard/Admin/AllUser";
 import { WithdrawReqeust } from "../Pages/Dashboard/Admin/WithdrawReqeust";
 import { DepositMoneyReq } from "../Pages/Dashboard/Admin/DepositMoneyReq";
+import { ErrorElement } from "../Components/ErrorElement/ErrorElement";
+import { NotFound } from "../Components/NotFound/NotFound";
 
 export const Routing = createBrowserRouter([
   {
@@ -27,6 +29,8 @@ export const Routing = createBrowserRouter([
         <MainRoot />
       </UserPrivateRoute>
     ),
+
+    // errorElement: <ErrorElement />,
     children: [
       {
         path: "/",
@@ -78,7 +82,10 @@ export const Routing = createBrowserRouter([
     path: "login",
     element: <LoginAndRegistration />,
   },
-
+  {
+    path: "*",
+    element: <NotFound />,
+  },
   // Agent Dashboard Routing
   {
     path: "agent",

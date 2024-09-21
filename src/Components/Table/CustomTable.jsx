@@ -22,7 +22,7 @@ const head = ["Receiver Number", "Amount", "Action"];
 export default function CustomTable({ method, data, loading, handleButton }) {
   return (
     <>
-      <div className="min-h-[370px] ">
+      <div className="min-h-[380px] ">
         <TableContainer>
           <Table aria-label="simple table">
             <TableHead>
