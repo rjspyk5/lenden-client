@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
 import { useAuth } from "../Hooks/useAuth";
+import bg from "../../public/img/bg-03.jpeg";
 
 export const DashboardLayout = () => {
   const { user } = useAuth();
@@ -70,20 +71,25 @@ export const DashboardLayout = () => {
   );
   return (
     <>
-      <div className="sticky top-0 py-2  bg-gradient-to-br  bg-[#090f7f]  ">
-        <div className="flex justify-between items-center mx-5">
-          <h1 className="text-center font-bold text-white md:text-2xl  ">
-            {user?.role === "agent" ? "Agent" : "Admin"} Dashboard
-          </h1>
-          <AvatarDropdown />
+      <div
+        className="bg-contain bg-center min-h-screen "
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <div className="sticky top-0 py-2  bg-gradient-to-br  bg-[#090f7f]  ">
+          <div className="flex justify-between items-center mx-5">
+            <h1 className="text-center font-bold text-white md:text-2xl  ">
+              {user?.role === "agent" ? "Agent" : "Admin"} Dashboard
+            </h1>
+            <AvatarDropdown />
+          </div>
         </div>
-      </div>
-      <div className="flex  ">
-        <div className="w-[18%] fixed min-h-screen bg-gradient-to-br  bg-[#0a1078]  ">
-          {user?.role === "agent" ? agentMenu : adminMenu}
-        </div>
-        <div className="ml-[18%] flex-grow ">
-          <Outlet />
+        <div className="flex  ">
+          <div className="w-[18%] fixed min-h-screen  bg-gradient-to-br  bg-[#0a1078]  ">
+            {user?.role === "agent" ? agentMenu : adminMenu}
+          </div>
+          <div className="ml-[18%] flex-grow backdrop-blur-lg">
+            <Outlet />
+          </div>
         </div>
       </div>
     </>

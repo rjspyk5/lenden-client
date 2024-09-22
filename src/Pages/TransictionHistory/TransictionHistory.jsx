@@ -37,17 +37,12 @@ export const TransictionHistory = () => {
   ];
   return (
     <div>
-      <h1 className="font-bold text-black border-b border-blue-300 mb-5 py-4 text-3xl text-center">
-        Transition History
-      </h1>
+      <SectionHeader heading="Transiction History" />
       {isLoading ? (
         <Loading />
       ) : (
         <div>
-          <TableContainer
-            sx={{ height: "380px", overflow: "auto" }}
-            component={Paper}
-          >
+          <TableContainer sx={{ height: "380px" }} component={Paper}>
             <Table aria-label="simple table">
               <TableHead sx={{ position: "sticky", top: "0px" }}>
                 <TableRow>
@@ -79,7 +74,9 @@ export const TransictionHistory = () => {
                           return (
                             value !== "_id" && (
                               <TableCell
-                                sx={{ padding: "8px" }}
+                                sx={{
+                                  padding: "8px",
+                                }}
                                 key={idx}
                                 align="center"
                               >

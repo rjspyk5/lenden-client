@@ -57,7 +57,7 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
         className="flex flex-col justify-center  space-y-4 items-center"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="shadow-2xl shadow-[#0000ff88] p-9 rounded-md bg-white *:w-full lg:w-80 ">
+        <div className="shadow-2xl shadow-[#0000ff88] p-9 rounded-md backdrop-blur-md bg-[#ffffff94] *:w-full lg:w-80 ">
           <div className="flex flex-col ">
             <label>Amount </label>
             <input

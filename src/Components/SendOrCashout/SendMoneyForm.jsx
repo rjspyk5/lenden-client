@@ -108,7 +108,7 @@ export const SendMoneyFromStepThree = ({ handleConfrim, error, method }) => {
               />
               <button
                 type="submit"
-                className="mt-7 p-2 rounded-md text-white bg-[#2d45f5] hover:bg-[#2e85ff] "
+                className="mt-7 p-2 rounded-md text-white bg-gradient-to-r from-blue-800 to-blue-500 "
               >
                 {method === "send_money"
                   ? "Send Money"

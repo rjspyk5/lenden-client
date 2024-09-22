@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 import CustomizableTable from "../../../Components/Table/CustomizableTable";
+import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
 
 export const AllUser = () => {
   const axiosSequre = useAxiosSequre();
@@ -23,9 +24,7 @@ export const AllUser = () => {
 
   return (
     <div>
-      <h1 className="font-bold text-black border-b border-blue-300 mb-5 py-4 text-3xl text-center">
-        All User
-      </h1>
+      <SectionHeader heading="All Users" />
 
       <CustomizableTable
         data={data}

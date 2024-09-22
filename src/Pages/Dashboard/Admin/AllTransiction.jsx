@@ -3,6 +3,7 @@ import React from "react";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 import { useAuth } from "../../../Hooks/useAuth";
 import CustomizableTable from "../../../Components/Table/CustomizableTable";
+import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
 
 export const AllTransiction = () => {
   const axiosSequre = useAxiosSequre();
@@ -28,9 +29,7 @@ export const AllTransiction = () => {
   ];
   return (
     <div>
-      <h1 className="font-bold text-black border-b border-blue-300 mb-5 py-4 text-3xl text-center">
-        All Transition
-      </h1>
+      <SectionHeader heading=" All Transition" />
       <CustomizableTable data={data} loading={isLoading} headArray={head} />
     </div>
   );

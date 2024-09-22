@@ -11,7 +11,7 @@ export const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-10 ">
+    <div className="pt-10">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-16">
         <OptionCard name="Send Money" link="/sendmoney" logo={sendmoney} />
         <OptionCard name="Cash Out" link="/cashout" logo={cashout} />

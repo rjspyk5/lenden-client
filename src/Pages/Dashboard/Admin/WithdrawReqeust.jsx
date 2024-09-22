@@ -27,9 +27,7 @@ export const WithdrawReqeust = () => {
 
   return (
     <div>
-      <h1 className="font-bold text-black border-b border-blue-300 mb-5 py-4 text-3xl text-center">
-        Withdraw Money Request
-      </h1>
+      <SectionHeader heading=" Withdraw Money Request" />
       <div className="mx-10 my-5  rounded-lg shadow-lg shadow-gray-500 ">
         <div>
           {isLoading && (

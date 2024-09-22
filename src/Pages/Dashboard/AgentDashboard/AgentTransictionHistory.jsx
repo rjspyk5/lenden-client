@@ -50,7 +50,7 @@ export const AgentTransictionHistory = () => {
                   return (
                     <tr
                       key={el._id}
-                      className="border-b border-gray-300 *:px-3 *:py-2"
+                      className="border-b border-gray-300 *:text-white *:px-3 *:py-2"
                     >
                       <td>{number}</td>
                       <td>{el?.amount}</td>

@@ -174,9 +174,9 @@ export const SendOrCashout = ({ methodparam }) => {
   };
 
   return (
-    <div className="flex flex-col w-auto justify-center min-h-[450px] items-center">
+    <div className="flex flex-col w-auto justify-center md:min-h-[500px] min-h-[400px] items-center">
       {loading && <BackDropLoading msz={loadingmsz} />}
-      <div className="p-10 md:w-[500px] w-96 bg-gradient-to-tl  from-[#090b2ee7] to-[#1c24bd] shadow-2xl shadow-[#181818]  rounded-lg border-gray-800">
+      <div className="p-10 md:w-[500px]   w-80 bg-[#f9f9fb41]  border border-gray-300 shadow-2xl backdrop-blur shadow-[#006efffa]  rounded-lg ">
         {steps[activeStep].description}
         <MobileStepper
           sx={{ bgcolor: "transparent", marginTop: "40px" }}
