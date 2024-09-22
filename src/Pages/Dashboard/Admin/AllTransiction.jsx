@@ -19,8 +19,9 @@ export const AllTransiction = () => {
     "Sender Number",
     "Reciver Number",
     "Amount",
-    "Method",
     "Charge",
+    "Method",
+
     "Date",
     "Time",
     "Status",

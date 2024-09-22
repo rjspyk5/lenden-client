@@ -22,8 +22,8 @@ const head = ["Receiver Number", "Amount", "Action"];
 export default function CustomTable({ method, data, loading, handleButton }) {
   return (
     <>
-      <div className="min-h-[380px] ">
-        <TableContainer>
+      <div className="min-h-[380px] bg-white rounded-[10px]">
+        <TableContainer sx={{ borderRadius: "10px" }}>
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -53,7 +53,7 @@ export default function CustomTable({ method, data, loading, handleButton }) {
                       {el?.ReciverNumber}
                     </TableCell>
                     <TableCell sx={{ padding: "12px" }} align="center">
-                      {el.amount}
+                      {el?.amount}
                     </TableCell>
                     <TableCell sx={{ padding: "12px" }} align="center">
                       {" "}

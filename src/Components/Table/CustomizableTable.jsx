@@ -60,9 +60,7 @@ export default function CustomizableTable({
                               key={idx}
                               align="center"
                             >
-                              {value !== "status" ? (
-                                el[value]
-                              ) : (
+                              {value === "status" ? (
                                 <span
                                   className={`${
                                     el[value] === "success"
@@ -74,6 +72,10 @@ export default function CustomizableTable({
                                 >
                                   {el[value]}
                                 </span>
+                              ) : value === ("amount" || "charge") ? (
+                                parseFloat(parseFloat(el[value]).toFixed(2))
+                              ) : (
+                                el[value]
                               )}
                             </TableCell>
                           )
