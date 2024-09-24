@@ -39,31 +39,56 @@ export const DashboardLayout = () => {
   );
   const agentMenu = (
     <>
-      <ul className="py-3 px-3">
-        <li className="p-2   hover:border-l-2  hover:bg-[#1C24BD]  rounded-r-3xl border-l-">
-          <NavLink to="/agent" className="text-white  text-center">
+      <ul className="py-3 px-3 space-y-2">
+        <li className="   hover:bg-[#1C24BD] *:text-white *:p-3 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
+          <NavLink
+            to="/agent"
+            className={({ isActive }) =>
+              isActive ? "bg-[#1C24BD] border-l-2" : ""
+            }
+          >
             Dashboard
           </NavLink>
         </li>
-        <li className="p-2 hover:bg-[#0051ff73] ">
-          <NavLink to="/agent/cashinreq" className="text-white">
+        <li className="   hover:bg-[#1C24BD] *:text-white *:p-3 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
+          <NavLink
+            to="/agent/cashinreq"
+            className={({ isActive }) =>
+              isActive ? "bg-[#1C24BD] border-l-2" : ""
+            }
+          >
             Cash In Request
           </NavLink>
         </li>
 
-        <li className="p-2 hover:bg-[#0051ff73] ">
-          <NavLink to="/agent/addmoney" className="text-white">
+        <li className="   hover:bg-[#1C24BD] *:text-white *:p-3 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
+          <NavLink
+            to="/agent/addmoney"
+            className={({ isActive }) =>
+              isActive ? "bg-[#1C24BD] border-l-2" : ""
+            }
+          >
             Deposit Money
           </NavLink>
         </li>
-        <li className="p-2 hover:bg-[#0051ff73] ">
-          <NavLink to="/agent/withdrawmoney" className="text-white">
+        <li className="   hover:bg-[#1C24BD] *:text-white *:p-3 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
+          <NavLink
+            to="/agent/withdrawmoney"
+            className={({ isActive }) =>
+              isActive ? "bg-[#1C24BD] border-l-2" : ""
+            }
+          >
             Withdraw Money
           </NavLink>
         </li>
-        <li className="p-2 hover:bg-[#0051ff73] ">
-          <NavLink to="/agent/history" className="text-white">
-            Transiction History
+        <li className="   hover:bg-[#1C24BD] *:text-white *:p-3 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
+          <NavLink
+            to="/agent/history"
+            className={({ isActive }) =>
+              isActive ? "bg-[#1C24BD] border-l-2" : ""
+            }
+          >
+            Transition History
           </NavLink>
         </li>
       </ul>
