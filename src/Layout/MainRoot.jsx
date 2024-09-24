@@ -6,7 +6,7 @@ export const MainRoot = () => {
   return (
     <div
       style={{ backgroundImage: `url(${bg})` }}
-      className={`min-h-screen bg-blend-screen  bg-contain  bg-center relative`}
+      className={`min-h-screen bg-blend-screen  bg-cover bg-no-repeat bg-center relative`}
     >
       <Navbarr />
       <div className="mt-5">
