@@ -7,10 +7,10 @@ export const DashboardLayout = () => {
   const { user } = useAuth();
   const adminMenu = (
     <>
-      <ul className="p-3 ">
+      <ul className="p-3 px-3">
         <li className="p-2  hover:bg-[#0051ff73]  rounded-lg">
           <NavLink to="/admin" className="text-white  ">
-            Home
+            Dashboard
           </NavLink>
         </li>
         <li className="p-2 hover:bg-[#0051ff73] rounded-lg">
@@ -39,10 +39,10 @@ export const DashboardLayout = () => {
   );
   const agentMenu = (
     <>
-      <ul className="py-3 *:border-b *:border-gray-700">
-        <li className="p-2  hover:bg-[#0051ff73]  ">
-          <NavLink to="/agent" className="text-white  ">
-            Home
+      <ul className="py-3 px-3">
+        <li className="p-2   hover:border-l-2  hover:bg-[#1C24BD]  rounded-r-3xl border-l-">
+          <NavLink to="/agent" className="text-white  text-center">
+            Dashboard
           </NavLink>
         </li>
         <li className="p-2 hover:bg-[#0051ff73] ">
