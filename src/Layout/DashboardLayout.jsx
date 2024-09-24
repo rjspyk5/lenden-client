@@ -75,16 +75,23 @@ export const DashboardLayout = () => {
         className="bg-contain bg-center min-h-screen "
         style={{ backgroundImage: `url(${bg})` }}
       >
-        <div className="sticky top-0 py-2  bg-gradient-to-br  bg-[#090f7f]  ">
+        {/* <div className="sticky top-0 py-2  bg-[#6d6d6d34]  backdrop-blur-md   ">
           <div className="flex justify-between items-center mx-5">
             <h1 className="text-center font-bold text-white md:text-2xl  ">
               {user?.role === "agent" ? "Agent" : "Admin"} Dashboard
             </h1>
             <AvatarDropdown />
           </div>
-        </div>
+        </div> */}
         <div className="flex  ">
-          <div className="w-[18%] fixed min-h-screen  bg-gradient-to-br  bg-[#0a1078]  ">
+          <div className="w-[18%] fixed min-h-screen  bg-gradient-to-br bg-[#6d6d6d34]  backdrop-blur-md ">
+            {/* <h1 className="text-white font-bold text-xl mx-3 my-5 p-3 text-center border-b">
+              {" "}
+              {user?.role === "agent" ? "Agent" : "Admin"} Dashboard
+            </h1> */}
+            <div className="flex justify-center items-center px-3 py-5 border-b mx-3">
+              <AvatarDropdown />
+            </div>
             {user?.role === "agent" ? agentMenu : adminMenu}
           </div>
           <div className="ml-[18%] flex-grow backdrop-blur-lg">
