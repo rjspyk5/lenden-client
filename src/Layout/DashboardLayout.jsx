@@ -109,7 +109,7 @@ export const DashboardLayout = () => {
           </div>
         </div> */}
         <div className="flex  ">
-          <div className="w-[18%] fixed min-h-screen  bg-gradient-to-br bg-[#6d6d6d34]  backdrop-blur-md ">
+          <div className="w-[18%] fixed m-6 min-h-screen  bg-gradient-to-br bg-[#6d6d6d34]  backdrop-blur-md ">
             {/* <h1 className="text-white font-bold text-xl mx-3 my-5 p-3 text-center border-b">
               {" "}
               {user?.role === "agent" ? "Agent" : "Admin"} Dashboard
@@ -119,7 +119,7 @@ export const DashboardLayout = () => {
             </div>
             {user?.role === "agent" ? agentMenu : adminMenu}
           </div>
-          <div className="ml-[18%] flex-grow backdrop-blur-lg">
+          <div className="ml-[22%] flex-grow backdrop-blur-lg">
             <Outlet />
           </div>
         </div>
