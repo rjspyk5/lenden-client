@@ -2,9 +2,15 @@ import { NavLink, Outlet } from "react-router-dom";
 import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
 import { useAuth } from "../Hooks/useAuth";
 import bg from "../../public/img/bg-03.jpeg";
+import { FcEditImage, FcManager } from "react-icons/fc";
+import { LiaEdit, LiaUserEditSolid } from "react-icons/lia";
+import { FaEdit, FaUserEdit, FaUserTie } from "react-icons/fa";
+import { IoLogOut } from "react-icons/io5";
+import { BiSolidUserCircle } from "react-icons/bi";
 
 export const DashboardLayout = () => {
   const { user } = useAuth();
+
   const adminMenu = (
     <>
       <ul className="p-3 px-3 ">
@@ -40,17 +46,19 @@ export const DashboardLayout = () => {
   const agentMenu = (
     <>
       <ul className="py-3 px-3 space-y-2">
-        <li className="  hover:bg-[#1C24BD] *:text-white *:py-3 *:px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
+        <li className="  hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-3 *:px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
           <NavLink
             to="/agent"
             className={({ isActive }) =>
-              isActive ? "bg-[#1C24BD] border-l-2" : ""
+              isActive
+                ? "bg-[#1C24BD] border-l-2 shadow-xl shadow-[#e4e3e22f]"
+                : ""
             }
           >
             Dashboard
           </NavLink>
         </li>
-        <li className="   hover:bg-[#1C24BD] *:text-white *:py-3 *:px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
+        <li className="   hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-3 *:px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ">
           <NavLink
             to="/agent/cashinreq"
             className={({ isActive }) =>
@@ -120,12 +128,23 @@ export const DashboardLayout = () => {
               </h1> */}
               <div className="flex justify-center items-center flex-col  pt-5 pb-1  mx-3">
                 <AvatarDropdown />
-                <h1 className="text-center text-white mt-2">Name</h1>
+                <h1 className="text-center text-white mt-2">
+                  {user?.name || "Anonymous"}
+                </h1>
               </div>
-              <div className="mb-5 py-3 mx-3 border-b flex justify-center space-x-2 items-center text-white">
-                <h1>Profile</h1>
-                <h1>Edit</h1>
-                <h1>Logout</h1>
+              <div className="mb-4  py-2 mx-3 border-b flex justify-center space-x-4 items-center text-white">
+                <button>
+                  {" "}
+                  <BiSolidUserCircle size={25} />
+                </button>
+                <button>
+                  {" "}
+                  <LiaEdit size={25} />
+                </button>
+                <button>
+                  {" "}
+                  <IoLogOut size={25} />
+                </button>
               </div>
               {user?.role === "agent" ? agentMenu : adminMenu}
             </div>
