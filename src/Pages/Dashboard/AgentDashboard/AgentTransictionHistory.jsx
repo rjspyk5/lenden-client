@@ -22,10 +22,10 @@ export const AgentTransictionHistory = () => {
         {isLoading ? (
           <Loading />
         ) : (
-          <div className="overflow-auto shadow shadow-gray-500  h-[370px] rounded">
-            <table className="table-auto w-full">
+          <div className="overflow-auto shadow shadow-gray-500 backdrop-blur-2xl bg-[#7d7d7d50] h-[370px] rounded">
+            <table className="table-auto w-full ">
               <thead className="bg-[#1c24bd]  sticky z-0 top-0">
-                <tr className="text-left text-white  font-semibold *:p-3">
+                <tr className="text-left text-white  font-semibold *:p-2 *:md:p-3">
                   <th> Number</th>
                   <th>Amount</th>
                   <th>Charge</th>
@@ -35,7 +35,7 @@ export const AgentTransictionHistory = () => {
                   <th>Status</th>
                 </tr>
               </thead>
-              <tbody className=" space-y-4">
+              <tbody className=" space-y-2 md:space-y-4">
                 {data?.map((el) => {
                   const method =
                     el.ReciverNumber !== user.number
@@ -50,23 +50,23 @@ export const AgentTransictionHistory = () => {
                   return (
                     <tr
                       key={el._id}
-                      className="border-b border-gray-300 *:text-white *:px-3 *:py-2"
+                      className="border-b border-gray-300 *:text-white *:md:px-3 *:px-2 *:py-2"
                     >
                       <td>{number}</td>
                       <td>{el?.amount}</td>
                       <td>{parseFloat(el.charge.toFixed(2))}</td>
                       <td>{method}</td>
 
-                      <td>date date</td>
-                      <td>time</td>
+                      <td>{el.date}</td>
+                      <td>{el.time}</td>
                       <td>
                         <span
                           className={`${
                             el.status === "success"
-                              ? "text-[green]  py-1 px-2 rounded-md  bg-[#19b51967]"
+                              ? "text-[#3efe3e]  py-1 px-2 rounded-md  bg-[#6dff6d67]"
                               : el.status === "cancel"
                               ? "text-red-500 font-body py-1 px-2 rounded-md  bg-[#ff00004c]"
-                              : "text-[#3737ff]   font-body py-1 px-2 rounded-md  bg-[#153ddc48]"
+                              : "text-[#4975f9]   font-body py-1 px-2 rounded-md  bg-[#254ef46a]"
                           }`}
                         >
                           {el.status}
