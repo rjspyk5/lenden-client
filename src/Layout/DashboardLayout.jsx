@@ -118,8 +118,9 @@ export const DashboardLayout = () => {
                 {" "}
                 {user?.role === "agent" ? "Agent" : "Admin"} Dashboard
               </h1> */}
-              <div className="flex justify-center items-center  py-5  mx-3">
+              <div className="flex justify-center items-center flex-col  pt-5 pb-1  mx-3">
                 <AvatarDropdown />
+                <h1 className="text-center text-white mt-2">Name</h1>
               </div>
               <div className="mb-5 py-3 mx-3 border-b flex justify-center space-x-2 items-center text-white">
                 <h1>Profile</h1>
