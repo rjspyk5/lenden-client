@@ -18,12 +18,12 @@ export const AgentTransictionHistory = () => {
   return (
     <>
       <SectionHeader heading="Transition History" />
-      <div className="mx-10 my-5 rounded-lg ">
+      <div className=" my-5 rounded-lg ">
         {isLoading ? (
           <Loading />
         ) : (
           <div className="overflow-auto shadow shadow-gray-500  h-[370px] rounded">
-            <table className="table-auto w-full overflow-x-scroll  ">
+            <table className="table-auto w-full">
               <thead className="bg-[#1c24bd]  sticky z-0 top-0">
                 <tr className="text-left text-white  font-semibold *:p-3">
                   <th> Number</th>

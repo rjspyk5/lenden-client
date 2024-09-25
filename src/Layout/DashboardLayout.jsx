@@ -11,7 +11,8 @@ export const DashboardLayout = () => {
 
   const menuItemClass =
     "hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-3 *:px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl";
-  const activeClass = "bg-[#1C24BD] border-l-2 shadow-2xl shadow-blue-500";
+  const activeClass =
+    "bg-[#1C24BD] border-l-2 border-[green] shadow-2xl shadow-blue-500";
 
   const adminMenu = (
     <ul className="p-3 px-3">
@@ -115,10 +116,10 @@ export const DashboardLayout = () => {
 
   return (
     <div
-      className="bg-cover bg-center min-h-screen"
+      className="bg-cover w-full  bg-center min-h-screen  "
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="backdrop-blur-sm min-h-screen">
+      <div className="backdrop-blur-sm min-h-screen ">
         <div className="flex">
           <div className="w-[18%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
             <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
@@ -141,7 +142,7 @@ export const DashboardLayout = () => {
             {user?.role === "agent" ? agentMenu : adminMenu}
           </div>
 
-          <div className="ml-[18%] flex-grow p-8 backdrop-blur-lg">
+          <div className="ml-[18%] overflow-auto flex-grow  p-8 backdrop-blur-lg">
             <Outlet />
           </div>
         </div>
