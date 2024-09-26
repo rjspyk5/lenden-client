@@ -18,12 +18,12 @@ export const DashboardLayout = () => {
   const { user } = useAuth();
 
   const menuItemClass =
-    "hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-3 *:px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ";
+    "hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-2 *:px-1 *:md:py-3 *:md::px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ";
   const activeClass =
     "bg-[#1C24BD] border-l-2 border-[green] shadow-2xl shadow-blue-500 ";
 
   const adminMenu = (
-    <ul className="p-3 px-3">
+    <ul className="py-3 px-3 space-y-2">
       <li className={menuItemClass}>
         <NavLink
           to="/admin"
@@ -144,7 +144,7 @@ export const DashboardLayout = () => {
     >
       <div className="backdrop-blur min-h-screen ">
         <div className="flex">
-          <div className="w-[18%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
+          <div className="w-[23%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
             <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
               <AvatarDropdown />
               <h1 className="text-center text-white mt-2">
@@ -165,7 +165,7 @@ export const DashboardLayout = () => {
             {user?.role === "agent" ? agentMenu : adminMenu}
           </div>
 
-          <div className="ml-[18%] overflow-auto flex-grow p-6 md:p-8 backdrop-blur-lg ">
+          <div className="ml-[23%] overflow-auto flex-grow p-6 md:p-8 backdrop-blur-lg ">
             <Outlet />
           </div>
         </div>
