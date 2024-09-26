@@ -5,14 +5,22 @@ import bg from "../../public/img/bg-03.jpeg";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { LiaEdit } from "react-icons/lia";
 import { IoLogOut } from "react-icons/io5";
+import { RxDashboard } from "react-icons/rx";
+import {
+  PiHandDeposit,
+  PiHandDepositLight,
+  PiHandWithdraw,
+  PiUsersThree,
+} from "react-icons/pi";
+import { RiFileHistoryLine } from "react-icons/ri";
 
 export const DashboardLayout = () => {
   const { user } = useAuth();
 
   const menuItemClass =
-    "hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-3 *:px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl";
+    "hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-3 *:px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ";
   const activeClass =
-    "bg-[#1C24BD] border-l-2 border-[green] shadow-2xl shadow-blue-500";
+    "bg-[#1C24BD] border-l-2 border-[green] shadow-2xl shadow-blue-500 ";
 
   const adminMenu = (
     <ul className="p-3 px-3">
@@ -22,7 +30,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          Dashboard
+          <span className="flex  items-center">
+            <RxDashboard size={25} />
+            <span className="hidden md:block pl-2"> Dashboard</span>
+          </span>
         </NavLink>
       </li>
       <li className={menuItemClass}>
@@ -31,7 +42,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          Deposit Money Request
+          <span className="flex  items-center">
+            <PiHandDeposit size={25} />
+            <span className="hidden md:block pl-2"> Deposit Request</span>
+          </span>
         </NavLink>
       </li>
       <li className={menuItemClass}>
@@ -40,7 +54,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          Withdraw Request
+          <span className="flex  items-center">
+            <PiHandWithdraw size={25} />
+            <span className="hidden md:block pl-2"> Withdraw Request</span>
+          </span>
         </NavLink>
       </li>
       <li className={menuItemClass}>
@@ -49,7 +66,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          All Users
+          <span className="flex  items-center">
+            <PiUsersThree size={25} />
+            <span className="hidden md:block pl-2"> All Users</span>
+          </span>
         </NavLink>
       </li>
       <li className={menuItemClass}>
@@ -58,7 +78,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          All Transactions
+          <span className="flex  items-center">
+            <RiFileHistoryLine size={25} />
+            <span className="hidden md:block pl-2"> All Transactions</span>
+          </span>
         </NavLink>
       </li>
     </ul>

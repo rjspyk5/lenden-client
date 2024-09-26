@@ -76,10 +76,10 @@ export default function CustomizableTable({
                                 <span
                                   className={`${
                                     el[value] === "success"
-                                      ? "text-[green]  py-1 px-2 rounded-md  bg-[#19b51967]"
+                                      ? "  py-1 px-2 rounded-md  bg-[#6dff6d67] text-[#3efe3e]"
                                       : el[value] === "cancel"
-                                      ? "text-red-500 font-body py-1 px-2 rounded-md  bg-[#ff00004c]"
-                                      : "text-[#3737ff]   font-body py-1 px-2 rounded-md  bg-[#153ddc48]"
+                                      ? " font-body py-1 px-2 rounded-md  bg-[#ff00004c] text-red-500"
+                                      : "   font-body py-1 px-2 rounded-md  bg-[#254ef46a] text-[#4975f9]"
                                   } `}
                                 >
                                   {el[value]}

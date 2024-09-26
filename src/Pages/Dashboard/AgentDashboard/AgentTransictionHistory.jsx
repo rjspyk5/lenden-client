@@ -63,10 +63,10 @@ export const AgentTransictionHistory = () => {
                         <span
                           className={`${
                             el.status === "success"
-                              ? "text-[#3efe3e]  py-1 px-2 rounded-md  bg-[#6dff6d67]"
+                              ? "  py-1 px-2 rounded-md  bg-[#6dff6d67] text-[#3efe3e]"
                               : el.status === "cancel"
-                              ? "text-red-500 font-body py-1 px-2 rounded-md  bg-[#ff00004c]"
-                              : "text-[#4975f9]   font-body py-1 px-2 rounded-md  bg-[#254ef46a]"
+                              ? " font-body py-1 px-2 rounded-md  bg-[#ff00004c] text-red-500"
+                              : "  font-body py-1 px-2 rounded-md  bg-[#254ef46a] text-[#4975f9] "
                           }`}
                         >
                           {el.status}
