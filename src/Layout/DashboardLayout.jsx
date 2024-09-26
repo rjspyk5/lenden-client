@@ -6,6 +6,7 @@ import { BiSolidUserCircle } from "react-icons/bi";
 import { LiaEdit } from "react-icons/lia";
 import { IoLogOut } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
+import { Fade } from "react-awesome-reveal";
 import {
   PiHandDeposit,
   PiHandDepositLight,
@@ -30,7 +31,7 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center">
+          <span className="flex  items-center justify-center md:justify-start">
             <RxDashboard size={25} />
             <span className="hidden md:block pl-2"> Dashboard</span>
           </span>
@@ -42,7 +43,7 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center">
+          <span className="flex  items-center justify-center md:justify-start">
             <PiHandDeposit size={25} />
             <span className="hidden md:block pl-2"> Deposit Request</span>
           </span>
@@ -54,7 +55,7 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center">
+          <span className="flex  items-center justify-center md:justify-start">
             <PiHandWithdraw size={25} />
             <span className="hidden md:block pl-2"> Withdraw Request</span>
           </span>
@@ -66,7 +67,7 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center">
+          <span className="flex  items-center justify-center md:justify-start">
             <PiUsersThree size={25} />
             <span className="hidden md:block pl-2"> All Users</span>
           </span>
@@ -78,7 +79,7 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center">
+          <span className="flex  items-center justify-center md:justify-start">
             <RiFileHistoryLine size={25} />
             <span className="hidden md:block pl-2"> All Transactions</span>
           </span>
@@ -138,38 +139,40 @@ export const DashboardLayout = () => {
   );
 
   return (
-    <div
-      className="bg-cover w-full  bg-center min-h-screen  "
-      style={{ backgroundImage: `url(${bg})` }}
-    >
-      <div className="backdrop-blur min-h-screen ">
-        <div className="flex">
-          <div className="w-[23%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
-            <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
-              <AvatarDropdown />
-              <h1 className="text-center text-white mt-2">
-                {user?.name || "Anonymous"}
-              </h1>
+    <Fade>
+      <div
+        className="bg-cover w-full  bg-center min-h-screen  "
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <div className="backdrop-blur min-h-screen ">
+          <div className="flex">
+            <div className="w-[23%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
+              <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
+                <AvatarDropdown />
+                <h1 className="text-center text-white mt-2 md:text-base ">
+                  {user?.name || "Anonymous"}
+                </h1>
+              </div>
+              <div className="mb-4 py-2 md:mx-3 mx-1 border-b flex justify-center space-x-1 md:space-x-4 items-center text-white">
+                <button>
+                  <BiSolidUserCircle size={25} />
+                </button>
+                <button>
+                  <LiaEdit size={25} />
+                </button>
+                <button>
+                  <IoLogOut size={25} />
+                </button>
+              </div>
+              {user?.role === "agent" ? agentMenu : adminMenu}
             </div>
-            <div className="mb-4 py-2 mx-3 border-b flex justify-center space-x-4 items-center text-white">
-              <button>
-                <BiSolidUserCircle size={25} />
-              </button>
-              <button>
-                <LiaEdit size={25} />
-              </button>
-              <button>
-                <IoLogOut size={25} />
-              </button>
-            </div>
-            {user?.role === "agent" ? agentMenu : adminMenu}
-          </div>
 
-          <div className="ml-[23%] overflow-auto flex-grow p-6 md:p-8 backdrop-blur-lg ">
-            <Outlet />
+            <div className="ml-[23%] overflow-auto flex-grow p-4 md:p-8 backdrop-blur-lg ">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
