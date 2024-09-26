@@ -25,22 +25,34 @@ export default function CustomizableTable({
 }) {
   return (
     <>
-      <div className="m-5">
+      <div className="rounded-lg shadow shadow-gray-500 min-h-[300px] md:min-h-[470px] relative overflow-hidden">
+        <div className="absolute inset-0 backdrop-blur-2xl bg-[#7d7d7d50]" />
         <TableContainer
-          sx={{ height: "380px", overflow: "auto" }}
-          component={Paper}
+          sx={{
+            position: "relative",
+            backgroundColor: "transparent",
+            boxShadow: "none",
+            height: "470px",
+          }}
         >
           <Table aria-label="simple table">
             <TableHead sx={{ position: "sticky", top: "0px" }}>
               <TableRow>
                 {headArray.map((el, idx) => (
-                  <StyledTableCell
-                    sx={{ padding: "10px" }}
+                  <TableCell
+                    sx={{
+                      padding: { xs: "7px", md: "12px" },
+                      border: "0px",
+                      backgroundColor: "#1c24bd",
+                      color: "white",
+                      fontWeight: "bold",
+                      fontSize: "14px",
+                    }}
                     align="center"
                     key={idx}
                   >
                     {el}
-                  </StyledTableCell>
+                  </TableCell>
                 ))}
               </TableRow>
             </TableHead>
@@ -48,15 +60,15 @@ export default function CustomizableTable({
               {data &&
                 data.map((el) => {
                   return (
-                    <TableRow
-                      key={el._id}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
+                    <TableRow key={el._id}>
                       {Object.keys(el).map((value, idx) => {
                         return (
                           value !== "_id" && (
                             <TableCell
-                              sx={{ padding: "10px" }}
+                              sx={{
+                                padding: { xs: "7px", md: "12px" },
+                                color: "white",
+                              }}
                               key={idx}
                               align="center"
                             >
@@ -68,7 +80,7 @@ export default function CustomizableTable({
                                       : el[value] === "cancel"
                                       ? "text-red-500 font-body py-1 px-2 rounded-md  bg-[#ff00004c]"
                                       : "text-[#3737ff]   font-body py-1 px-2 rounded-md  bg-[#153ddc48]"
-                                  }`}
+                                  } `}
                                 >
                                   {el[value]}
                                 </span>
@@ -83,19 +95,24 @@ export default function CustomizableTable({
                       })}
 
                       {action && (
-                        <TableCell sx={{ padding: "7px" }} align="center">
-                          <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
-                            {el.accountStatus === "pending"
-                              ? "Active"
-                              : el.accountStatus == "active"
-                              ? "Hold"
-                              : "Reactive"}
-                          </button>
-                          <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
-                            {el.accountStatus === "pending"
-                              ? "Cancel"
-                              : "Delete"}
-                          </button>
+                        <TableCell
+                          sx={{ padding: { xs: "7px", md: "12px" } }}
+                          align="center"
+                        >
+                          <span className="space-x-2 space-y-1">
+                            <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
+                              {el.accountStatus === "pending"
+                                ? "Active"
+                                : el.accountStatus == "active"
+                                ? "Hold"
+                                : "Reactive"}
+                            </button>
+                            <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
+                              {el.accountStatus === "pending"
+                                ? "Cancel"
+                                : "Delete"}
+                            </button>
+                          </span>
                         </TableCell>
                       )}
                     </TableRow>

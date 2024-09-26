@@ -142,7 +142,7 @@ export const DashboardLayout = () => {
             {user?.role === "agent" ? agentMenu : adminMenu}
           </div>
 
-          <div className="ml-[18%] overflow-auto flex-grow  p-8 backdrop-blur-lg">
+          <div className="ml-[18%] overflow-auto flex-grow p-6 md:p-8 backdrop-blur-lg ">
             <Outlet />
           </div>
         </div>

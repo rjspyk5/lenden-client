@@ -28,7 +28,7 @@ export const WithdrawReqeust = () => {
   return (
     <div>
       <SectionHeader heading=" Withdraw Money Request" />
-      <div className="mx-10 my-5  rounded-lg shadow-lg shadow-gray-500 ">
+      <div className=" my-5  rounded-lg shadow shadow-gray-500 ">
         <div>
           {isLoading && (
             <div className=" flex flex-col justify-center items-center">

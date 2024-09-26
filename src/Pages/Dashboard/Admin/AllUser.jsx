@@ -23,7 +23,7 @@ export const AllUser = () => {
   });
 
   return (
-    <div>
+    <>
       <SectionHeader heading="All Users" />
 
       <CustomizableTable
@@ -32,6 +32,6 @@ export const AllUser = () => {
         headArray={head}
         action={true}
       />
-    </div>
+    </>
   );
 };
