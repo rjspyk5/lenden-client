@@ -11,7 +11,6 @@ const head = ["Receiver Number", "Amount", "Action"];
 export default function CustomTable({ method, data, loading, handleButton }) {
   return (
     <div className="relative min-h-[300px] md:min-h-[470px]  rounded-[10px] overflow-hidden">
-      {/* Backdrop Blur */}
       <div className="absolute inset-0 backdrop-blur-2xl bg-[#7d7d7d50]" />
 
       <TableContainer

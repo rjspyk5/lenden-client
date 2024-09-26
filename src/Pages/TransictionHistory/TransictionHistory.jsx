@@ -37,23 +37,38 @@ export const TransictionHistory = () => {
   ];
   return (
     <div>
-      <SectionHeader heading="Transiction History" />
+      <SectionHeader heading="Transition History" />
       {isLoading ? (
         <Loading />
       ) : (
-        <div>
-          <TableContainer sx={{ height: "380px" }} component={Paper}>
+        <div className="relative min-h-[300px] md:min-h-[420px]  rounded-[10px] overflow-hidden">
+          <div className="absolute inset-0 backdrop-blur-2xl bg-[#7d7d7d50]" />
+          <TableContainer
+            sx={{
+              position: "relative",
+              backgroundColor: "transparent",
+              boxShadow: "none",
+              height: "420px",
+            }}
+          >
             <Table aria-label="simple table">
               <TableHead sx={{ position: "sticky", top: "0px" }}>
                 <TableRow>
                   {head.map((el, idx) => (
-                    <StyledTableCell
-                      sx={{ padding: "10px" }}
+                    <TableCell
+                      sx={{
+                        padding: { xs: "7px", md: "12px" },
+                        border: "0px",
+                        backgroundColor: "#1c24bd",
+                        color: "white",
+                        fontWeight: "bold",
+                        fontSize: "14px",
+                      }}
                       align="center"
                       key={idx}
                     >
                       {el}
-                    </StyledTableCell>
+                    </TableCell>
                   ))}
                 </TableRow>
               </TableHead>
@@ -62,12 +77,7 @@ export const TransictionHistory = () => {
                   user &&
                   data.map((el) => {
                     return (
-                      <TableRow
-                        key={el._id}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
+                      <TableRow key={el._id}>
                         {Object.keys(el).map((value, idx) => {
                           if (el[value] === user.number || value === "status")
                             return;
@@ -75,7 +85,8 @@ export const TransictionHistory = () => {
                             value !== "_id" && (
                               <TableCell
                                 sx={{
-                                  padding: "8px",
+                                  padding: { xs: "7px", md: "12px" },
+                                  color: "white",
                                 }}
                                 key={idx}
                                 align="center"
@@ -85,7 +96,13 @@ export const TransictionHistory = () => {
                             )
                           );
                         })}
-                        <TableCell sx={{ padding: "8px" }} align="center">
+                        <TableCell
+                          sx={{
+                            padding: { xs: "7px", md: "12px" },
+                            color: "white",
+                          }}
+                          align="center"
+                        >
                           <span
                             className={`${
                               el.status === "success"

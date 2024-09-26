@@ -10,7 +10,7 @@ export const MainRoot = () => {
     >
       <Navbarr />
       <div className="mt-5">
-        <div className="lg:max-w-[1100px] lg:mx-auto mx-10">
+        <div className="lg:max-w-[1100px] lg:mx-auto mx-5">
           <Outlet />
         </div>
       </div>
