@@ -22,7 +22,7 @@ export const AgentTransictionHistory = () => {
         {isLoading ? (
           <Loading />
         ) : (
-          <div className="overflow-auto shadow shadow-gray-500 backdrop-blur-2xl bg-[#7d7d7d50] h-[370px] rounded">
+          <div className="overflow-auto shadow shadow-gray-500 backdrop-blur-2xl bg-[#7d7d7d50] h-[470px] rounded">
             <table className="table-auto w-full ">
               <thead className="bg-[#1c24bd]  sticky z-0 top-0">
                 <tr className="text-left text-white  font-semibold *:p-2 *:md:p-3">

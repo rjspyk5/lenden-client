@@ -119,7 +119,7 @@ export const DashboardLayout = () => {
       className="bg-cover w-full  bg-center min-h-screen  "
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="backdrop-blur-sm min-h-screen ">
+      <div className="backdrop-blur min-h-screen ">
         <div className="flex">
           <div className="w-[18%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
             <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">

@@ -20,9 +20,9 @@ const head = ["Receiver Number", "Amount", "Action"];
 
 export default function CustomTable({ method, data, loading, handleButton }) {
   return (
-    <div className="relative min-h-[380px] bg-white rounded-[10px] overflow-hidden">
+    <div className="relative min-h-[470px]  rounded-[10px] overflow-hidden">
       {/* Backdrop Blur */}
-      <div className="absolute inset-0 bg-white bg-opacity-30 backdrop-blur-md" />
+      <div className="absolute inset-0 backdrop-blur-2xl bg-[#7d7d7d50]" />
 
       <TableContainer
         component={Paper}
@@ -32,14 +32,14 @@ export default function CustomTable({ method, data, loading, handleButton }) {
           boxShadow: "none",
         }}
       >
-        <Table aria-label="simple table" sx={{ background: "transparent" }}>
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               {head.map((el, idx) => (
                 <StyledTableCell
                   align={idx === 0 ? "left" : "center"}
                   key={idx}
-                  sx={{ padding: "12px" }}
+                  sx={{ padding: "12px", border: 0 }}
                 >
                   {el}
                 </StyledTableCell>
@@ -49,20 +49,18 @@ export default function CustomTable({ method, data, loading, handleButton }) {
           <TableBody>
             {data &&
               data.map((el) => (
-                <TableRow
-                  key={el._id}
-                  sx={{
-                    "&:last-child td, &:last-child th": { border: 0 },
-                  }}
-                >
+                <TableRow key={el._id}>
                   <TableCell
-                    sx={{ padding: "12px" }}
+                    sx={{ padding: "12px", color: "white" }}
                     component="th"
                     scope="row"
                   >
                     {el?.ReciverNumber}
                   </TableCell>
-                  <TableCell sx={{ padding: "12px" }} align="center">
+                  <TableCell
+                    sx={{ padding: "12px", color: "white" }}
+                    align="center"
+                  >
                     {el?.amount}
                   </TableCell>
                   <TableCell sx={{ padding: "12px" }} align="center">
