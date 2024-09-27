@@ -20,6 +20,8 @@ import { WithdrawReqeust } from "../Pages/Dashboard/Admin/WithdrawReqeust";
 import { DepositMoneyReq } from "../Pages/Dashboard/Admin/DepositMoneyReq";
 import { ErrorElement } from "../Components/ErrorElement/ErrorElement";
 import { NotFound } from "../Components/NotFound/NotFound";
+import { Payment } from "../Pages/Payment/Payment";
+import { Loan } from "../Pages/Loan/Loan";
 
 export const Routing = createBrowserRouter([
   {
@@ -75,6 +77,14 @@ export const Routing = createBrowserRouter([
       {
         path: "/history",
         element: <TransictionHistory />,
+      },
+      {
+        path: "/payment",
+        element: <Payment />,
+      },
+      {
+        path: "/loan",
+        element: <Loan />,
       },
     ],
   },
