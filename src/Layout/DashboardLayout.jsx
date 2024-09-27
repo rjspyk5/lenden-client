@@ -146,7 +146,7 @@ export const DashboardLayout = () => {
       >
         <div className="backdrop-blur min-h-screen ">
           <div className="flex">
-            <div className="w-[23%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
+            <div className="w-[20%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
               <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
                 <AvatarDropdown />
                 <h1 className="text-center text-white mt-2 md:text-base ">
@@ -167,7 +167,7 @@ export const DashboardLayout = () => {
               {user?.role === "agent" ? agentMenu : adminMenu}
             </div>
 
-            <div className="ml-[23%] overflow-auto flex-grow p-4 md:p-8 backdrop-blur-lg ">
+            <div className="ml-[20%] overflow-auto flex-grow p-4 md:p-8 backdrop-blur-lg ">
               <Outlet />
             </div>
           </div>

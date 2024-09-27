@@ -76,8 +76,6 @@ export const SendOrCashout = ({ methodparam }) => {
           text: `Have Server isse,try again`,
         });
       });
-
-    // todo: success message die history teh nie jabe
   };
   const steps = [
     {
@@ -127,7 +125,6 @@ export const SendOrCashout = ({ methodparam }) => {
         icon: "error",
         text: "No account found with this number",
       });
-      // seterror("No account found with this number");
     }
     if (methodparam === "send_money" && result.data.role !== "user") {
       return Swal.fire({
@@ -142,7 +139,13 @@ export const SendOrCashout = ({ methodparam }) => {
     ) {
       return Swal.fire({
         icon: "error",
-        text: "Give a valid user agent number",
+        text: "Give a valid agent number",
+      });
+    }
+    if (methodparam === "payment" && result.data.role !== "marchent") {
+      return Swal.fire({
+        icon: "error",
+        text: "Give a valid marchent number",
       });
     }
 

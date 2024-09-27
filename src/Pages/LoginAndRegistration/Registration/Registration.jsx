@@ -226,6 +226,7 @@ export const Registration = () => {
                     >
                       <MenuItem value="user">User</MenuItem>
                       <MenuItem value="agent">Agent</MenuItem>
+                      <MenuItem value="marchent">Marchent</MenuItem>
                     </CustomSelect>
                   </FormControl>
                 )}

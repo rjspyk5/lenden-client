@@ -3,29 +3,18 @@ import { useHistory } from "../../Hooks/useHistory";
 import { useAuth } from "../../Hooks/useAuth";
 import { Loading } from "../../Components/Loading/Loading";
 import {
-  Paper,
-  styled,
   Table,
   TableBody,
   TableCell,
-  tableCellClasses,
   TableContainer,
   TableHead,
   TableRow,
 } from "@mui/material";
+import { Fade } from "react-awesome-reveal";
 export const TransictionHistory = () => {
   const { data, isLoading } = useHistory();
   const { user } = useAuth();
 
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: "#1c24bd",
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
   const head = [
     " Number",
     "Amount",
