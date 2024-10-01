@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
 import { useUser } from "../Hooks/useUser";
 import { useState } from "react";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { Badge } from "@mui/material";
 export const Navbarr = () => {
   const [balanceShow, setbalanceShow] = useState(false);
   const { userDetails } = useUser();
@@ -21,7 +23,12 @@ export const Navbarr = () => {
         >
           {balanceShow ? balance : "Tap For Balance"}
         </h1>
-        <AvatarDropdown />
+        <div className="flex justify-center items-center space-x-3">
+          <Badge color="danger" badgeContent={1}>
+            <IoIosNotificationsOutline color="skyBlue" size={35} />
+          </Badge>
+          <AvatarDropdown />
+        </div>
       </div>
     </div>
   );
