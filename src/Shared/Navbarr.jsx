@@ -3,10 +3,11 @@ import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
 import { useUser } from "../Hooks/useUser";
 import { useState } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { Badge } from "@mui/material";
+
 export const Navbarr = () => {
   const [balanceShow, setbalanceShow] = useState(false);
   const { userDetails } = useUser();
+  const [open, setOpen] = useState(false);
   const balance = userDetails
     ? parseFloat(userDetails?.amount.toFixed(2))
     : "Loading...";
@@ -23,11 +24,13 @@ export const Navbarr = () => {
         >
           {balanceShow ? balance : "Tap For Balance"}
         </h1>
-        <div className="flex justify-center items-center space-x-3">
-          <Badge color="danger" badgeContent={1}>
+        <div className="relative">
+          <div className="flex justify-center items-center space-x-3 relative">
+            <span className="animate-ping top-[10px] left-9 absolute inline-flex h-2 w-2 bg-blue-500 rounded-full bg-sky-400 opacity-75"></span>
             <IoIosNotificationsOutline color="skyBlue" size={35} />
-          </Badge>
-          <AvatarDropdown />
+            <AvatarDropdown />
+          </div>
+          <div className="h-[500px] border border-blue-500 overflow-auto w-96 right-16 absolute bg-[#757474d6] backdrop-blur-3xl rounded-lg z-50"></div>
         </div>
       </div>
     </div>
