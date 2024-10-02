@@ -14,6 +14,8 @@ import {
   PiUsersThree,
 } from "react-icons/pi";
 import { RiFileHistoryLine } from "react-icons/ri";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { Notification } from "../Components/Notification/Notification";
 
 export const DashboardLayout = () => {
   const { user } = useAuth();
@@ -167,7 +169,14 @@ export const DashboardLayout = () => {
               {user?.role === "agent" ? agentMenu : adminMenu}
             </div>
 
-            <div className="ml-[20%] overflow-auto flex-grow p-4 md:p-8 backdrop-blur-lg ">
+            <div className="ml-[20%] overflow-auto flex-grow px-4 md:px-8 backdrop-blur-lg ">
+              <div className="flex justify-end py-2 pr-1 relative">
+                <IoIosNotificationsOutline color="skyBlue" size={35} />
+                <div className="h-[500px] border border-blue-500 overflow-auto  w-96 right-5 top-12 absolute backdrop-blur-3xl rounded-lg z-50">
+                  <Notification number={user?.number} />
+                </div>
+              </div>
+
               <Outlet />
             </div>
           </div>

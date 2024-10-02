@@ -10,7 +10,7 @@ const head = ["Receiver Number", "Amount", "Action"];
 
 export default function CustomTable({ method, data, loading, handleButton }) {
   return (
-    <div className="relative min-h-[300px] md:min-h-[470px]  rounded-[10px] overflow-hidden">
+    <div className="relative min-h-[300px] md:min-h-[465px]  rounded-[10px] overflow-hidden">
       <div className="absolute inset-0 backdrop-blur-2xl bg-[#7d7d7d50]" />
 
       <TableContainer
@@ -29,7 +29,7 @@ export default function CustomTable({ method, data, loading, handleButton }) {
                   align={idx === 0 ? "left" : "center"}
                   key={idx}
                   sx={{
-                    padding: { xs: "7px", md: "12px" },
+                    padding: { xs: "6px", md: "9px" },
                     border: "0px",
                     backgroundColor: "#1c24bd",
                     color: "white",
@@ -47,20 +47,20 @@ export default function CustomTable({ method, data, loading, handleButton }) {
               data.map((el) => (
                 <TableRow key={el._id}>
                   <TableCell
-                    sx={{ padding: { xs: "7px", md: "12px" }, color: "white" }}
+                    sx={{ padding: { xs: "6px", md: "9px" }, color: "white" }}
                     component="th"
                     scope="row"
                   >
                     {el?.ReciverNumber}
                   </TableCell>
                   <TableCell
-                    sx={{ padding: { xs: "7px", md: "12px" }, color: "white" }}
+                    sx={{ padding: { xs: "6px", md: "9px" }, color: "white" }}
                     align="center"
                   >
                     {el?.amount}
                   </TableCell>
                   <TableCell
-                    sx={{ padding: { xs: "7px", md: "12px" } }}
+                    sx={{ padding: { xs: "6px", md: "9px" } }}
                     align="center"
                   >
                     <span className="md:space-x-2 space-x-1 space-y-1">

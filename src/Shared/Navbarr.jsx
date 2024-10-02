@@ -3,8 +3,11 @@ import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
 import { useUser } from "../Hooks/useUser";
 import { useState } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { Notification } from "../Components/Notification/Notification";
+import { useAuth } from "../Hooks/useAuth";
 
 export const Navbarr = () => {
+  const { user } = useAuth();
   const [balanceShow, setbalanceShow] = useState(false);
   const { userDetails } = useUser();
   const [open, setOpen] = useState(false);
@@ -30,7 +33,9 @@ export const Navbarr = () => {
             <IoIosNotificationsOutline color="skyBlue" size={35} />
             <AvatarDropdown />
           </div>
-          <div className="h-[500px] border border-blue-500 overflow-auto w-96 right-16 absolute bg-[#757474d6] backdrop-blur-3xl rounded-lg z-50"></div>
+          <div className="h-[500px] border border-blue-500 overflow-auto  w-96 right-16 absolute backdrop-blur-3xl rounded-lg z-50">
+            <Notification number={user?.number} />
+          </div>
         </div>
       </div>
     </div>
