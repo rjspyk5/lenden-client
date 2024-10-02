@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AvatarDropdown } from "../Components/AvatarDropdown/AvatarDropdown";
 import { useAuth } from "../Hooks/useAuth";
 import bg from "../../public/img/bg-03.jpeg";
@@ -7,23 +7,20 @@ import { LiaEdit } from "react-icons/lia";
 import { IoLogOut } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
 import { Fade } from "react-awesome-reveal";
-import {
-  PiHandDeposit,
-  PiHandDepositLight,
-  PiHandWithdraw,
-  PiUsersThree,
-} from "react-icons/pi";
+import { PiHandDeposit, PiHandWithdraw, PiUsersThree } from "react-icons/pi";
 import { RiFileHistoryLine } from "react-icons/ri";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Notification } from "../Components/Notification/Notification";
+import { Tooltip } from "@material-tailwind/react";
 
 export const DashboardLayout = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const menuItemClass =
     "hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-2 *:px-1 *:md:py-3 *:md::px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ";
   const activeClass =
-    "bg-[#1C24BD] border-l-2 border-[green] shadow-2xl shadow-blue-500 ";
+    "bg-[#1C24BD] border-l-2 border-[white] shadow-2xl shadow-blue-500 ";
 
   const adminMenu = (
     <ul className="py-3 px-3 space-y-2">
@@ -162,17 +159,24 @@ export const DashboardLayout = () => {
                 <button>
                   <LiaEdit size={25} />
                 </button>
+
                 <button>
-                  <IoLogOut size={25} />
+                  <IoLogOut
+                    onClick={() => {
+                      logout();
+                      navigate("/login");
+                    }}
+                    size={25}
+                  />
                 </button>
               </div>
               {user?.role === "agent" ? agentMenu : adminMenu}
             </div>
 
-            <div className="ml-[20%] overflow-auto flex-grow px-4 md:px-8 backdrop-blur-lg ">
+            <div className="ml-[20%]  flex-grow px-4 md:px-8 backdrop-blur-lg ">
               <div className="flex justify-end py-2 pr-1 relative">
                 <IoIosNotificationsOutline color="skyBlue" size={35} />
-                <div className="h-[500px] border border-blue-500 overflow-auto  w-96 right-5 top-12 absolute backdrop-blur-3xl rounded-lg z-50">
+                <div className="max-h-[500px] border hidden border-blue-500 overflow-auto  w-96 right-5 top-12 absolute backdrop-blur-3xl rounded-lg z-50">
                   <Notification number={user?.number} />
                 </div>
               </div>

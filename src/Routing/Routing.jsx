@@ -22,6 +22,8 @@ import { ErrorElement } from "../Components/ErrorElement/ErrorElement";
 import { NotFound } from "../Components/NotFound/NotFound";
 import { Payment } from "../Pages/Payment/Payment";
 import { Loan } from "../Pages/Loan/Loan";
+import { AgentHome } from "../Pages/Dashboard/AgentDashboard/AgentHome";
+import { AdminHome } from "../Pages/Dashboard/Admin/AdminHome";
 
 export const Routing = createBrowserRouter([
   {
@@ -105,6 +107,7 @@ export const Routing = createBrowserRouter([
       </AgentPrivateRoute>
     ),
     children: [
+      { path: "", element: <AgentHome /> },
       {
         path: "addmoney",
         element: <AgentAddMoney />,
@@ -129,6 +132,7 @@ export const Routing = createBrowserRouter([
     path: "admin",
     element: <DashboardLayout />,
     children: [
+      { path: "", element: <AdminHome /> },
       {
         path: "history",
         element: <AllTransiction />,
