@@ -3,6 +3,9 @@ import ReactApexChart from "react-apexcharts";
 
 const TransitionChart = () => {
   // Hardcoded fake price data and dates
+  const textColor = "white";
+  const labelColor = "white";
+  const gridColor = "white";
   const fakeData = {
     prices: [
       50, 55, 60, 58, 65, 70, 72, 68, 75, 80, 78, 82, 85, 87, 90, 92, 95, 97,
@@ -45,7 +48,7 @@ const TransitionChart = () => {
   // Initialize state using useState hook
   const [series, setSeries] = useState([
     {
-      name: "STOCK ABC",
+      name: "Transition",
       data: fakeData.prices,
     },
   ]);
@@ -54,33 +57,95 @@ const TransitionChart = () => {
     chart: {
       type: "area",
       height: 350,
+      background: "#f4f4f",
       zoom: {
-        enabled: false,
+        enabled: true,
+      },
+      toolbar: {
+        show: false,
       },
     },
+    colors: ["#02d414"], // Line/area color
     dataLabels: {
       enabled: false,
     },
     stroke: {
-      curve: "straight",
+      curve: "smooth",
+      width: 2,
+      colors: ["#02d414"],
     },
     title: {
-      text: "Fundamental Analysis of Stocks",
-      align: "left",
+      text: "All Transition",
+      align: "center",
+      style: {
+        color: textColor,
+        fontSize: "15px",
+      },
     },
     subtitle: {
-      text: "Price Movements",
+      text: "Volume",
       align: "left",
+      style: {
+        color: "white", // Subtitle color
+        fontSize: "12px", // Subtitle font size
+      },
     },
     labels: fakeData.dates,
     xaxis: {
       type: "datetime",
+      labels: {
+        style: {
+          colors: labelColor,
+        },
+      },
+      axisBorder: {
+        color: labelColor,
+      },
+      axisTicks: {
+        color: labelColor,
+      },
     },
     yaxis: {
-      opposite: true,
+      labels: {
+        style: {
+          colors: labelColor,
+        },
+      },
+      axisBorder: {
+        color: labelColor,
+      },
+      axisTicks: {
+        color: labelColor,
+      },
+    },
+    grid: {
+      borderColor: gridColor,
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: "light",
+        type: "vertical",
+        shadeIntensity: 0.8,
+        gradientToColors: ["#87CEEB"],
+        inverseColors: false,
+        opacityFrom: 0.9,
+        opacityTo: 0.3,
+      },
     },
     legend: {
+      position: "top",
       horizontalAlign: "left",
+      labels: {
+        colors: "#000000", // Legend text color
+      },
+    },
+    tooltip: {
+      theme: "dark",
+      style: {
+        fontSize: "12px",
+        color: "#ffffff",
+      },
     },
   });
 

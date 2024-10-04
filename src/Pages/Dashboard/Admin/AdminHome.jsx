@@ -92,7 +92,7 @@ export const AdminHome = () => {
           </div>
         </div>
         <div className="grid grid-cols-2">
-          <div className="col-span-1">
+          <div className="col-span-1 bg-[#d1cccc81] backdrop-blur-3xl rounded-md">
             <TransitionChart />
           </div>
           <div className="col-span-1">

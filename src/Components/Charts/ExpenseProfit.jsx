@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 const ExpenseProfit = () => {
+  const labelColor = "white";
   // Define the state for series and options using useState
   const [series, setSeries] = useState([
     {
@@ -35,7 +36,7 @@ const ExpenseProfit = () => {
     },
     colors: ["#77B6EA", "#545454"],
     dataLabels: {
-      enabled: true,
+      enabled: false,
     },
     stroke: {
       curve: "smooth",
@@ -47,8 +48,7 @@ const ExpenseProfit = () => {
     grid: {
       borderColor: "#e7e7e7",
       row: {
-        colors: ["#f3f3f3", "transparent"], // Takes an array which will be repeated on columns
-        opacity: 0.5,
+        opacity: 0.1,
       },
     },
     markers: {
@@ -59,13 +59,36 @@ const ExpenseProfit = () => {
       title: {
         text: "Month",
       },
+      color: "white",
+      labels: {
+        style: {
+          colors: labelColor,
+        },
+      },
+      axisBorder: {
+        color: labelColor,
+      },
+      axisTicks: {
+        color: labelColor,
+      },
     },
     yaxis: {
       title: {
-        text: "Temperature",
+        text: "Volume",
       },
       min: 5,
       max: 40,
+      labels: {
+        style: {
+          colors: labelColor,
+        },
+      },
+      axisBorder: {
+        color: labelColor,
+      },
+      axisTicks: {
+        color: labelColor,
+      },
     },
     legend: {
       position: "top",

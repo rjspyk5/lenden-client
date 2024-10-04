@@ -33,7 +33,7 @@ export const DashboardLayout = () => {
         >
           <span className="flex  items-center justify-center md:justify-start">
             <RxDashboard size={25} />
-            <span className="hidden md:block pl-2"> Dashboard</span>
+            <span className="hidden md:block pl-2 "> Dashboard</span>
           </span>
         </NavLink>
       </li>
@@ -161,7 +161,7 @@ export const DashboardLayout = () => {
       >
         <div className="backdrop-blur min-h-screen ">
           <div className="flex">
-            <div className="w-[20%] fixed h-[100%] bg-gradient-to-br bg-[#6d6d6d34]">
+            <div className="w-[20%] fixed h-[100%] bg-gradient-to-br bg-[#c5c3c365]">
               <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
                 <AvatarDropdown />
                 <h1 className="text-center text-white mt-2 md:text-base ">
