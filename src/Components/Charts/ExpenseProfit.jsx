@@ -5,7 +5,7 @@ const ExpenseProfit = () => {
   const labelColor = "#FFFFFF"; // Default label color
   const gridColor = "#e7e7e7"; // Grid color
   const incomeColor = "#28a745"; // Greenish line color for income
-  const expenseColor = "#dc3545"; // Reddish line color for expense
+  const expenseColor = "#c9304c"; // Reddish line color for expense
 
   // Define the state for series and options using useState
   const [series, setSeries] = useState([

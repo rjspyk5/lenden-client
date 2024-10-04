@@ -11,7 +11,6 @@ import { PiHandDeposit, PiHandWithdraw, PiUsersThree } from "react-icons/pi";
 import { RiFileHistoryLine } from "react-icons/ri";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Notification } from "../Components/Notification/Notification";
-import { Tooltip } from "@material-tailwind/react";
 import { HiOutlineCash } from "react-icons/hi";
 
 export const DashboardLayout = () => {
@@ -156,15 +155,16 @@ export const DashboardLayout = () => {
   return (
     <Fade>
       <div
-        className="bg-cover w-full  bg-center min-h-screen  "
+        className="bg-cover w-full bg-center min-h-screen"
         style={{ backgroundImage: `url(${bg})` }}
       >
-        <div className="backdrop-blur min-h-screen ">
+        <div className="backdrop-blur min-h-screen">
           <div className="flex">
-            <div className="w-[20%] fixed h-[100%] bg-gradient-to-br bg-[#71707065]">
+            {/* Sidebar */}
+            <div className="w-[20%] fixed top-0 h-[100%] bg-gradient-to-br bg-[#71707065]">
               <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
                 <AvatarDropdown />
-                <h1 className="text-center text-white mt-2 md:text-base ">
+                <h1 className="text-center text-white mt-2 md:text-base">
                   {user?.name || "Anonymous"}
                 </h1>
               </div>
@@ -175,24 +175,23 @@ export const DashboardLayout = () => {
                 <button>
                   <LiaEdit size={25} />
                 </button>
-
-                <button>
-                  <IoLogOut
-                    onClick={() => {
-                      logout();
-                      navigate("/login");
-                    }}
-                    size={25}
-                  />
+                <button
+                  onClick={() => {
+                    logout();
+                    navigate("/login");
+                  }}
+                >
+                  <IoLogOut size={25} />
                 </button>
               </div>
               {user?.role === "agent" ? agentMenu : adminMenu}
             </div>
 
-            <div className="ml-[20%]  flex-grow px-3 md:px-6 backdrop-blur-lg ">
-              <div className="flex justify-end py-2 pr-1 relative">
+            {/* Right Content with Scroll */}
+            <div className="ml-[20%] flex-grow max-h-screen overflow-y-auto px-3 md:px-6">
+              <div className="sticky top-0 z-50 backdrop-blur-3xl bg-[#23232324] flex justify-end py-2 pr-1">
                 <IoIosNotificationsOutline color="skyBlue" size={35} />
-                <div className="max-h-[500px] border hidden border-blue-500 overflow-auto  w-96 right-5 top-12 absolute backdrop-blur-3xl rounded-lg z-50">
+                <div className="max-h-[500px] border hidden border-blue-500 overflow-auto w-96 right-5 top-12 absolute backdrop-blur-3xl rounded-lg z-50">
                   <Notification number={user?.number} />
                 </div>
               </div>

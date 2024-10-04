@@ -59,7 +59,7 @@ const TransitionChart = () => {
       height: 300,
       background: "#f4f4f",
       zoom: {
-        enabled: true,
+        enabled: false,
       },
       toolbar: {
         show: false,
