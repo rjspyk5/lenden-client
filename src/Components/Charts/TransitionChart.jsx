@@ -5,7 +5,7 @@ const TransitionChart = () => {
   // Hardcoded fake price data and dates
   const textColor = "white";
   const labelColor = "white";
-  const gridColor = "white";
+  const gridColor = "transparent";
   const fakeData = {
     prices: [
       50, 55, 60, 58, 65, 70, 72, 68, 75, 80, 78, 82, 85, 87, 90, 92, 95, 97,

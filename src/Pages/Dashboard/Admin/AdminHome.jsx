@@ -10,11 +10,13 @@ import ExpenseProfit from "../../../Components/Charts/ExpenseProfit";
 
 export const AdminHome = () => {
   return (
-    <div className="grid grid-cols-12 gap-6">
-      <div className="col-span-9 space-y-8">
-        <div className="grid grid-cols-12 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      {/* Left Section - Main Dashboard Cards */}
+      <div className="lg:col-span-9 space-y-8">
+        {/* Financial and User Data Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* First Card - Financial Summary */}
-          <div className="col-span-4 from-[#5f5f5f7b] bg-gradient-to-br to-[#11a9c4da] backdrop-blur-md shadow-sm rounded-lg p-6">
+          <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#11a9c4da] backdrop-blur-md shadow-sm rounded-lg p-6">
             <div className="flex items-center mb-4">
               <FaMoneyBillWave className="text-white mr-3 text-2xl" />
               <h2 className="text-lg font-semibold text-white">
@@ -44,8 +46,8 @@ export const AdminHome = () => {
             </table>
           </div>
 
-          {/* Second Card - Deposits and Withdrawals (Updated to Table Format) */}
-          <div className="col-span-4 from-[#5f5f5f7b] bg-gradient-to-br to-[#6b9810ef] backdrop-blur-md shadow-sm rounded-lg p-6">
+          {/* Second Card - Deposits & Withdrawals */}
+          <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#6b9810ef] backdrop-blur-md shadow-sm rounded-lg p-6">
             <div className="flex items-center mb-4">
               <FaArrowUp className="text-white mr-1 text-2xl" />
               <h2 className="text-lg font-semibold text-white">
@@ -71,8 +73,8 @@ export const AdminHome = () => {
             </table>
           </div>
 
-          {/* User Categories */}
-          <div className="text-white col-span-4 from-[#5f5f5f7b] bg-gradient-to-br to-[#c41179da] backdrop-blur-md shadow-sm rounded-lg p-6">
+          {/* Third Card - Total Users */}
+          <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#c41179da] backdrop-blur-md shadow-sm rounded-lg p-6">
             <div className="flex items-center mb-4">
               <FaUsers className="text-white mr-3 text-2xl" />
               <h2 className="text-lg font-semibold text-white">Total Users</h2>
@@ -91,18 +93,22 @@ export const AdminHome = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-5">
-          <div className="col-span-1 bg-[#63636381] backdrop-blur-3xl rounded-md">
+
+        {/* Charts */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="bg-[#63636381] backdrop-blur-3xl rounded-md">
             <TransitionChart />
           </div>
-          <div className="col-span-1 bg-[#62616181] backdrop-blur-3xl rounded-md">
+          <div className="bg-[#62616181] backdrop-blur-3xl rounded-md ">
             <ExpenseProfit />
           </div>
         </div>
       </div>
 
-      <div className="col-span-3">
-        <div className=" from-[#5f5f5f7b] to-[#97989736] bg-gradient-to-br backdrop-blur-md shadow-sm rounded-lg p-6">
+      {/* Right Section - Top Balances and Recent Transactions */}
+      <div className="lg:col-span-3 space-y-6">
+        {/* Top Balances */}
+        <div className="from-[#5f5f5f7b] to-[#97989736] bg-gradient-to-br backdrop-blur-md shadow-sm rounded-lg p-6">
           <h2 className="text-lg font-semibold text-white mb-4">
             Top Balances
           </h2>
@@ -121,7 +127,9 @@ export const AdminHome = () => {
             </li>
           </ul>
         </div>
-        <div className="bg-gradient-to-br from-[#5f5f5f7b] to-[#97989736] backdrop-blur-md mt-6 shadow-sm rounded-lg p-6">
+
+        {/* Recent Transactions */}
+        <div className="bg-gradient-to-br from-[#5f5f5f7b] to-[#97989736] backdrop-blur-md shadow-sm rounded-lg p-6">
           <h2 className="text-lg font-semibold text-white mb-4">
             Recent Transactions
           </h2>
@@ -137,14 +145,9 @@ export const AdminHome = () => {
               <span className="text-gray-400 text-sm">(10 mins ago)</span>
             </li>
             <li className="text-lg">
-              <span className="font-bold text-white">User 2</span> received
-              <span className="text-red-400">$300</span>
-              <span className="text-gray-400 text-sm">(10 mins ago)</span>
-            </li>
-            <li className="text-lg">
-              <span className="font-bold text-white">User 2</span> received
-              <span className="text-red-400">$300</span>
-              <span className="text-gray-400 text-sm">(10 mins ago)</span>
+              <span className="font-bold text-white">User 3</span> sent
+              <span className="text-green-400">$700</span>
+              <span className="text-gray-400 text-sm">(15 mins ago)</span>
             </li>
           </ul>
         </div>

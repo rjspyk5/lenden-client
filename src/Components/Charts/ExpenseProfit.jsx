@@ -3,7 +3,7 @@ import ReactApexChart from "react-apexcharts";
 
 const ExpenseProfit = () => {
   const labelColor = "#FFFFFF"; // Default label color
-  const gridColor = "#e7e7e7"; // Grid color
+  const gridColor = "transparent"; // Grid color
   const incomeColor = "#28a745"; // Greenish line color for income
   const expenseColor = "#c9304c"; // Reddish line color for expense
 
