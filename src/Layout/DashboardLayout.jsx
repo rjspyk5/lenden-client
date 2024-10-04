@@ -12,6 +12,7 @@ import { RiFileHistoryLine } from "react-icons/ri";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Notification } from "../Components/Notification/Notification";
 import { Tooltip } from "@material-tailwind/react";
+import { HiOutlineCash } from "react-icons/hi";
 
 export const DashboardLayout = () => {
   const { user, logout } = useAuth();
@@ -95,7 +96,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          Dashboard
+          <span className="flex  items-center justify-center md:justify-start">
+            <RxDashboard size={25} />
+            <span className="hidden md:block pl-2"> Dashboard</span>
+          </span>
         </NavLink>
       </li>
       <li className={menuItemClass}>
@@ -104,7 +108,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          Cash In Request
+          <span className="flex  items-center justify-center md:justify-start">
+            <HiOutlineCash size={25} />
+            <span className="hidden md:block pl-2"> Cash In Req</span>
+          </span>
         </NavLink>
       </li>
       <li className={menuItemClass}>
@@ -113,7 +120,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          Deposit Money
+          <span className="flex  items-center justify-center md:justify-start">
+            <PiHandWithdraw size={25} />
+            <span className="hidden md:block pl-2"> Deposit Money</span>
+          </span>
         </NavLink>
       </li>
       <li className={menuItemClass}>
@@ -122,7 +132,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          Withdraw Money
+          <span className="flex  items-center justify-center md:justify-start">
+            <PiHandDeposit size={25} />
+            <span className="hidden md:block pl-2"> Withdraw Money</span>
+          </span>
         </NavLink>
       </li>
       <li className={menuItemClass}>
@@ -131,7 +144,10 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          Transaction History
+          <span className="flex  items-center justify-center md:justify-start">
+            <RiFileHistoryLine size={25} />
+            <span className="hidden md:block pl-2"> Transaction History</span>
+          </span>
         </NavLink>
       </li>
     </ul>
