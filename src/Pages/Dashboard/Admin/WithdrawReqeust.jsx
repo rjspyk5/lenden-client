@@ -9,10 +9,10 @@ import Swal from "sweetalert2";
 export const WithdrawReqeust = () => {
   const { data, refetch, isLoading } = usePendingReq("withdraw_money");
   const axiossequre = useAxiosSequre();
-  const handleButton = (id, sender, rcver, action, amount) => {
+  const handleButton = (id, sender, rcver, action, amount, method) => {
     axiossequre
       .patch(
-        `/pendingreq/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}`
+        `/pendingreq/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}&method=${method}`
       )
       .then((res) => {
         return refetch();

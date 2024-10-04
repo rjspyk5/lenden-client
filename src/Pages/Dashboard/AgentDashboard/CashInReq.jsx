@@ -8,10 +8,10 @@ export const CashInReq = () => {
   const { data, refetch, isLoading } = usePendingReq("cash_in");
 
   const axiossequre = useAxiosSequre();
-  const handleButton = (id, sender, rcver, action, amount) => {
+  const handleButton = (id, sender, rcver, action, amount, method) => {
     axiossequre
       .patch(
-        `/pendingreq/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}`
+        `/pendingreq/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}&method=${method}`
       )
       .then((res) => {
         return refetch();

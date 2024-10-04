@@ -33,7 +33,7 @@ export const Navbarr = () => {
             <IoIosNotificationsOutline color="skyBlue" size={35} />
             <AvatarDropdown />
           </div>
-          <div className="h-[500px] border border-blue-500 overflow-auto  w-96 right-16 absolute backdrop-blur-3xl rounded-lg z-50">
+          <div className="h-[500px] hidden border border-blue-500 overflow-auto  w-96 right-16 absolute backdrop-blur-3xl rounded-lg z-50">
             <Notification number={user?.number} />
           </div>
         </div>

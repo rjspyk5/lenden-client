@@ -8,10 +8,10 @@ import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 export const DepositMoneyReq = () => {
   const { data, refetch, isLoading } = usePendingReq("deposit_money");
   const axiossequre = useAxiosSequre();
-  const handleButton = (id, sender, rcver, action, amount) => {
+  const handleButton = (id, sender, rcver, action, amount, method) => {
     axiossequre
       .patch(
-        `/pendingreq/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}`
+        `/pendingreq/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}&method=${method}`
       )
       .then((res) => {
         return refetch();

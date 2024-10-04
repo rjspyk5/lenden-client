@@ -14,7 +14,7 @@ export const Notification = ({ number }) => {
   });
 
   return (
-    <ul className="space-y-2 p-2 bg-[#1c1c1caa] backdrop-blur-3xl">
+    <ul className="space-y-2  p-2 bg-[#1c1c1caa] backdrop-blur-3xl">
       {data?.map((el) => {
         return (
           <li

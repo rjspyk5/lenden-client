@@ -50,10 +50,7 @@ export const Registration = () => {
 
   const onSubmit = async (data) => {
     data.accountStatus = "pending";
-    data.amount = 50;
-    if (data.role === "agent") {
-      data.amount = 10000;
-    }
+
     try {
       const result = await registration(data);
       if (result.data?.insertedId) {
