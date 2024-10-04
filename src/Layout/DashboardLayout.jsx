@@ -161,7 +161,7 @@ export const DashboardLayout = () => {
       >
         <div className="backdrop-blur min-h-screen ">
           <div className="flex">
-            <div className="w-[20%] fixed h-[100%] bg-gradient-to-br bg-[#c5c3c365]">
+            <div className="w-[20%] fixed h-[100%] bg-gradient-to-br bg-[#71707065]">
               <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
                 <AvatarDropdown />
                 <h1 className="text-center text-white mt-2 md:text-base ">
@@ -189,7 +189,7 @@ export const DashboardLayout = () => {
               {user?.role === "agent" ? agentMenu : adminMenu}
             </div>
 
-            <div className="ml-[20%]  flex-grow px-4 md:px-8 backdrop-blur-lg ">
+            <div className="ml-[20%]  flex-grow px-3 md:px-6 backdrop-blur-lg ">
               <div className="flex justify-end py-2 pr-1 relative">
                 <IoIosNotificationsOutline color="skyBlue" size={35} />
                 <div className="max-h-[500px] border hidden border-blue-500 overflow-auto  w-96 right-5 top-12 absolute backdrop-blur-3xl rounded-lg z-50">

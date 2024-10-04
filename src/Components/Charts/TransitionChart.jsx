@@ -56,7 +56,7 @@ const TransitionChart = () => {
   const [options, setOptions] = useState({
     chart: {
       type: "area",
-      height: 350,
+      height: 300,
       background: "#f4f4f",
       zoom: {
         enabled: true,
@@ -156,7 +156,7 @@ const TransitionChart = () => {
           options={options}
           series={series}
           type="area"
-          height={350}
+          height={300}
         />
       </div>
       <div id="html-dist"></div>

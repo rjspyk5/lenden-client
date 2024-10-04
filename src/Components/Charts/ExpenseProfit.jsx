@@ -2,15 +2,19 @@ import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 const ExpenseProfit = () => {
-  const labelColor = "white";
+  const labelColor = "#FFFFFF"; // Default label color
+  const gridColor = "#e7e7e7"; // Grid color
+  const incomeColor = "#28a745"; // Greenish line color for income
+  const expenseColor = "#dc3545"; // Reddish line color for expense
+
   // Define the state for series and options using useState
   const [series, setSeries] = useState([
     {
-      name: "High - 2013",
+      name: "Income",
       data: [28, 29, 33, 36, 32, 32, 33],
     },
     {
-      name: "Low - 2013",
+      name: "Expense",
       data: [12, 11, 14, 18, 17, 13, 13],
     },
   ]);
@@ -21,7 +25,7 @@ const ExpenseProfit = () => {
       type: "line",
       dropShadow: {
         enabled: true,
-        color: "#000",
+        color: "#000000", // Shadow color
         top: 18,
         left: 7,
         blur: 10,
@@ -31,63 +35,73 @@ const ExpenseProfit = () => {
         enabled: false,
       },
       toolbar: {
-        show: false,
+        show: false, // Disable toolbar
       },
     },
-    colors: ["#77B6EA", "#545454"],
+    colors: [incomeColor, expenseColor], // Set income to greenish and expense to reddish
     dataLabels: {
-      enabled: false,
+      enabled: false, // Disable data labels on the lines
     },
     stroke: {
-      curve: "smooth",
+      curve: "smooth", // Smooth curves for the lines
     },
     title: {
-      text: "Average High & Low Temperature",
-      align: "left",
+      text: "Income & Expense", // Title text
+      align: "center",
+      style: {
+        color: labelColor, // Title text color
+        fontSize: "18px", // Title font size
+      },
     },
     grid: {
-      borderColor: "#e7e7e7",
+      borderColor: gridColor, // Grid border color
       row: {
         opacity: 0.1,
       },
     },
     markers: {
-      size: 1,
+      size: 3, // Marker size on the line
+      colors: ["green", "#FF0000"], // Custom marker colors for data points
     },
     xaxis: {
       categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
       title: {
         text: "Month",
+        style: {
+          color: labelColor, // X-axis title color
+        },
       },
-      color: "white",
       labels: {
         style: {
-          colors: labelColor,
+          colors: labelColor, // X-axis label color
         },
       },
       axisBorder: {
-        color: labelColor,
+        color: labelColor, // X-axis border color
       },
       axisTicks: {
-        color: labelColor,
+        color: labelColor, // X-axis tick color
       },
     },
     yaxis: {
       title: {
         text: "Volume",
+        style: {
+          color: labelColor, // Y-axis title color
+        },
       },
       min: 5,
       max: 40,
       labels: {
         style: {
-          colors: labelColor,
+          colors: labelColor, // Y-axis label color
         },
       },
       axisBorder: {
-        color: labelColor,
+        color: labelColor, // Y-axis border color
       },
       axisTicks: {
-        color: labelColor,
+        color: labelColor, // Y-axis tick color
       },
     },
     legend: {
@@ -96,6 +110,16 @@ const ExpenseProfit = () => {
       floating: true,
       offsetY: -25,
       offsetX: -5,
+      labels: {
+        colors: labelColor, // Legend label colors
+      },
+    },
+    tooltip: {
+      theme: "dark", // Tooltip theme (dark or light)
+      style: {
+        fontSize: "12px",
+        color: "#FFFFFF", // Tooltip text color
+      },
     },
   });
 
@@ -106,7 +130,7 @@ const ExpenseProfit = () => {
           options={options}
           series={series}
           type="line"
-          height={350}
+          height={300}
         />
       </div>
       <div id="html-dist"></div>
