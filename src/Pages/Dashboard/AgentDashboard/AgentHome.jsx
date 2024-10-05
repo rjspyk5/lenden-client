@@ -22,7 +22,7 @@ export const AgentHome = () => {
         const { data } = await axiosSequre.get(
           `/agentdashboard/${user?.number}`
         );
-        console.log(data);
+
         setAgentData(data);
       } catch (error) {
         console.error(error);
@@ -30,7 +30,7 @@ export const AgentHome = () => {
     };
 
     fetchAgentData();
-  }, [userNumber]);
+  }, []);
 
   return (
     <div className="space-y-12">
@@ -104,7 +104,7 @@ export const AgentHome = () => {
       <div className="grid grid-cols-1 gap-5">
         <div className="bg-[#2C3E50] bg-opacity-90 rounded-md p-4 shadow-md">
           <TransitionChart
-            data={agentData ? agentData?.agentGraphData : null}
+            graphData={agentData ? agentData?.agentGraphData : null}
           />
         </div>
       </div>

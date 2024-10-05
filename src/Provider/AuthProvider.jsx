@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const login = (data) => {
     setloading(true);
     localStorage.setItem("lenden_user", JSON.stringify(data));
+
     setuser(data);
     setloading(false);
     axiosPublic.post("/jwt", { email: user?.email }).then((res) => res.data);

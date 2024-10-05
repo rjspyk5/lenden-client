@@ -79,7 +79,7 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
               placeholder="******"
               {...register("pin", { required: true })}
               className="border mt-2 mb-5 border-blue-gray-100 p-3 rounded-md focus:outline-[blue]"
-              type="text"
+              type="password"
               label="pin"
             />
             {errors?.pin?.type === "required" && (

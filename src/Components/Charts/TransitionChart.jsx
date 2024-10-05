@@ -1,58 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
-const TransitionChart = () => {
-  // Hardcoded fake price data and dates
+const TransitionChart = ({ graphData }) => {
   const textColor = "white";
   const labelColor = "white";
   const gridColor = "transparent";
-  const fakeData = {
-    prices: [
-      50, 55, 60, 58, 65, 70, 72, 68, 75, 80, 78, 82, 85, 87, 90, 92, 95, 97,
-      100, 98, 105, 110, 108, 112, 115, 120, 125, 130, 128, 135,
-    ],
-    dates: [
-      "2023-09-01",
-      "2023-09-02",
-      "2023-09-03",
-      "2023-09-04",
-      "2023-09-05",
-      "2023-09-06",
-      "2023-09-07",
-      "2023-09-08",
-      "2023-09-09",
-      "2023-09-10",
-      "2023-09-11",
-      "2023-09-12",
-      "2023-09-13",
-      "2023-09-14",
-      "2023-09-15",
-      "2023-09-16",
-      "2023-09-17",
-      "2023-09-18",
-      "2023-09-19",
-      "2023-09-20",
-      "2023-09-21",
-      "2023-09-22",
-      "2023-09-23",
-      "2023-09-24",
-      "2023-09-25",
-      "2023-09-26",
-      "2023-09-27",
-      "2023-09-28",
-      "2023-09-29",
-      "2023-09-30",
-    ],
-  };
 
   // Initialize state using useState hook
-  const [series, setSeries] = useState([
-    {
-      name: "Transition",
-      data: fakeData.prices,
-    },
-  ]);
-
+  const [series, setSeries] = useState([]);
   const [options, setOptions] = useState({
     chart: {
       type: "area",
@@ -67,7 +22,7 @@ const TransitionChart = () => {
     },
     colors: ["#02d414"], // Line/area color
     dataLabels: {
-      enabled: false,
+      enabled: true,
     },
     stroke: {
       curve: "smooth",
@@ -83,17 +38,18 @@ const TransitionChart = () => {
       },
     },
     subtitle: {
-      text: "Volume",
+      text: "Amount",
       align: "left",
       style: {
         color: "white", // Subtitle color
         fontSize: "12px", // Subtitle font size
       },
     },
-    labels: fakeData.dates,
+    labels: [],
     xaxis: {
       type: "datetime",
       labels: {
+        format: "dd MMM",
         style: {
           colors: labelColor,
         },
@@ -104,6 +60,10 @@ const TransitionChart = () => {
       axisTicks: {
         color: labelColor,
       },
+    },
+    markers: {
+      size: 3, // Marker size on the line
+      colors: ["green"], // Custom marker colors for data points
     },
     yaxis: {
       labels: {
@@ -148,6 +108,17 @@ const TransitionChart = () => {
       },
     },
   });
+
+  // Effect to update chart data when graphData changes
+  useEffect(() => {
+    if (graphData && graphData.dates.length > 0) {
+      setSeries([{ name: "Transition", data: graphData.prices }]);
+      setOptions((prevOptions) => ({
+        ...prevOptions,
+        labels: graphData.dates, // Update the labels with actual dates
+      }));
+    }
+  }, [graphData]);
 
   return (
     <div>

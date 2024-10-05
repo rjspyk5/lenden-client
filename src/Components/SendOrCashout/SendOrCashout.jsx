@@ -110,15 +110,27 @@ export const SendOrCashout = ({ methodparam }) => {
       return seterror("Number must be eleven digit");
     }
 
-    if (givenNumber === user?.number) {
-      return seterror("You can't do this operation to your own number");
+    if (user?.accountStatus == "pending" || user?.accountStatus == "deactive") {
+      return Swal.fire({
+        icon: "error",
+        text: "You can't do any transition because your account status is pending or deactive.Wait or contact with admin for active your account",
+      });
     }
+
+    if (givenNumber === user?.number) {
+      return Swal.fire({
+        icon: "error",
+        text: "You can't do this operation to your own number",
+      });
+    }
+
     if (givenNumber.length === 11) {
       seterror(null);
     }
     setloading(true);
     setloadingmsz("Loading");
     const result = await axiosSequre.get(`/user?emailOrNumber=${givenNumber}`);
+
     setloading(false);
     if (!result?.data) {
       return Swal.fire({

@@ -16,7 +16,7 @@ export const AdminHome = () => {
     queryKey: ["adminDashboard"],
     queryFn: async () => {
       const { data } = await axiosSequre.get("/admindashboard");
-      console.log(data);
+
       return data;
     },
   });
@@ -34,6 +34,7 @@ export const AdminHome = () => {
     approvedUsers = 0,
     topBalances = [],
     transactions = [],
+    transitionGraph = {},
   } = data || {};
 
   if (isLoading) {
@@ -43,7 +44,7 @@ export const AdminHome = () => {
   if (isError) {
     return <div>Error fetching data</div>;
   }
-
+  console.log(transitionGraph);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
       {/* Left Section - Main Dashboard Cards */}
@@ -146,7 +147,7 @@ export const AdminHome = () => {
         {/* Charts */}
         <div className="mt-6">
           <div className="bg-[#63636381] backdrop-blur-3xl rounded-md">
-            <TransitionChart />
+            <TransitionChart graphData={transitionGraph} />
           </div>
         </div>
       </div>

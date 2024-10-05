@@ -102,6 +102,7 @@ export const SendMoneyFromStepThree = ({ handleConfrim, error, method }) => {
             <div className="flex flex-col items-cener justify-center w-72">
               <input
                 name="pin"
+                type="password"
                 placeholder="
 ******"
                 className="py-2 px-3  rounded-md bg-transparent border border-white text-white placeholder:text-gray-600"
