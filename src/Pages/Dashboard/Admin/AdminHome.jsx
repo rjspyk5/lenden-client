@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAxiosSequre } from "./../../../Hooks/useAxiosSequre";
 import { Fade } from "react-awesome-reveal";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../../../Components/Loading/Loading";
 
 export const AdminHome = () => {
   const navigate = useNavigate();
@@ -41,11 +42,19 @@ export const AdminHome = () => {
   } = data || {};
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
 
   if (isError) {
-    return <div>Error fetching data</div>;
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <h1>Error fetching data</h1>
+      </div>
+    );
   }
 
   return (
@@ -56,7 +65,7 @@ export const AdminHome = () => {
           {/* Financial and User Data Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {/* First Card - Financial Summary */}
-            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#11a9c4da] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
+            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#1d11c4da] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
               <div>
                 <div className="flex items-center mb-4">
                   <FaMoneyBillWave className="text-white mr-3 text-2xl" />
@@ -97,7 +106,7 @@ export const AdminHome = () => {
             </div>
 
             {/* Second Card - Deposits & Withdrawals */}
-            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#6b9810ef] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
+            <div className="from-[#5f5f5f7b] bg-gradient-to-br  to-[#fafafaef] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
               <div className="flex items-center mb-4">
                 <FaArrowUp className="text-white mr-1 text-2xl" />
                 <h2 className="text-lg font-semibold text-white">
@@ -128,7 +137,7 @@ export const AdminHome = () => {
             </div>
 
             {/* Third Card - Total Users */}
-            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#c41179da] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
+            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#18eb0dda] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
               <div className="flex items-center mb-4">
                 <FaUsers className="text-white mr-3 text-2xl" />
                 <h2 className="text-lg font-semibold text-white">

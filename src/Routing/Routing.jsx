@@ -26,6 +26,7 @@ import { AgentHome } from "../Pages/Dashboard/AgentDashboard/AgentHome";
 import { AdminHome } from "../Pages/Dashboard/Admin/AdminHome";
 import { MarchentWithdraw } from "../Pages/Dashboard/Marchent/MarchentWithdraw";
 import { MarchentHome } from "../Pages/Dashboard/Marchent/MarchentHome";
+import { AdminPrivateRoute } from "./../Pages/PrivateRoutes/AdminPrivateRoute/AdminPrivateRoute";
 
 export const Routing = createBrowserRouter([
   {
@@ -132,7 +133,11 @@ export const Routing = createBrowserRouter([
   // Admin related dashboard
   {
     path: "admin",
-    element: <DashboardLayout />,
+    element: (
+      <AdminPrivateRoute>
+        <DashboardLayout />
+      </AdminPrivateRoute>
+    ),
     children: [
       { path: "", element: <AdminHome /> },
       {
