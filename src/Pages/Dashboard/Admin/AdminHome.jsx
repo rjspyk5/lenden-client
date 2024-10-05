@@ -197,7 +197,7 @@ export const AdminHome = () => {
             Top Balances
           </h2>
           {/* For small screens, display as cards */}
-          <div className="lg:space-y-1 space-y-3 lg:h-64 overflow-y-auto">
+          <div className="lg:space-y-2 space-y-3  overflow-y-auto">
             {" "}
             {/* Adjusted height */}
             {topBalances.map((user, index) => (

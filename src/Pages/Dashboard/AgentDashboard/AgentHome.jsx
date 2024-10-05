@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   FaMoneyBillWave,
   FaArrowUp,
@@ -5,9 +6,32 @@ import {
   FaWallet,
 } from "react-icons/fa";
 import TransitionChart from "../../../Components/Charts/TransitionChart";
-import ExpenseProfit from "../../../Components/Charts/ExpenseProfit";
+import { useAuth } from "../../../Hooks/useAuth";
+import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 
 export const AgentHome = () => {
+  const [agentData, setAgentData] = useState(null);
+  const userNumber = "01718721182"; // Your dynamic user number
+  const { user } = useAuth();
+
+  const axiosSequre = useAxiosSequre();
+
+  useEffect(() => {
+    const fetchAgentData = async () => {
+      try {
+        const { data } = await axiosSequre.get(
+          `/agentdashboard/${user?.number}`
+        );
+        console.log(data);
+        setAgentData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchAgentData();
+  }, [userNumber]);
+
   return (
     <div className="space-y-12">
       {/* Responsive Grid for Cards */}
@@ -20,7 +44,13 @@ export const AgentHome = () => {
               Available Balance
             </h2>
           </div>
-          <div className="text-3xl font-bold text-white">$70,000</div>
+          <div className="text-3xl font-bold text-white">
+            {agentData
+              ? `${parseFloat(
+                  agentData?.agentIncomeExpense?.amount
+                ).toFixed()} Tk`
+              : "Loading..."}
+          </div>
         </div>
 
         {/* Second Card - Net Profit */}
@@ -29,7 +59,14 @@ export const AgentHome = () => {
             <FaMoneyBillWave className="text-white mr-3 text-2xl" />
             <h2 className="text-lg font-semibold text-white">Net Profit</h2>
           </div>
-          <div className="text-3xl font-bold text-white">$120,000</div>
+          <div className="text-3xl font-bold text-white">
+            {agentData
+              ? `${parseFloat(
+                  agentData?.agentIncomeExpense?.income -
+                    agentData?.agentIncomeExpense?.expense
+                ).toFixed(2)} Tk`
+              : "Loading..."}
+          </div>
         </div>
 
         {/* Third Card - Total Income */}
@@ -38,7 +75,13 @@ export const AgentHome = () => {
             <FaArrowUp className="text-white mr-1 text-2xl" />
             <h2 className="text-lg font-semibold text-white">Total Income</h2>
           </div>
-          <div className="text-3xl font-bold text-white">$170,000</div>
+          <div className="text-3xl font-bold text-white">
+            {agentData
+              ? `${parseFloat(agentData?.agentIncomeExpense?.income).toFixed(
+                  2
+                )} Tk`
+              : "Loading..."}
+          </div>
         </div>
 
         {/* Fourth Card - Total Expense */}
@@ -47,17 +90,22 @@ export const AgentHome = () => {
             <FaArrowDown className="text-white mr-3 text-2xl" />
             <h2 className="text-lg font-semibold text-white">Total Expense</h2>
           </div>
-          <div className="text-3xl font-bold text-white">$50,000</div>
+          <div className="text-3xl font-bold text-white">
+            {agentData
+              ? `${parseFloat(agentData?.agentIncomeExpense?.expense).toFixed(
+                  2
+                )}`
+              : "Loading..."}
+          </div>
         </div>
       </div>
 
       {/* Responsive Grid for Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5">
         <div className="bg-[#2C3E50] bg-opacity-90 rounded-md p-4 shadow-md">
-          <TransitionChart />
-        </div>
-        <div className="bg-[#2C3E50] bg-opacity-90 rounded-md p-4 shadow-md">
-          <ExpenseProfit />
+          <TransitionChart
+            data={agentData ? agentData?.agentGraphData : null}
+          />
         </div>
       </div>
     </div>

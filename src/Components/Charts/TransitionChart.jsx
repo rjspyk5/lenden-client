@@ -156,7 +156,7 @@ const TransitionChart = () => {
           options={options}
           series={series}
           type="area"
-          height={310}
+          height={314}
         />
       </div>
       <div id="html-dist"></div>
