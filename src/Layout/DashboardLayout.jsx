@@ -15,17 +15,51 @@ import { HiOutlineCash } from "react-icons/hi";
 import { useState } from "react";
 import { useAxiosSequre } from "../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
+import { useUser } from "../Hooks/useUser";
 
 export const DashboardLayout = () => {
   const { user, logout } = useAuth();
   const [showNotification, setshowNotification] = useState(false);
   const navigate = useNavigate();
+  const [balanceShow, setbalanceShow] = useState(false);
+  const { userDetails } = useUser();
 
+  const balance = userDetails
+    ? parseFloat(userDetails?.amount.toFixed(1))
+    : "Loading...";
+  console.log(balance);
   const menuItemClass =
     "hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-2 *:px-1 *:md:py-3 *:md::px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ";
   const activeClass =
     "bg-[#1C24BD] border-l-2 border-[white] shadow-2xl shadow-blue-500 ";
-
+  const marchentMenu = (
+    <ul className="py-3 px-3 space-y-2">
+      <li className={menuItemClass}>
+        <NavLink
+          to="/marchent"
+          className={({ isActive }) => (isActive ? activeClass : "")}
+          end
+        >
+          <span className="flex  items-center justify-center md:justify-start">
+            <RxDashboard size={25} />
+            <span className="hidden md:block pl-2 "> Dashboard</span>
+          </span>
+        </NavLink>
+      </li>
+      <li className={menuItemClass}>
+        <NavLink
+          to="/marchent/withdrawreq"
+          className={({ isActive }) => (isActive ? activeClass : "")}
+          end
+        >
+          <span className="flex  items-center justify-center md:justify-start">
+            <PiHandWithdraw size={25} />
+            <span className="hidden md:block pl-2"> Withdraw Request</span>
+          </span>
+        </NavLink>
+      </li>
+    </ul>
+  );
   const adminMenu = (
     <ul className="py-3 px-3 space-y-2">
       <li className={menuItemClass}>
@@ -189,6 +223,16 @@ export const DashboardLayout = () => {
                   {user?.name || "Anonymous"}
                 </h1>
               </div>
+
+              <h1 className="text-center text-white">
+                Balance :{" "}
+                <span
+                  onClick={() => setbalanceShow(!balanceShow)}
+                  className=" text-white rounded  bg-transparent  "
+                >
+                  {balance}
+                </span>
+              </h1>
               <div className="mb-4 py-2 md:mx-3 mx-1 border-b flex justify-center space-x-1 md:space-x-4 items-center text-white">
                 <button>
                   <BiSolidUserCircle size={25} />
@@ -205,7 +249,11 @@ export const DashboardLayout = () => {
                   <IoLogOut size={25} />
                 </button>
               </div>
-              {user?.role === "agent" ? agentMenu : adminMenu}
+              {user?.role === "agent"
+                ? agentMenu
+                : user?.role === "marchent"
+                ? marchentMenu
+                : adminMenu}
             </div>
 
             {/* Right Content with Scroll */}

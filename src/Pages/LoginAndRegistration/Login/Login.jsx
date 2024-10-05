@@ -17,6 +17,8 @@ export const Login = () => {
         ? navigate("/")
         : user.role === "agent"
         ? navigate("/agent")
+        : user.role === "marchent"
+        ? navigate("/marchent")
         : navigate("/admin");
     }
   }, [user]);

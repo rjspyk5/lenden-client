@@ -63,10 +63,12 @@ export default function CustomizableTable({
                               key={idx}
                               align="center"
                             >
-                              {value === "accountStatus" ? (
+                              {value === "accountStatus" ||
+                              value === "status" ? (
                                 <span
                                   className={`${
-                                    el[value] === "approved"
+                                    el[value] === "approved" ||
+                                    el[value] === "success"
                                       ? "  py-1 px-2 rounded-md  bg-[#6dff6d67] text-[#3efe3e]"
                                       : el[value] === "reject"
                                       ? " font-body py-1 px-2 rounded-md  bg-[#ff00004c] text-red-500"

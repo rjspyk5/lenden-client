@@ -24,6 +24,7 @@ import { Payment } from "../Pages/Payment/Payment";
 import { Loan } from "../Pages/Loan/Loan";
 import { AgentHome } from "../Pages/Dashboard/AgentDashboard/AgentHome";
 import { AdminHome } from "../Pages/Dashboard/Admin/AdminHome";
+import { MarchentWithdraw } from "../Pages/Dashboard/Marchent/MarchentWithdraw";
 
 export const Routing = createBrowserRouter([
   {
@@ -148,6 +149,16 @@ export const Routing = createBrowserRouter([
       {
         path: "depositreq",
         element: <DepositMoneyReq />,
+      },
+    ],
+  },
+  {
+    path: "/marchent",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "withdrawreq",
+        element: <MarchentWithdraw />,
       },
     ],
   },
