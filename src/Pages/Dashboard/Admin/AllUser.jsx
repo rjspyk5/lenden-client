@@ -3,6 +3,7 @@ import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 import CustomizableTable from "../../../Components/Table/CustomizableTable";
 import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
 import Swal from "sweetalert2";
+import { Fade } from "react-awesome-reveal";
 
 export const AllUser = () => {
   const axiosSequre = useAxiosSequre();
@@ -50,15 +51,17 @@ export const AllUser = () => {
   };
   return (
     <>
-      <SectionHeader heading="All Users" />
+      <Fade>
+        <SectionHeader heading="All Users" />
 
-      <CustomizableTable
-        data={data}
-        loading={isLoading}
-        headArray={head}
-        action={true}
-        handleAction={handleAction}
-      />
+        <CustomizableTable
+          data={data}
+          loading={isLoading}
+          headArray={head}
+          action={true}
+          handleAction={handleAction}
+        />
+      </Fade>
     </>
   );
 };

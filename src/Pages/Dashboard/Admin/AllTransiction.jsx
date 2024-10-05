@@ -4,6 +4,7 @@ import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 import { useAuth } from "../../../Hooks/useAuth";
 import CustomizableTable from "../../../Components/Table/CustomizableTable";
 import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
+import { Fade } from "react-awesome-reveal";
 
 export const AllTransiction = () => {
   const axiosSequre = useAxiosSequre();
@@ -29,8 +30,10 @@ export const AllTransiction = () => {
   ];
   return (
     <div>
-      <SectionHeader heading=" All Transition" />
-      <CustomizableTable data={data} loading={isLoading} headArray={head} />
+      <Fade>
+        <SectionHeader heading=" All Transition" />
+        <CustomizableTable data={data} loading={isLoading} headArray={head} />
+      </Fade>
     </div>
   );
 };

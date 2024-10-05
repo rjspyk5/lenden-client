@@ -4,6 +4,7 @@ import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
 import Swal from "sweetalert2";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 import { usePendingReq } from "../../../Hooks/usePendingReq";
+import { Fade } from "react-awesome-reveal";
 export const CashOutReq = () => {
   const {
     data: cashOutReqList,
@@ -24,14 +25,16 @@ export const CashOutReq = () => {
       .then(() => refetch());
   };
   return (
-    <div className="m-10 rounded-lg shadow-lg shadow-gray-500 ">
-      <SectionHeader heading="Cash Out Request" />
-      <CustomTable
-        handleButton={handleButton}
-        loading={isLoading}
-        data={cashOutReqList}
-        method="Cash Out"
-      />
-    </div>
+    <Fade>
+      <div className="m-10 rounded-lg shadow-lg shadow-gray-500 ">
+        <SectionHeader heading="Cash Out Request" />
+        <CustomTable
+          handleButton={handleButton}
+          loading={isLoading}
+          data={cashOutReqList}
+          method="Cash Out"
+        />
+      </div>
+    </Fade>
   );
 };

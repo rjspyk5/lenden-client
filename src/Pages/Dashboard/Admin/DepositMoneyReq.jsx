@@ -4,6 +4,7 @@ import CustomTable from "../../../Components/Table/CustomTable";
 import { SectionHeader } from "../../../Components/SectionHeader/SectionHeader";
 import Swal from "sweetalert2";
 import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
+import { Fade } from "react-awesome-reveal";
 
 export const DepositMoneyReq = () => {
   const { data, refetch, isLoading } = usePendingReq("deposit_money");
@@ -26,45 +27,47 @@ export const DepositMoneyReq = () => {
   };
 
   return (
-    <div>
-      {isLoading && (
-        <div className=" flex flex-col justify-center items-center">
-          <Backdrop
-            sx={(theme) => ({
-              color: "#fff",
-              zIndex: theme.zIndex.drawer + 1,
-              backgroundColor: "#b3acac9c",
-              backdropFilter: "blur(6px)",
-            })}
-            open={true}
-          >
-            <div className="flex flex-col  justify-center items-center ">
-              <CircularProgress
-                disableShrink
-                size={40}
-                thickness={4}
-                sx={{ color: "blue", marginLeft: "200px" }}
-              />
-
-              <h1 className="text-center mt-3 ml-52 font-bold text-[blue] text-4xl">
-                Loading........
-              </h1>
-            </div>
-          </Backdrop>
-        </div>
-      )}
+    <Fade>
       <div>
-        <SectionHeader heading=" Deposit Money Request" />
-        <div className="my-5 rounded-lg shadow shadow-gray-500 ">
-          <CustomTable
-            handleButton={handleButton}
-            refetch={refetch}
-            loading={isLoading}
-            data={data}
-            method="Deposit"
-          />
+        {isLoading && (
+          <div className=" flex flex-col justify-center items-center">
+            <Backdrop
+              sx={(theme) => ({
+                color: "#fff",
+                zIndex: theme.zIndex.drawer + 1,
+                backgroundColor: "#b3acac9c",
+                backdropFilter: "blur(6px)",
+              })}
+              open={true}
+            >
+              <div className="flex flex-col  justify-center items-center ">
+                <CircularProgress
+                  disableShrink
+                  size={40}
+                  thickness={4}
+                  sx={{ color: "blue", marginLeft: "200px" }}
+                />
+
+                <h1 className="text-center mt-3 ml-52 font-bold text-[blue] text-4xl">
+                  Loading........
+                </h1>
+              </div>
+            </Backdrop>
+          </div>
+        )}
+        <div>
+          <SectionHeader heading=" Deposit Money Request" />
+          <div className="my-5 rounded-lg shadow shadow-gray-500 ">
+            <CustomTable
+              handleButton={handleButton}
+              refetch={refetch}
+              loading={isLoading}
+              data={data}
+              method="Deposit"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 };
