@@ -84,14 +84,14 @@ export default function CustomTable({ method, data, loading, handleButton }) {
                             el._id,
                             el.senderNumber,
                             el.ReciverNumber,
-                            "cancel",
+                            "reject",
                             0,
                             method === "Withdraw" ? "withdraw_money" : null
                           )
                         }
                         className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg"
                       >
-                        Cancel
+                        Reject
                       </button>
                     </span>
                   </TableCell>

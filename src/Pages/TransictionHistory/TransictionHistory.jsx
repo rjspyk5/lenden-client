@@ -97,7 +97,7 @@ export const TransictionHistory = () => {
                               className={`${
                                 el.status === "success"
                                   ? "  p-2 rounded-md  bg-[#6dff6d67] text-[#3efe3e]"
-                                  : el.status === "cancel"
+                                  : el.status === "reject"
                                   ? " font-body p-2 rounded-md  bg-[#ff00004c] text-red-500"
                                   : "  font-body p-2 rounded-md  bg-[#254ef46a] text-[#4975f9]"
                               }`}

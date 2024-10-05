@@ -110,7 +110,7 @@ export const SendOrCashout = ({ methodparam }) => {
       return seterror("Number must be eleven digit");
     }
 
-    if (user?.accountStatus == "pending" || user?.accountStatus == "deactive") {
+    if (user?.accountStatus !== "approved") {
       return Swal.fire({
         icon: "error",
         text: "You can't do any transition because your account status is pending or deactive.Wait or contact with admin for active your account",

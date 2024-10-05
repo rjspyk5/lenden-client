@@ -7,21 +7,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#1c24bd",
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
-
 export default function CustomizableTable({
   data,
   loading,
   headArray,
   action,
+  handleAction,
 }) {
   return (
     <>
@@ -72,14 +63,14 @@ export default function CustomizableTable({
                               key={idx}
                               align="center"
                             >
-                              {value === "status" ? (
+                              {value === "accountStatus" ? (
                                 <span
                                   className={`${
-                                    el[value] === "success"
+                                    el[value] === "approved"
                                       ? "  py-1 px-2 rounded-md  bg-[#6dff6d67] text-[#3efe3e]"
-                                      : el[value] === "cancel"
+                                      : el[value] === "reject"
                                       ? " font-body py-1 px-2 rounded-md  bg-[#ff00004c] text-red-500"
-                                      : "   font-body py-1 px-2 rounded-md  bg-[#254ef46a] text-[#4975f9]"
+                                      : "font-body py-1 px-2 rounded-md  bg-[#254ef46a] text-[#4975f9]"
                                   } `}
                                 >
                                   {el[value]}
@@ -100,18 +91,48 @@ export default function CustomizableTable({
                           align="center"
                         >
                           <span className="space-x-2 space-y-1">
-                            <button className="btn bg-green-500 text-white rounded-md px-2 py-1 hover:bg-green-600 hover:shadow-green-300 hover:shadow-lg">
+                            <button
+                              onClick={() =>
+                                handleAction(
+                                  el.accountStatus === "pending"
+                                    ? "approved"
+                                    : el.accountStatus == "approved"
+                                    ? "deactive"
+                                    : "approved",
+                                  el._id
+                                )
+                              }
+                              className={`btn ${
+                                el.accountStatus === "pending"
+                                  ? "bg-green-500 hover:bg-green-600 hover:shadow-green-300"
+                                  : el.accountStatus == "approved"
+                                  ? "bg-[#2b050b] hover:bg-[#481119] hover:shadow-[#2b050b]"
+                                  : "bg-green-500 hover:bg-green-600 hover:shadow-green-300"
+                              } text-white rounded-md px-2 py-1   hover:shadow-lg`}
+                            >
                               {el.accountStatus === "pending"
-                                ? "Active"
-                                : el.accountStatus == "active"
-                                ? "Hold"
+                                ? "Approve"
+                                : el.accountStatus == "approved"
+                                ? "Deactive"
                                 : "Reactive"}
                             </button>
-                            <button className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg">
-                              {el.accountStatus === "pending"
-                                ? "Cancel"
-                                : "Delete"}
-                            </button>
+                            {el.accountStatus !== "delete" && (
+                              <button
+                                onClick={() =>
+                                  handleAction(
+                                    el.accountStatus === "pending"
+                                      ? "reject"
+                                      : "delete",
+                                    el._id
+                                  )
+                                }
+                                className="btn bg-red-500 text-white rounded-md px-2 py-1 hover:bg-red-600 hover:shadow-red-300 hover:shadow-lg"
+                              >
+                                {el.accountStatus === "pending"
+                                  ? "Reject"
+                                  : "Delete"}
+                              </button>
+                            )}
                           </span>
                         </TableCell>
                       )}
