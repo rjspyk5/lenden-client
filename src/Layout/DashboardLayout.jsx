@@ -12,9 +12,13 @@ import { RiFileHistoryLine } from "react-icons/ri";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Notification } from "../Components/Notification/Notification";
 import { HiOutlineCash } from "react-icons/hi";
+import { useState } from "react";
+import { useAxiosSequre } from "../Hooks/useAxiosSequre";
+import { useQuery } from "@tanstack/react-query";
 
 export const DashboardLayout = () => {
   const { user, logout } = useAuth();
+  const [showNotification, setshowNotification] = useState(false);
   const navigate = useNavigate();
 
   const menuItemClass =
@@ -152,6 +156,22 @@ export const DashboardLayout = () => {
     </ul>
   );
 
+  const axiosSequre = useAxiosSequre();
+  const { data, refetch, isLoading } = useQuery({
+    queryKey: ["notification"],
+    queryFn: async () => {
+      const result = await axiosSequre.get(`/notifications/${user.number}`);
+      return result?.data;
+    },
+  });
+  const unreadNotificationCount = data?.filter((el) => el.status === "unread");
+  const handleRead = async (id) => {
+    const result = await axiosSequre.patch(`/notification/${id}`);
+    if (result?.data?.modifiedCount) {
+      refetch();
+    }
+  };
+
   return (
     <Fade>
       <div
@@ -190,10 +210,24 @@ export const DashboardLayout = () => {
             {/* Right Content with Scroll */}
             <div className="ml-[20%] flex-grow max-h-screen overflow-y-auto px-3 md:px-6">
               <div className="sticky top-0 z-50 backdrop-blur-3xl bg-[#23232324] flex justify-end py-2 pr-1">
-                <IoIosNotificationsOutline color="skyBlue" size={35} />
-                <div className="max-h-[500px] border hidden border-blue-500 overflow-auto w-96 right-5 top-12 absolute backdrop-blur-3xl rounded-lg z-50">
-                  <Notification number={user?.number} />
-                </div>
+                <span
+                  className="btn cursor-pointer "
+                  onClick={() => setshowNotification(!showNotification)}
+                >
+                  <IoIosNotificationsOutline color="skyBlue" size={35} />
+                </span>
+                {showNotification && (
+                  <Notification
+                    handleRead={handleRead}
+                    classs={"right-5 top-12"}
+                    data={data}
+                  />
+                )}
+                {unreadNotificationCount?.length > 0 && (
+                  <span className="absolute top-[4px] right-[4px] px-[6px] text-sm animate-pulse rounded-full bg-red-500 text-white">
+                    {unreadNotificationCount?.length}
+                  </span>
+                )}
               </div>
 
               <Outlet />

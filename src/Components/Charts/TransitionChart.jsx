@@ -11,7 +11,7 @@ const TransitionChart = ({ graphData }) => {
   const [options, setOptions] = useState({
     chart: {
       type: "area",
-      height: 300,
+      height: 350,
       background: "#f4f4f",
       zoom: {
         enabled: false,

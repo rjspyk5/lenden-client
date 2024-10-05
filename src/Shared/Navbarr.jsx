@@ -5,6 +5,8 @@ import { useState } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Notification } from "../Components/Notification/Notification";
 import { useAuth } from "../Hooks/useAuth";
+import { useAxiosSequre } from "../Hooks/useAxiosSequre";
+import { useQuery } from "@tanstack/react-query";
 
 export const Navbarr = () => {
   const { user } = useAuth();
@@ -14,7 +16,17 @@ export const Navbarr = () => {
   const balance = userDetails
     ? parseFloat(userDetails?.amount.toFixed(2))
     : "Loading...";
-
+  const axiosSequre = useAxiosSequre();
+  const { data, refetch, isLoading } = useQuery({
+    queryKey: ["notification"],
+    queryFn: async () => {
+      const result = await axiosSequre.get(`/notifications/${user.number}`);
+      return result?.data;
+    },
+  });
+  const handleRead = async (id) => {
+    console.log(id);
+  };
   return (
     <div className=" shadow-xl  backdrop-blur-2xl bg-[#e1dcdc41] border-blue-gray-300 z-50  py-2 sticky top-0">
       <div className="flex justify-between lg:max-w-[1100px] lg:mx-auto mx-5 items-center ">
@@ -33,9 +45,12 @@ export const Navbarr = () => {
             <IoIosNotificationsOutline color="skyBlue" size={35} />
             <AvatarDropdown />
           </div>
-          <div className="h-[500px] hidden border border-blue-500 overflow-auto  w-96 right-16 absolute backdrop-blur-3xl rounded-lg z-50">
-            <Notification number={user?.number} />
-          </div>
+
+          <Notification
+            handleRead={handleRead}
+            classs={"right-16"}
+            data={data}
+          />
         </div>
       </div>
     </div>

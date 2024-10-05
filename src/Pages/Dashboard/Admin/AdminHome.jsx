@@ -10,8 +10,10 @@ import ExpenseProfit from "../../../Components/Charts/ExpenseProfit";
 import { useQuery } from "@tanstack/react-query";
 import { useAxiosSequre } from "./../../../Hooks/useAxiosSequre";
 import { Fade } from "react-awesome-reveal";
+import { useNavigate } from "react-router-dom";
 
 export const AdminHome = () => {
+  const navigate = useNavigate();
   const axiosSequre = useAxiosSequre();
   const { data, isLoading, isError } = useQuery({
     queryKey: ["adminDashboard"],
@@ -161,13 +163,16 @@ export const AdminHome = () => {
         {/* Right Section - Top Balances and Recent Transactions */}
         <div className="lg:col-span-3 space-y-5">
           {/* Recent Transactions */}
-          <div className="bg-gradient-to-br from-[#5f5f5f7b] to-[#97989736] backdrop-blur-md shadow-sm rounded-lg p-2">
+          <div
+            onClick={() => navigate("/admin//history")}
+            className="bg-gradient-to-br cursor-pointer from-[#5f5f5f7b] to-[#97989736] backdrop-blur-md shadow-sm rounded-lg p-2"
+          >
             <h2 className="text-lg font-semibold text-white mb-2 text-center">
               Recent Transactions
             </h2>
             <ul className="space-y-1 text-white lg:max-h-60">
               {transactions.map((transaction, index) => (
-                <li className="text-lg" key={index}>
+                <li className="text" key={index}>
                   <span className=" text-white">
                     • {transaction.sender || transaction.ReciverNumber}
                   </span>
@@ -199,19 +204,19 @@ export const AdminHome = () => {
             </ul>
           </div>
           {/* Top Balances */}
-          <div className="from-[#5f5f5f7b] to-[#97989736] bg-gradient-to-br backdrop-blur-md shadow-sm rounded-lg p-2">
+          <div
+            onClick={() => navigate("/admin/users")}
+            className="from-[#5f5f5f7b] to-[#97989736] cursor-pointer  bg-gradient-to-br backdrop-blur-md shadow-sm rounded-lg p-2"
+          >
             <h2 className="text-lg font-semibold text-white mb-2 text-center">
               Top Balances
             </h2>
             {/* For small screens, display as cards */}
-            <div className="lg:space-y-2 space-y-3  overflow-y-auto">
+            <div className=" space-y-3  overflow-y-auto">
               {" "}
               {/* Adjusted height */}
               {topBalances.map((user, index) => (
-                <div
-                  key={index}
-                  className=" p-3 lg:p-1 border rounded-lg shadow-md"
-                >
+                <div key={index} className=" p-2  border rounded-lg shadow-md">
                   <div className="flex justify-between items-center ">
                     <span className="text-white font-semibold">Name:</span>
                     <span className="text-white">{user.name}</span>
