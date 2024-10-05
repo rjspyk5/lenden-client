@@ -165,7 +165,8 @@ export const DashboardLayout = () => {
     },
   });
   const unreadNotificationCount = data?.filter((el) => el.status === "unread");
-  const handleRead = async (id) => {
+  const handleRead = async (e, id) => {
+    e.stopPropagation();
     const result = await axiosSequre.patch(`/notification/${id}`);
     if (result?.data?.modifiedCount) {
       refetch();
