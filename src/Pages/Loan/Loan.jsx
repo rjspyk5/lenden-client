@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useUser } from "../../Hooks/useUser";
+import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
 
 export const Loan = () => {
   const [amount, setAmount] = useState("");
@@ -11,6 +13,8 @@ export const Loan = () => {
   const [monthlyPayment, setMonthlyPayment] = useState(0);
   const [message, setMessage] = useState("");
   const [isAgreed, setIsAgreed] = useState(false); // Agree checkbox state
+  const { user } = useUser();
+  const axiosSequre = useAxiosSequre();
 
   // Interest calculation logic based on duration
   useEffect(() => {
@@ -42,10 +46,11 @@ export const Loan = () => {
       interestRate,
       totalAmount,
       monthlyPayment,
+      number: user?.number,
     };
 
     // try {
-    //   const response = await axios.post("/api/loan-request", loanData);
+    //   const response = await axiosSequre.post("/api/loanreq", loanData);
     //   if (response.status === 200) {
     //     setMessage("Loan request sent successfully!");
     //     setAmount("");
