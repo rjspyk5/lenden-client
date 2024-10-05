@@ -5,7 +5,7 @@ export const usePendingReq = (method) => {
   const { user } = useAuth();
   const axiossequre = useAxiosSequre();
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ["pendingreq", user],
+    queryKey: ["pendingreqq", user],
     queryFn: async () => {
       const result = await axiossequre.get(
         `/pendingreq/${user?.number}?method=${method}`

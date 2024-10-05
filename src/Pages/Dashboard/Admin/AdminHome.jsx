@@ -164,7 +164,7 @@ export const AdminHome = () => {
         <div className="lg:col-span-3 space-y-5">
           {/* Recent Transactions */}
           <div
-            onClick={() => navigate("/admin//history")}
+            onClick={() => navigate("/admin/history")}
             className="bg-gradient-to-br cursor-pointer from-[#5f5f5f7b] to-[#97989736] backdrop-blur-md shadow-sm rounded-lg p-2"
           >
             <h2 className="text-lg font-semibold text-white mb-2 text-center">

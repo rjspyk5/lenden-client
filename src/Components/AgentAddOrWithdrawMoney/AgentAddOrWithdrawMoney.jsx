@@ -17,17 +17,8 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
   const axiosSequre = useAxiosSequre();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handleMouseUpPassword = (event) => {
-    event.preventDefault();
-  };
+  const route = user?.role === "agent" ? "/agent/history" : "/marchent";
   const {
     register,
     handleSubmit,
@@ -40,12 +31,18 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
 
     try {
       const result = await axiosSequre.post("/transactions", data);
-      if (result) {
+
+      if (result.data) {
         Swal.fire({
           icon: "success",
           text: `Req send successfully`,
         });
-        navigate("/agent/history");
+        navigate(route);
+      } else {
+        Swal.fire({
+          icon: "error",
+          text: `Insuffeciant Balance`,
+        });
       }
     } catch (error) {
       console.log(error);

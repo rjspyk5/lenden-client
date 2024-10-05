@@ -27,7 +27,7 @@ export const DashboardLayout = () => {
   const balance = userDetails
     ? parseFloat(userDetails?.amount.toFixed(1))
     : "Loading...";
-  console.log(balance);
+
   const menuItemClass =
     "hover:bg-[#1C24BD] hover:shadow-2xl hover:shadow-blue-500 *:text-white *:py-2 *:px-1 *:md:py-3 *:md::px-4 *:block *:rounded-r-3xl hover:rounded-r-3xl ";
   const activeClass =
@@ -258,7 +258,7 @@ export const DashboardLayout = () => {
 
             {/* Right Content with Scroll */}
             <div className="ml-[20%] flex-grow max-h-screen overflow-y-auto px-3 md:px-6">
-              <div className="sticky top-0 z-50 backdrop-blur-3xl bg-[#23232324] flex justify-end py-2 pr-1">
+              <div className="sticky top-0 z-50  flex justify-end py-2 pr-1">
                 <span
                   className="btn cursor-pointer "
                   onClick={() => setshowNotification(!showNotification)}

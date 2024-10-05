@@ -5,10 +5,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Paper } from "@mui/material";
-
-const head = ["Receiver Number", "Amount", "Action"];
+import { useAuth } from "./../../Hooks/useAuth";
 
 export default function CustomTable({ method, data, loading, handleButton }) {
+  const { user } = useAuth();
+  const roleBasedHead =
+    user?.role === "admin" ? "Sender Number" : "Receiver Number";
+  const head = [roleBasedHead, "Amount", "Action"];
   return (
     <div className="relative min-h-[300px] md:min-h-[465px]  rounded-[10px] overflow-hidden">
       <div className="absolute inset-0 backdrop-blur-2xl bg-[#7d7d7d50]" />
@@ -51,7 +54,9 @@ export default function CustomTable({ method, data, loading, handleButton }) {
                     component="th"
                     scope="row"
                   >
-                    {el?.ReciverNumber}
+                    {user?.role === "admin"
+                      ? el?.senderNumber
+                      : el?.ReciverNumber}
                   </TableCell>
                   <TableCell
                     sx={{ padding: { xs: "6px", md: "9px" }, color: "white" }}
