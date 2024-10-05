@@ -155,30 +155,37 @@ export const AdminHome = () => {
       <div className="lg:col-span-3 space-y-5">
         {/* Recent Transactions */}
         <div className="bg-gradient-to-br from-[#5f5f5f7b] to-[#97989736] backdrop-blur-md shadow-sm rounded-lg p-2">
-          <h2 className="text-lg font-semibold text-white mb-2">
+          <h2 className="text-lg font-semibold text-white mb-2 text-center">
             Recent Transactions
           </h2>
           <ul className="space-y-1 text-white lg:max-h-60">
             {transactions.map((transaction, index) => (
               <li className="text-lg" key={index}>
                 <span className=" text-white">
-                  {transaction.sender || transaction.ReciverNumber}
+                  • {transaction.sender || transaction.ReciverNumber}
                 </span>
                 {transaction.method === "withdraw_money"
-                  ? " wants withdraw "
+                  ? " withdraw "
                   : transaction.method === "deposit_money"
                   ? " wants deposit "
                   : transaction.method === "send_money"
                   ? " send to a user "
                   : " cashout "}
+                {Number(transaction.amount).toFixed()} tk
                 <span
                   className={
-                    transaction.method === "withdraw_money"
+                    transaction.adminIncome || transaction.charge
                       ? "text-green-400"
-                      : "text-red-400"
+                      : "text-blue-400"
                   }
                 >
-                  {Number(transaction.amount).toFixed()} tk
+                  &nbsp; (+
+                  {transaction.adminIncome ||
+                    (transaction.charge && transaction.method === "send_money"
+                      ? transaction.charge
+                      : parseInt(transaction.charge) / 2) ||
+                    0}
+                  )
                 </span>
               </li>
             ))}
@@ -186,7 +193,7 @@ export const AdminHome = () => {
         </div>
         {/* Top Balances */}
         <div className="from-[#5f5f5f7b] to-[#97989736] bg-gradient-to-br backdrop-blur-md shadow-sm rounded-lg p-2">
-          <h2 className="text-lg font-semibold text-white mb-3">
+          <h2 className="text-lg font-semibold text-white mb-2 text-center">
             Top Balances
           </h2>
           {/* For small screens, display as cards */}
