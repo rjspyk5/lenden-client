@@ -27,7 +27,7 @@ export const Notification = ({ data, classs, handleRead }) => {
 
   return (
     <div
-      className={`max-h-[500px] border  border-blue-500 overflow-auto w-96 bg-[#1c1c1cda]   absolute backdrop-blur-3xl rounded-lg z-50 ${classs}`}
+      className={`max-h-[500px] border  border-blue-500 overflow-auto md:w-96 w-72 bg-[#1c1c1cda]   absolute backdrop-blur-3xl rounded-lg z-50 ${classs}`}
     >
       <ul className="space-y-2  p-2 ">
         {data?.map((el) => {
