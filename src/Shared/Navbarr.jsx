@@ -7,6 +7,7 @@ import { Notification } from "../Components/Notification/Notification";
 import { useAuth } from "../Hooks/useAuth";
 import { useAxiosSequre } from "../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
+import logo from "../assets/images/logofull.png";
 
 export const Navbarr = () => {
   const { user } = useAuth();
@@ -36,7 +37,7 @@ export const Navbarr = () => {
     <div className=" shadow-xl  backdrop-blur-2xl bg-[#e1dcdc41] border-blue-gray-300 z-50  py-2 sticky top-0">
       <div className="flex justify-between lg:max-w-[1100px] lg:mx-auto mx-5 items-center ">
         <Link className="text-white text-xl md:text-2xl font-bold" to="/">
-          Lenden
+          <img className="w-20 md:w-36 sm:w-28" src={logo} alt="logo" />
         </Link>
         <h1
           onClick={() => setbalanceShow(!balanceShow)}
