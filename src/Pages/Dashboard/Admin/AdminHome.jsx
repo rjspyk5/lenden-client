@@ -171,7 +171,7 @@ export const AdminHome = () => {
               Recent Transactions
             </h2>
             <ul className="space-y-1 text-white lg:max-h-60">
-              {transactions.map((transaction, index) => (
+              {transactions?.map((transaction, index) => (
                 <li className="text" key={index}>
                   <span className=" text-white">
                     • {transaction.sender || transaction.ReciverNumber}
@@ -192,10 +192,13 @@ export const AdminHome = () => {
                     }
                   >
                     &nbsp; (+
-                    {transaction.adminIncome ||
+                    {(transaction.adminIncome
+                      ? parseFloat(transaction.adminIncome).toFixed(2)
+                      : transaction.adminIncome) ||
                       (transaction.charge && transaction.method === "send_money"
-                        ? transaction.charge
-                        : parseInt(transaction.charge) / 2) ||
+                        ? parseFloat(transaction.charge).toFixed(2)
+                        : parseFloat(parseInt(transaction.charge) / 2)
+                      ).toFixed(2) ||
                       0}
                     )
                   </span>
