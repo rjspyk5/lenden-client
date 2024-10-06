@@ -15,7 +15,7 @@ export const Navbarr = () => {
   const { userDetails } = useUser();
   const [showNotification, setshowNotification] = useState(false);
   const balance = userDetails
-    ? parseFloat(userDetails?.amount.toFixed(2))
+    ? parseFloat(userDetails?.amount?.toFixed(2))
     : "Loading...";
   const axiosSequre = useAxiosSequre();
   const { data, refetch, isLoading } = useQuery({

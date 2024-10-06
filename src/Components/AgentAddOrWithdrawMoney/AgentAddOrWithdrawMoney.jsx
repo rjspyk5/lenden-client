@@ -31,8 +31,7 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
 
     try {
       const result = await axiosSequre.post("/transactions", data);
-
-      if (result.data) {
+      if (result?.data?.result3?.insertedId) {
         Swal.fire({
           icon: "success",
           text: `Req send successfully`,
@@ -41,7 +40,7 @@ export const AgentAddOrWithdrawMoney = ({ method }) => {
       } else {
         Swal.fire({
           icon: "error",
-          text: `Insuffeciant Balance`,
+          text: result?.data?.result,
         });
       }
     } catch (error) {

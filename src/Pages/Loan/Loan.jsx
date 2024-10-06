@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useUser } from "../../Hooks/useUser";
 import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
+import { useAuth } from "./../../Hooks/useAuth";
 
 export const Loan = () => {
   const [amount, setAmount] = useState("");
@@ -13,7 +14,7 @@ export const Loan = () => {
   const [monthlyPayment, setMonthlyPayment] = useState(0);
   const [message, setMessage] = useState("");
   const [isAgreed, setIsAgreed] = useState(false); // Agree checkbox state
-  const { user } = useUser();
+  const { user } = useAuth();
   const axiosSequre = useAxiosSequre();
 
   // Interest calculation logic based on duration
@@ -31,10 +32,10 @@ export const Loan = () => {
       }
 
       const interest = amount * baseRate * (duration / 12); // simple interest formula
-      setInterestRate((baseRate * 100).toFixed(2)); // Update interest rate in percentage
+      setInterestRate((baseRate * 100)?.toFixed(2)); // Update interest rate in percentage
       const total = parseFloat(amount) + interest;
-      setTotalAmount(total.toFixed(2)); // Update total amount to be repaid
-      setMonthlyPayment((total / duration).toFixed(2)); // Update monthly payment
+      setTotalAmount(total?.toFixed(2)); // Update total amount to be repaid
+      setMonthlyPayment((total / duration)?.toFixed(2)); // Update monthly payment
     }
   }, [amount, duration]);
 
@@ -49,23 +50,29 @@ export const Loan = () => {
       number: user?.number,
     };
 
-    // try {
-    //   const response = await axiosSequre.post("/api/loanreq", loanData);
-    //   if (response.status === 200) {
-    //     setMessage("Loan request sent successfully!");
-    //     setAmount("");
-    //     setReason("");
-    //     setDuration("");
-    //     setInterestRate(0);
-    //     setTotalAmount(0);
-    //     setMonthlyPayment(0);
-    //   } else {
-    //     setMessage("Failed to send loan request.");
-    //   }
-    // } catch (error) {
-    //   console.error("Error sending loan request:", error);
-    //   setMessage("An error occurred while sending the loan request.");
-    // }
+    try {
+      const response = await axiosSequre.post("/loanreq", loanData);
+      if (response.status === 200) {
+        Swal.fire({
+          title: "Success!",
+          text: "Your loan request has been submitted successfully.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        setMessage("Loan request sent successfully!");
+        setAmount("");
+        setReason("");
+        setDuration("");
+        setInterestRate(0);
+        setTotalAmount(0);
+        setMonthlyPayment(0);
+      } else {
+        setMessage("Failed to send loan request.");
+      }
+    } catch (error) {
+      console.error("Error sending loan request:", error);
+      setMessage("An error occurred while sending the loan request.");
+    }
   };
 
   const confirmSubmit = (e) => {

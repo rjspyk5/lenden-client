@@ -5,29 +5,59 @@ import { useAxiosSequre } from "../../../Hooks/useAxiosSequre";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { usePendingReq } from "../../../Hooks/usePendingReq";
 import { Fade } from "react-awesome-reveal";
+import { useState } from "react";
+import { useUser } from "../../../Hooks/useUser";
 export const CashInReq = () => {
   const { data, refetch, isLoading } = usePendingReq("cash_in");
-
+  const [customLoading, setcustomLoading] = useState(false);
+  const { refetch: balanceRefetch, isLoading: balanceLoading } = useUser();
   const axiossequre = useAxiosSequre();
   const handleButton = (id, sender, rcver, action, amount, method) => {
+    setcustomLoading(true);
     axiossequre
       .patch(
         `/pendingreq/${id}?status=${action}&sender=${sender}&rcver=${rcver}&amount=${amount}&method=${method}`
       )
-      .then((res) => {
-        return refetch();
-      })
-      .then(() =>
+      .then(() => balanceRefetch())
+      .then((res) => refetch())
+      .then(() => {
+        setcustomLoading(false);
         Swal.fire({
           icon: "success",
           text: `Success`,
-        })
-      );
+        });
+      });
   };
 
   return (
     <>
       <Fade>
+        {customLoading && (
+          <div className=" flex flex-col justify-center items-center">
+            <Backdrop
+              sx={(theme) => ({
+                color: "#fff",
+                zIndex: theme.zIndex.drawer + 1,
+                backgroundColor: "#b3acac9c",
+                backdropFilter: "blur(6px)",
+              })}
+              open={true}
+            >
+              <div className="flex flex-col  justify-center items-center ">
+                <CircularProgress
+                  disableShrink
+                  size={40}
+                  thickness={4}
+                  sx={{ color: "white", marginLeft: "200px" }}
+                />
+
+                <h1 className="text-center mt-3 ml-52 font-bold text-[white] text-4xl">
+                  Loading........
+                </h1>
+              </div>
+            </Backdrop>
+          </div>
+        )}
         <SectionHeader heading="Cash In Request" />
         <div className=" my-5 rounded-lg shadow shadow-gray-500 ">
           <div>
