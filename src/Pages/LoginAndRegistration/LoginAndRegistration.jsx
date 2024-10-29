@@ -8,7 +8,7 @@ import {
 
 import { Login } from "./Login/Login";
 import { Registration } from "./Registration/Registration";
-import bg from "../../../public/img/bg2.jpg";
+import bg from "/img/bg2.jpg";
 import { Fade } from "react-awesome-reveal";
 
 export const LoginAndRegistration = () => {

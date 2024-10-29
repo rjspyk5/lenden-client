@@ -9,6 +9,9 @@ export const UserPrivateRoute = ({ children }) => {
     return <Loading />;
   }
   if (!loading && user) {
+    if (user.role !== "user") {
+      return <Navigate to={`/${user?.role}`} />;
+    }
     return children;
   }
   return <Navigate to="/login" />;

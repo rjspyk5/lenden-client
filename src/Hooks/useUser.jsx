@@ -11,7 +11,7 @@ export const useUser = () => {
     isLoading,
     isPending,
   } = useQuery({
-    queryKey: [user],
+    queryKey: ["user"],
     queryFn: async () => {
       const result = await axiosPublic.get(
         `/user?emailOrNumber=${user?.email || user?.number}`
