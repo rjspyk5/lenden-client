@@ -54,7 +54,7 @@ export function AvatarDropdown() {
             alt="tania andrew"
             color="blue-gray"
             className=" p-0.5"
-            src="https://docs.material-tailwind.com/img/face-2.jpg"
+            src="/user.jpg"
           />
         </Button>
       </MenuHandler>
