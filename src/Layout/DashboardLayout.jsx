@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useAxiosSequre } from "../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
 import { useUser } from "../Hooks/useUser";
+import { DrawerSection } from "../Components/Drawer/Drawer";
 
 export const DashboardLayout = () => {
   const { user, logout } = useAuth();
@@ -206,7 +207,6 @@ export const DashboardLayout = () => {
       refetch();
     }
   };
-
   return (
     <Fade>
       <div
@@ -216,7 +216,7 @@ export const DashboardLayout = () => {
         <div className="backdrop-blur min-h-screen">
           <div className="flex">
             {/* Sidebar */}
-            <div className="w-[20%] fixed top-0 h-[100%] bg-gradient-to-br bg-[#71707065]">
+            <div className="w-[20%] hidden  lg:block fixed top-0 h-[100%] bg-gradient-to-br bg-[#71707065]">
               <div className="flex justify-center items-center flex-col pt-5 pb-1 mx-3">
                 <AvatarDropdown />
                 <h1 className="text-center text-white mt-2 md:text-base">
@@ -257,8 +257,13 @@ export const DashboardLayout = () => {
             </div>
 
             {/* Right Content with Scroll */}
-            <div className="ml-[20%] flex-grow max-h-screen overflow-y-auto px-3 md:px-6">
-              <div className="sticky top-0 z-50  flex justify-end py-2 pr-1">
+            <div className="lg:ml-[20%] ml-0 flex-grow max-h-screen overflow-y-auto px-3 md:px-6">
+              <div className="sticky top-0 z-50  flex justify-between lg:justify-end py-2 pr-1">
+            <span className="lg:hidden">  <DrawerSection menu= {user?.role === "agent"
+                ? agentMenu
+                : user?.role === "marchent"
+                ? marchentMenu
+                : adminMenu} /></span>
                 <span
                   className="btn cursor-pointer "
                   onClick={() => setshowNotification(!showNotification)}
