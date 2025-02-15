@@ -137,7 +137,7 @@ export const AdminHome = () => {
             </div>
 
             {/* Third Card - Total Users */}
-            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#18eb0dda] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
+            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#eb920dda] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
               <div className="flex items-center mb-4">
                 <FaUsers className="text-white mr-3 text-2xl" />
                 <h2 className="text-lg font-semibold text-white">
