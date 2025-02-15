@@ -65,7 +65,7 @@ export const AdminHome = () => {
           {/* Financial and User Data Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {/* First Card - Financial Summary */}
-            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#1d11c4da] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
+            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#1c89a4da] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
               <div>
                 <div className="flex items-center mb-4">
                   <FaMoneyBillWave className="text-white mr-3 text-2xl" />
@@ -137,7 +137,7 @@ export const AdminHome = () => {
             </div>
 
             {/* Third Card - Total Users */}
-            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#eb920dda] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
+            <div className="from-[#5f5f5f7b] bg-gradient-to-br to-[#eb9d0dda] backdrop-blur-md shadow-sm rounded-lg p-5 flex flex-col justify-between">
               <div className="flex items-center mb-4">
                 <FaUsers className="text-white mr-3 text-2xl" />
                 <h2 className="text-lg font-semibold text-white">
