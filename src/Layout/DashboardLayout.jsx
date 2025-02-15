@@ -41,9 +41,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <RxDashboard size={25} />
-            <span className="hidden md:block pl-2 "> Dashboard</span>
+            <span className="pl-2"> Dashboard</span>
           </span>
         </NavLink>
       </li>
@@ -53,9 +53,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <PiHandWithdraw size={25} />
-            <span className="hidden md:block pl-2"> Withdraw Request</span>
+            <span className="pl-2"> Withdraw Request</span>
           </span>
         </NavLink>
       </li>
@@ -69,9 +69,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <RxDashboard size={25} />
-            <span className="hidden md:block pl-2 "> Dashboard</span>
+            <span className="pl-2"> Dashboard</span>
           </span>
         </NavLink>
       </li>
@@ -81,9 +81,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <PiHandDeposit size={25} />
-            <span className="hidden md:block pl-2"> Deposit Request</span>
+            <span className="pl-2"> Deposit Request</span>
           </span>
         </NavLink>
       </li>
@@ -93,9 +93,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <PiHandWithdraw size={25} />
-            <span className="hidden md:block pl-2"> Withdraw Request</span>
+            <span className="pl-2"> Withdraw Request</span>
           </span>
         </NavLink>
       </li>
@@ -105,9 +105,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <PiUsersThree size={25} />
-            <span className="hidden md:block pl-2"> All Users</span>
+            <span className="pl-2"> All Users</span>
           </span>
         </NavLink>
       </li>
@@ -117,9 +117,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <RiFileHistoryLine size={25} />
-            <span className="hidden md:block pl-2"> All Transactions</span>
+            <span className="pl-2"> All Transactions</span>
           </span>
         </NavLink>
       </li>
@@ -134,9 +134,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <RxDashboard size={25} />
-            <span className="hidden md:block pl-2"> Dashboard</span>
+            <span className="pl-2"> Dashboard</span>
           </span>
         </NavLink>
       </li>
@@ -146,9 +146,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <HiOutlineCash size={25} />
-            <span className="hidden md:block pl-2"> Cash In Req</span>
+            <span className="pl-2"> Cash In Req</span>
           </span>
         </NavLink>
       </li>
@@ -158,9 +158,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <PiHandWithdraw size={25} />
-            <span className="hidden md:block pl-2"> Deposit Money</span>
+            <span className="pl-2"> Deposit Money</span>
           </span>
         </NavLink>
       </li>
@@ -170,9 +170,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <PiHandDeposit size={25} />
-            <span className="hidden md:block pl-2"> Withdraw Money</span>
+            <span className="pl-2"> Withdraw Money</span>
           </span>
         </NavLink>
       </li>
@@ -182,9 +182,9 @@ export const DashboardLayout = () => {
           className={({ isActive }) => (isActive ? activeClass : "")}
           end
         >
-          <span className="flex  items-center justify-center md:justify-start">
+          <span className="flex items-center justify-start">
             <RiFileHistoryLine size={25} />
-            <span className="hidden md:block pl-2"> Transaction History</span>
+            <span className="pl-2"> Transaction History</span>
           </span>
         </NavLink>
       </li>
