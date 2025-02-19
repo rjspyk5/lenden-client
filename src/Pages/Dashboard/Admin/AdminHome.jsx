@@ -6,7 +6,6 @@ import {
   FaArrowDown,
 } from "react-icons/fa";
 import TransitionChart from "../../../Components/Charts/TransitionChart";
-import ExpenseProfit from "../../../Components/Charts/ExpenseProfit";
 import { useQuery } from "@tanstack/react-query";
 import { useAxiosSequre } from "./../../../Hooks/useAxiosSequre";
 import { Fade } from "react-awesome-reveal";
@@ -86,7 +85,7 @@ export const AdminHome = () => {
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 font-medium text-white">
-                        Total Expense:
+                        Total Expense :
                       </td>
                       <td className="py-2 text-white">
                         {Number(expense).toFixed(2)}Tk
