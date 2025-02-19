@@ -255,7 +255,7 @@ export const DashboardLayout = () => {
                 : user?.role === "marchent"
                 ? marchentMenu
                 : adminMenu}
-                <button className="absolute left-1/2 w-[90%] -translate-x-1/2 bottom-4 text-white rounded-md bg-red-400 px-4 py-3 btn">Logout</button>
+                {/* <button className="absolute left-1/2 w-[90%] -translate-x-1/2 bottom-4 text-white rounded-md bg-red-400 px-4 py-3 btn">Logout</button> */}
              
          
             </div>

@@ -26,8 +26,8 @@ export function DrawerSection({menu}) {
  
   return (
     <React.Fragment className="relative">
-      <button className="p-2 rounded-md hover:bg-gray-200 transition-colors" onClick={openDrawer}>
-        <GiHamburgerMenu size={24} className="text-gray-700"/>
+      <button className="p-2 rounded-md  " onClick={openDrawer}>
+        <GiHamburgerMenu size={24} className="text-white transition-colors hover:text-[#c6c6c6] "/>
       </button>
       <Drawer 
         open={open} 
@@ -87,12 +87,7 @@ export function DrawerSection({menu}) {
         <div className="">
           {menu}
         </div>
-        
-        <div className="absolute bottom-4 left-4 right-4">
-          <Button className="w-full" size="sm">
-            Documentation
-          </Button>
-        </div>
+
       </Drawer>
     </React.Fragment>
   );
