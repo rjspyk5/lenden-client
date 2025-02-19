@@ -233,22 +233,26 @@ export const DashboardLayout = () => {
                   {balance}
                 </span>
               </h1>
-              <div className="mb-4 py-2 md:mx-3 mx-1 border-b flex justify-center space-x-1 md:space-x-4 items-center text-white">
-                <button>
-                  <BiSolidUserCircle size={25} />
-                </button>
-                <button>
-                  <LiaEdit size={25} />
-                </button>
-                <button
-                  onClick={() => {
-                    logout();
-                    navigate("/login");
-                  }}
-                >
-                  <IoLogOut size={25} />
-                </button>
-              </div>
+             
+                   <div className="mb-4 py-2 md:mx-3 mx-1 border-b flex justify-center space-x-1 md:space-x-4 items-center text-white">
+                           <button className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full">
+                             <BiSolidUserCircle size={25} className="text-white" />
+                           </button>
+                           <button className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full">
+                             <LiaEdit size={25} className="text-white" />
+                           </button>
+                           <button
+                             className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full cursor-pointer"
+                             onClick={() => {
+                               logout();
+                               navigate("/login");
+                           
+                             }}
+                           >
+                             <IoLogOut size={25} className="text-red-400" />
+                           </button>
+                         </div>
+             
            
               {user?.role === "agent"
                 ? agentMenu

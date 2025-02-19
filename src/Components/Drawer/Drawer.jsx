@@ -65,21 +65,21 @@ export function DrawerSection({menu}) {
             Balance: {balance}
           </h2>
           <div className="flex justify-center space-x-4 mt-1">
-            <button className="p-2 hover:bg-gray-100 rounded-full">
-              <BiSolidUserCircle size={25} className="text-gray-700" />
+            <button className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full">
+              <BiSolidUserCircle size={25} className="text-white" />
             </button>
-            <button className="p-2 hover:bg-gray-100 rounded-full">
-              <LiaEdit size={25} className="text-gray-700" />
+            <button className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full">
+              <LiaEdit size={25} className="text-white" />
             </button>
-            <button 
-              className="p-2 hover:bg-gray-100 rounded-full"
+            <button
+              className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full cursor-pointer"
               onClick={() => {
                 logout();
                 navigate("/login");
                 closeDrawer();
               }}
             >
-              <IoLogOut size={25} className="text-gray-700" />
+              <IoLogOut size={25} className="text-red-400" />
             </button>
           </div>
         </div>
