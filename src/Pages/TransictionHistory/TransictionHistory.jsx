@@ -30,7 +30,7 @@ export const TransictionHistory = () => {
         <SectionHeader heading="Transition History" />
         {isLoading ? (
           <Loading />
-        ) : (
+        ) :data?.length<1?<div className="min-h-[300px] md:min-h-[420px] flex justify-center items-center"><p className="text-white text-2xl font-semibold">No history created yet</p></div>: (
           <div className="relative min-h-[300px] md:min-h-[420px]  rounded-[10px] overflow-hidden">
             <div className="absolute inset-0 backdrop-blur-2xl bg-[#7d7d7d50]" />
             <TableContainer
@@ -65,7 +65,7 @@ export const TransictionHistory = () => {
                 <TableBody>
                   {data &&
                     user &&
-                    data.map((el) => {
+                    data?.map((el) => {
                       return (
                         <TableRow key={el._id}>
                           {Object.keys(el).map((value, idx) => {

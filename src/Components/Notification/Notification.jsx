@@ -1,6 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
 
-import { useAxiosSequre } from "../../Hooks/useAxiosSequre";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Hooks/useAuth";
 
@@ -29,8 +27,10 @@ export const Notification = ({ data, classs, handleRead }) => {
     <div
       className={`max-h-[500px] border  border-blue-500 overflow-auto md:w-96 w-72 bg-[#1c1c1cda]   absolute backdrop-blur-3xl rounded-lg z-50 ${classs}`}
     >
+     
       <ul className="space-y-2  p-2 ">
-        {data?.map((el) => {
+       
+        {data?.length<1? <span className="text-white px-4 py-2">No notification Available</span>:data?.map((el) => {
           return (
             <li
               onClick={() => navigate(route)}
