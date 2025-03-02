@@ -260,6 +260,7 @@ const axiosPublic=useAxiosPublic()
             </div>
           </div>
           <Button
+          disabled={loading}
             type="submit"
             className="mt-6 bg-gradient-to-tr from-[#0317fc] to-blue-500 hover:bg-gradient-to-tl"
             fullWidth
