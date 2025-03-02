@@ -5,6 +5,10 @@ import { useForm } from "react-hook-form";
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import "./Login.css";
+
+// Custom CSS class for inputs
+const customInputClass = "material-tailwind-input !border-white focus:!border-white text-white placeholder:text-gray-600 placeholder:opacity-100";
 
 export const Login = () => {
   const axiosPublic = useAxiosPublic();
@@ -51,56 +55,62 @@ export const Login = () => {
   return (
     <div>
       <Card color="transparent" shadow={false}>
-        <Typography variant="h4" className="text-center" color="white">
-          Sign In
-        </Typography>
-        <Typography color="white" className="mt-1 text-center font-normal">
-          Nice to meet you! Enter your details to register.
+       
+        <Typography color="white" className="mt-2 text-center font-normal">
+          Wellcome Back! Enter your details to login.
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2 ">
           <div className="mb-1 flex flex-col gap-6">
-            <Typography variant="h6" color="white" className="-mb-3">
-              Email or Number <span className="text-red-500">*</span>
-            </Typography>
-            <Input
-              {...register("emailOrNumber", { required: true })}
-              size="lg"
-              placeholder="Enter your email or number"
-              className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
-            {errors.emailOrNumber && (
-              <span className="text-red-500">This field is required</span>
-            )}
+            <div className="input-field-container">
+              <Typography variant="h6" color="white" className="mb-2">
+                Email or Number <span className="text-red-500">*</span>
+              </Typography>
+              <Input
+                {...register("emailOrNumber", { required: true })}
+                size="lg"
+                placeholder="Enter your email or number"
+                className={`${customInputClass}`}
+                variant="outlined"
+                color="white"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+              />
+              {errors.emailOrNumber && (
+                <span className="text-red-500">This field is required</span>
+              )}
+            </div>
 
-            <Typography variant="h6" color="white" className="-mb-3">
-              Password <span className="text-red-500">*</span>
-            </Typography>
-            <Input
-              {...register("password", {
-                required: true,
-                maxLength: 6,
-                minLength: 6,
-              })}
-              type="password"
-              size="lg"
-              placeholder="Enter six digit pin"
-              className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
-            {errors.password?.type === "required" && (
-              <span className="text-red-500">This field is required</span>
-            )}
-            {(errors.password?.type === "maxLength" ||
-              errors.password?.type === "minLength") && (
-              <span className="text-red-500">
-                Password cannot be less than or more than six
-              </span>
-            )}
+            <div className="input-field-container">
+              <Typography variant="h6" color="white" className="mb-2">
+                Password <span className="text-red-500">*</span>
+              </Typography>
+              <Input
+                {...register("password", {
+                  required: true,
+                  maxLength: 6,
+                  minLength: 6,
+                })}
+                type="password"
+                size="lg"
+                placeholder="Enter six digit pin"
+                className={`${customInputClass}`}
+                variant="outlined"
+                color="white"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+              />
+              {errors.password?.type === "required" && (
+                <span className="text-red-500">This field is required</span>
+              )}
+              {(errors.password?.type === "maxLength" ||
+                errors.password?.type === "minLength") && (
+                <span className="text-red-500">
+                  Password cannot be less than or more than six
+                </span>
+              )}
+            </div>
           </div>
           <Button
             type="submit"

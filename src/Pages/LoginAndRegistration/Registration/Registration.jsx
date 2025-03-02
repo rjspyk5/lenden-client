@@ -114,10 +114,8 @@ export const Registration = () => {
   return (
     <div>
       <Card color="transparent" shadow={false}>
-        <Typography className="text-center" variant="h4" color="white">
-          Sign Up
-        </Typography>
-        <Typography color="white" className="mt-1 text-center font-normal">
+    
+        <Typography color="white" className="mt-2 text-center font-normal">
           Nice to meet you! Enter your details to register.
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2">

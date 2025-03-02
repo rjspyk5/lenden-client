@@ -32,7 +32,7 @@ export const LoginAndRegistration = () => {
           style={{ backgroundImage: `url(${bg})` }}
           className="min-h-screen bg-cover flex justify-center items-center"
         >
-          <div className="md:max-w-lg  bg-[#f3eeee15] p-10 md:p-0 w-full shadow-2xl shadow-[#060407d5]  border border-blue-gray-400 rounded-lg backdrop-blur-lg">
+          <div className="max-w-lg  bg-[#f3eeee15]  p-1 md:p-0 w-full shadow-2xl shadow-[#060407d5]  border border-blue-gray-400 rounded-lg backdrop-blur-lg">
             <Tabs className=" rounded-lg   " value="login">
               <TabsHeader className="">
                 {data.map(({ label, value }) => (
