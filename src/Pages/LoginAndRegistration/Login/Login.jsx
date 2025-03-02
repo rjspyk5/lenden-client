@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -13,6 +13,7 @@ const customInputClass = "material-tailwind-input !border-white focus:!border-wh
 export const Login = () => {
   const axiosPublic = useAxiosPublic();
   const { user, login, setloading } = useAuth();
+ const [loginLoading, setloginLoading] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export const Login = () => {
   const onSubmit = async (data) => {
     setloading(true);
     try {
+      setloginLoading(true)
       const result = await axiosPublic.post("/login", data);
       if (result.data.result === true) {
         login(result.data?.data);
@@ -50,6 +52,8 @@ export const Login = () => {
       }
     } catch (error) {
       alert("something went wrong");
+    }finally{
+      setloginLoading(false)
     }
   };
   return (
@@ -113,11 +117,12 @@ export const Login = () => {
             </div>
           </div>
           <Button
+          disabled={loginLoading}
             type="submit"
             className="mt-6 bg-gradient-to-tr from-[#0317fc] to-blue-500 hover:bg-gradient-to-tl"
             fullWidth
           >
-            Login
+            {loginLoading?"Processing":"Login"}
           </Button>
         </form>
       </Card>

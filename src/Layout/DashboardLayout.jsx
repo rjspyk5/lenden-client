@@ -233,39 +233,35 @@ export const DashboardLayout = () => {
                   {balance}
                 </span>
               </h1>
-             
-                   <div className="mb-4 py-2 md:mx-3 mx-1 border-b flex justify-center space-x-1 md:space-x-4 items-center text-white">
-                           <button className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full">
-                             <BiSolidUserCircle size={25} className="text-white" />
-                           </button>
-                           <button className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full">
-                             <LiaEdit size={25} className="text-white" />
-                           </button>
-                           <button
-                             className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full cursor-pointer"
-                             onClick={() => {
-                               logout();
-                               navigate("/login");
-                           
-                             }}
-                           >
-                             <IoLogOut size={25} className="text-red-400" />
-                           </button>
-                         </div>
-             
-           
+
+              <div className="mb-4 py-2 md:mx-3 mx-1 border-b flex justify-center space-x-1 md:space-x-4 items-center text-white">
+                <button className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full">
+                  <BiSolidUserCircle size={25} className="text-white" />
+                </button>
+                <button className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full">
+                  <LiaEdit size={25} className="text-white" />
+                </button>
+                <button
+                  className="p-2 hover:scale-110 transform transition-transform duration-200 rounded-full cursor-pointer"
+                  onClick={() => {
+                    logout();
+                    navigate("/login");
+                  }}
+                >
+                  <IoLogOut size={25} className="text-red-400" />
+                </button>
+              </div>
+
               {user?.role === "agent"
                 ? agentMenu
                 : user?.role === "marchent"
                 ? marchentMenu
                 : adminMenu}
-                {/* <button className="absolute left-1/2 w-[90%] -translate-x-1/2 bottom-4 text-white rounded-md bg-red-400 px-4 py-3 btn">Logout</button> */}
-             
-         
+              {/* <button className="absolute left-1/2 w-[90%] -translate-x-1/2 bottom-4 text-white rounded-md bg-red-400 px-4 py-3 btn">Logout</button> */}
             </div>
 
             {/* Right Content with Scroll */}
-            <div className="lg:ml-[20%] ml-0 flex-grow max-h-screen overflow-y-auto px-3 md:px-6">
+            <div className="lg:ml-[20%] ml-0 mb-2 flex-grow max-h-screen overflow-y-auto px-3 md:px-6">
               <div className="sticky top-0 z-50  flex justify-between lg:justify-end py-2 pr-1">
                 <span className="lg:hidden">
                   {" "}
