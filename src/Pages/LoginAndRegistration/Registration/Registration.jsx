@@ -11,39 +11,51 @@ import "./Registration.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
-import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
+// import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
 // Create a custom styled Select component using Material-UI's styled API
-const CustomSelect = styled(Select)(({ theme }) => ({
-  // When the Select is focused, change the border color to black
+const CustomSelect = styled(Select)(() => ({
+  // When the Select is focused, change the border color to white
   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-    borderColor: "black",
+    borderColor: "white",
   },
-  // Change the text color to black
+  // Change the text color to white for the selected value
   "& .MuiSelect-select": {
-    color: "black",
+    color: "white",
     height: "25px",
     minHeight: "10px",
     maxHeight: "25px",
   },
-  // When the Select is hovered over, change the border color to black
+  // When the Select is hovered over, change the border color to white
   "&:hover .MuiOutlinedInput-notchedOutline": {
-    borderColor: "black",
+    borderColor: "white",
+  },
+  // Default border color is white
+  "& .MuiOutlinedInput-notchedOutline": {
+    borderColor: "white",
   },
   "& .MuiOutlinedInput-input": {
     height: "40px", // Adjust height here
     padding: "10px", // Adjust padding to ensure vertical alignment
   },
+  // Change dropdown icon color to white
+  "& .MuiSvgIcon-root": {
+    color: "white",
+  }
 }));
 
-const CustomInputLabel = styled(InputLabel)(({ theme }) => ({
+const CustomInputLabel = styled(InputLabel)(() => ({
   "&.Mui-focused": {
-    color: "black", // Change the label color when focused
+    color: "white", // Change the label color when focused
   },
+  color: "white", // Default label color
 }));
+
+// Custom CSS class for inputs
+const customInputClass = "material-tailwind-input !border-white focus:!border-white text-white placeholder:text-gray-600 placeholder:opacity-100";
+
 export const Registration = () => {
   const { registration, logout } = useAuth();
-const [loading, setloading] = useState(false)
-const axiosPublic=useAxiosPublic()
+  const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   const {
     control,
@@ -112,7 +124,7 @@ const axiosPublic=useAxiosPublic()
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2">
           <div className="mb-1 flex flex-col gap-6">
             <div className="flex gap-5 flex-col md:flex-row">
-              <div className="md:w-1/2">
+              <div className="md:w-1/2 input-field-container">
                 <Typography variant="h6" color="white">
                   Your Name <span className="text-red-500">*</span>
                 </Typography>
@@ -120,7 +132,9 @@ const axiosPublic=useAxiosPublic()
                   {...register("name", { required: true })}
                   size="lg"
                   placeholder="Your Name"
-                  className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
+                  className={`${customInputClass}`}
+                  variant="outlined"
+                  color="white"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -129,18 +143,20 @@ const axiosPublic=useAxiosPublic()
                   <span className="text-red-500">This field is required</span>
                 )}
               </div>
-              <div className="md:w-1/2">
+              <div className="md:w-1/2 input-field-container">
                 <Typography variant="h6" color="white">
                   Your Email
                 </Typography>
                 <Input
                   {...register("email", {
                     required: false,
-                    pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                    pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
                   })}
                   size="lg"
                   placeholder="name@mail.com"
-                  className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
+                  className={`${customInputClass}`}
+                  variant="outlined"
+                  color="white"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -153,7 +169,7 @@ const axiosPublic=useAxiosPublic()
             </div>
 
             <div className="flex flex-col md:flex-row gap-6">
-              <div className="md:w-1/2">
+              <div className="md:w-1/2 input-field-container">
                 <Typography variant="h6" color="white">
                   Your Number <span className="text-red-500">*</span>
                 </Typography>
@@ -165,7 +181,9 @@ const axiosPublic=useAxiosPublic()
                   })}
                   size="lg"
                   placeholder="01700000000"
-                  className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
+                  className={`${customInputClass}`}
+                  variant="outlined"
+                  color="white"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -180,7 +198,7 @@ const axiosPublic=useAxiosPublic()
                   </span>
                 )}
               </div>
-              <div className="md:w-1/2">
+              <div className="md:w-1/2 input-field-container">
                 <Typography variant="h6" color="white">
                   Password <span className="text-red-500">*</span>
                 </Typography>
@@ -193,7 +211,9 @@ const axiosPublic=useAxiosPublic()
                   type="password"
                   size="lg"
                   placeholder="Enter six digit pin"
-                  className=" !border-t-blue-gray-200  focus:border-blue-gray-200 text-white placeholder:text-gray-600"
+                  className={`${customInputClass}`}
+                  variant="outlined"
+                  color="white"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -225,13 +245,13 @@ const axiosPublic=useAxiosPublic()
             </div> */}
 
             <div className="md:w-1/2">
-              <Typography variant="h6" color="white">
+              <Typography variant="h6" className="mb-2" color="white">
                 Select Role <span className="text-red-500">*</span>
               </Typography>
               <Controller
                 name="role"
                 control={control}
-                defaultValue=""
+                defaultValue="user"
                 rules={{ required: true }}
                 render={({ field }) => (
                   <FormControl fullWidth>
@@ -246,6 +266,16 @@ const axiosPublic=useAxiosPublic()
                       id="demo-simple-select"
                       {...field}
                       label="Role"
+                      className="registration-select"
+                      MenuProps={{
+                        PaperProps: {
+                          sx: {
+                            "& .MuiMenuItem-root": {
+                              color: "black",
+                            }
+                          }
+                        }
+                      }}
                     >
                       <MenuItem value="user">User</MenuItem>
                       <MenuItem value="agent">Agent</MenuItem>
