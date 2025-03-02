@@ -25,7 +25,7 @@ export function DrawerSection({menu}) {
   const closeDrawer = () => setOpen(false);
  
   return (
-    <React.Fragment className="relative">
+    <React.Fragment >
       <button className="p-2 rounded-md  " onClick={openDrawer}>
         <GiHamburgerMenu size={24} className="text-white transition-colors hover:text-[#c6c6c6] "/>
       </button>

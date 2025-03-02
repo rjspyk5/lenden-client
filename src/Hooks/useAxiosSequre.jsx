@@ -3,7 +3,7 @@ import { useAuth } from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
 const axiosSequre = axios.create({
-  baseURL: "https://lenden-server.vercel.app",
+  baseURL: import.meta.env.VITE_SERVER_URL,
   withCredentials: true,
 });
 export const useAxiosSequre = () => {
