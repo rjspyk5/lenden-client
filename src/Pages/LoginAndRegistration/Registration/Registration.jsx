@@ -9,8 +9,9 @@ import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import "./Registration.css";
 import Swal from "sweetalert2";
-import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
 import axios from "axios";
+import { useState } from "react";
+import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
 // Create a custom styled Select component using Material-UI's styled API
 const CustomSelect = styled(Select)(({ theme }) => ({
   // When the Select is focused, change the border color to black
@@ -41,9 +42,9 @@ const CustomInputLabel = styled(InputLabel)(({ theme }) => ({
 }));
 export const Registration = () => {
   const { registration, logout } = useAuth();
+const [loading, setloading] = useState(false)
+const axiosPublic=useAxiosPublic()
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
-
   const {
     control,
     register,
@@ -52,22 +53,27 @@ export const Registration = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+   
     data.accountStatus = "pending";
 
     try {
-      const { data: emailExistanceResult } = await axios.get(
-        `https://emailvalidation.abstractapi.com/v1/?api_key=${
-          import.meta.env.VITE_ABSTRACT_API
-        }&email=${data?.email}`
+      setloading(true)
+      const isValidEmail = await axios.get(
+        `${import.meta.env.VITE_EMAIL_CHECKER}/emailcheck?email=${data?.email}`
       );
 
+      // const { data: emailExistanceResult } = await axios.get(
+      //   `https://emailvalidation.abstractapi.com/v1/?api_key=${
+      //     import.meta.env.VITE_ABSTRACT_API
+      //   }&email=${data?.email}`
+      // );
+
       if (
-        emailExistanceResult?.deliverability !== "DELIVERABLE" ||
-        !(emailExistanceResult?.quality_score >= 0.8)
+        !isValidEmail?.data?.result
       ) {
         return Swal.fire({
           icon: "error",
-          text: "This email is not valid for our site.Try with a valid or strong email.",
+          text: "Seems not a valid email.Try with another email",
         });
       }
       const result = await registration(data);
@@ -89,6 +95,8 @@ export const Registration = () => {
         icon: "error",
         text: "Something went wrong.Please try again.",
       });
+    }finally{
+      setloading(false)
     }
   };
 
@@ -256,7 +264,7 @@ export const Registration = () => {
             className="mt-6 bg-gradient-to-tr from-[#0317fc] to-blue-500 hover:bg-gradient-to-tl"
             fullWidth
           >
-            Sign Up
+            {loading?"Processing....":"Sign Up"}
           </Button>
         </form>
       </Card>
