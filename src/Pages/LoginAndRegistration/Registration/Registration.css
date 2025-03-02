@@ -1,24 +1,19 @@
-/* Custom styles for input fields in Registration component */
 
-/* Override Material Tailwind input styles */
 .input-field-container .MuiInput-root {
   border-color: white !important;
 }
 
-/* Fix for input focus state */
 .input-field-container .MuiInput-root:focus-within {
   border-color: white !important;
   border-width: 2px !important;
 }
 
-/* Fix for placeholder visibility */
 .input-field-container input::placeholder {
   opacity: 1 !important;
   color: rgba(156, 163, 175, 1) !important;
   transition: opacity 0.2s ease-in-out;
 }
 
-/* Additional styles for Material Tailwind inputs */
 .material-tailwind-input {
   --tw-border-opacity: 1 !important;
   border-color: rgba(255, 255, 255, var(--tw-border-opacity)) !important;
@@ -31,7 +26,6 @@
   outline-offset: 2px !important;
 }
 
-/* Override Material Tailwind input styles */
 .material-tailwind-input.border-blue-gray-200 {
   border-color: white !important;
 }
@@ -40,13 +34,12 @@
   border-color: white !important;
 }
 
-/* Fix for Material Tailwind input placeholder */
 .material-tailwind-input::placeholder {
   color: rgba(156, 163, 175, 1) !important;
   opacity: 1 !important;
 }
 
-/* Direct overrides for Material Tailwind components */
+
 .input-field-container .border-blue-gray-200 {
   border-color: white !important;
 }
@@ -55,7 +48,7 @@
   border-color: white !important;
 }
 
-/* Ensure placeholders are visible */
+
 .input-field-container input:-webkit-autofill::placeholder,
 .input-field-container input:not(:placeholder-shown)::placeholder,
 .input-field-container input:placeholder-shown::placeholder {
@@ -63,7 +56,7 @@
   color: rgba(156, 163, 175, 1) !important;
 }
 
-/* Fix for Material Tailwind specific classes */
+
 .input-field-container .mt-input {
   border-color: white !important;
 }
@@ -72,7 +65,6 @@
   border-color: white !important;
 }
 
-/* Ensure the border is white on all sides */
 .input-field-container .border-t-blue-gray-200 {
   border-top-color: white !important;
 }

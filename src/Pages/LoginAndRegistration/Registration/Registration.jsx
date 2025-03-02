@@ -11,33 +11,32 @@ import "./Registration.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
-// import { useAxiosPublic } from "../../../Hooks/useAxiosPublic";
-// Create a custom styled Select component using Material-UI's styled API
+
 const CustomSelect = styled(Select)(() => ({
-  // When the Select is focused, change the border color to white
+
   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
     borderColor: "white",
   },
-  // Change the text color to white for the selected value
+
   "& .MuiSelect-select": {
     color: "white",
     height: "25px",
     minHeight: "10px",
     maxHeight: "25px",
   },
-  // When the Select is hovered over, change the border color to white
+
   "&:hover .MuiOutlinedInput-notchedOutline": {
     borderColor: "white",
   },
-  // Default border color is white
+
   "& .MuiOutlinedInput-notchedOutline": {
     borderColor: "white",
   },
   "& .MuiOutlinedInput-input": {
-    height: "40px", // Adjust height here
-    padding: "10px", // Adjust padding to ensure vertical alignment
+    height: "40px", 
+    padding: "10px", 
   },
-  // Change dropdown icon color to white
+  
   "& .MuiSvgIcon-root": {
     color: "white",
   }
@@ -45,12 +44,12 @@ const CustomSelect = styled(Select)(() => ({
 
 const CustomInputLabel = styled(InputLabel)(() => ({
   "&.Mui-focused": {
-    color: "white", // Change the label color when focused
+    color: "white", 
   },
-  color: "white", // Default label color
+  color: "white", 
 }));
 
-// Custom CSS class for inputs
+
 const customInputClass = "material-tailwind-input !border-white focus:!border-white text-white placeholder:text-gray-600 placeholder:opacity-100";
 
 export const Registration = () => {
