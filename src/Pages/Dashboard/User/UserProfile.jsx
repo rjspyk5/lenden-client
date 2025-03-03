@@ -296,7 +296,7 @@ const UserProfile = () => {
 
   const renderPersonalInfoTab = () => (
     <form onSubmit={handleSubmit}>
-      <Grid container spacing={4}>
+      <Grid className="!text-white" container spacing={4}>
         {/* Profile Photo Section */}
         <Grid item xs={12} md={4} textAlign="center">
           <Box position="relative" width="fit-content" margin="0 auto">
@@ -336,186 +336,347 @@ const UserProfile = () => {
               ? new Date(user.createdAt).toLocaleDateString() 
               : "N/A"}
           </Typography>
-          
-          {!editMode && (
-            <Button
-              variant="outlined"
-              startIcon={<Edit />}
-              onClick={() => setEditMode(true)}
-              sx={{ mt: 3 }}
-            >
-              Edit Profile
-            </Button>
-          )}
         </Grid>
         
-        {/* Profile Details Section */}
+        {/* Profile Details Section - Modified */}
         <Grid item xs={12} md={8}>
-          <Typography variant="h6" fontWeight="bold" mb={2}>
+          <Typography variant="h6" fontWeight="bold" mb={2} color="white">
             Personal Information
           </Typography>
           
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Full Name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-                InputProps={{
-                  startAdornment: <Person color="action" sx={{ mr: 1 }} />
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Email"
-                value={user?.email || ""}
-                disabled={true}
-                margin="normal"
-                InputProps={{
-                  startAdornment: <Email color="action" sx={{ mr: 1 }} />
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-                InputProps={{
-                  startAdornment: <Phone color="action" sx={{ mr: 1 }} />
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Date of Birth"
-                name="dateOfBirth"
-                type="date"
-                value={formData.dateOfBirth}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-                InputLabelProps={{ shrink: true }}
-                InputProps={{
-                  startAdornment: <CalendarToday color="action" sx={{ mr: 1 }} />
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Occupation"
-                name="occupation"
-                value={formData.occupation}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-                InputProps={{
-                  startAdornment: <Badge color="action" sx={{ mr: 1 }} />
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Website"
-                name="website"
-                value={formData.website}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Bio"
-                name="bio"
-                value={formData.bio}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-                multiline
-                rows={3}
-                placeholder="Tell us about yourself"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Divider sx={{ my: 2 }} />
-              <Typography variant="h6" fontWeight="bold" mb={2}>
-                Address Information
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Address"
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-                InputProps={{
-                  startAdornment: <LocationOn color="action" sx={{ mr: 1 }} />
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="City"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Country"
-                name="country"
-                value={formData.country}
-                onChange={handleChange}
-                disabled={!editMode}
-                margin="normal"
-              />
-            </Grid>
+            {/* When not in edit mode, show as text */}
+            {!editMode ? (
+              <>
+                <Grid item xs={12} sm={6}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Full Name
+                    </Typography>
+                    <Typography color="white" variant="body1" display="flex" alignItems="center" gap={1}>
+                      <Person sx={{ color: 'white' }} fontSize="small" />
+                      {formData.name || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Email
+                    </Typography>
+                    <Typography color="white" variant="body1" display="flex" alignItems="center" gap={1}>
+                      <Email sx={{ color: 'white' }} fontSize="small" />
+                      {user?.email || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Phone Number
+                    </Typography>
+                    <Typography color="white" variant="body1" display="flex" alignItems="center" gap={1}>
+                      <Phone sx={{ color: 'white' }} fontSize="small" />
+                      {formData.phone || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Date of Birth
+                    </Typography>
+                    <Typography color="white" variant="body1" display="flex" alignItems="center" gap={1}>
+                      <CalendarToday sx={{ color: 'white' }} fontSize="small" />
+                      {formData.dateOfBirth || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Occupation
+                    </Typography>
+                    <Typography color="white" variant="body1" display="flex" alignItems="center" gap={1}>
+                      <Badge sx={{ color: 'white' }} fontSize="small" />
+                      {formData.occupation || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Website
+                    </Typography>
+                    <Typography color="white" variant="body1">
+                      {formData.website || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Bio
+                    </Typography>
+                    <Typography color="white" variant="body1">
+                      {formData.bio || "No bio added yet"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <Divider sx={{ my: 2 }} />
+                  <Typography variant="h6" fontWeight="bold" mb={2}>
+                    Address Information
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Address
+                    </Typography>
+                    <Typography color="white" variant="body1" display="flex" alignItems="center" gap={1}>
+                      <LocationOn sx={{ color: 'white' }} fontSize="small" />
+                      {formData.address || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      City
+                    </Typography>
+                    <Typography color="white" variant="body1">
+                      {formData.city || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mb={2}>
+                    <Typography color="rgba(255,255,255,0.7)" variant="subtitle2">
+                      Country
+                    </Typography>
+                    <Typography color="white" variant="body1">
+                      {formData.country || "Not set"}
+                    </Typography>
+                  </Box>
+                </Grid>
+              </>
+            ) : (
+              // When in edit mode, show as input fields (existing code)
+              <>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Full Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    margin="normal"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Email"
+                    value={user?.email || ""}
+                    disabled={true}
+                    margin="normal"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Phone Number"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    margin="normal"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Date of Birth"
+                    name="dateOfBirth"
+                    type="date"
+                    value={formData.dateOfBirth}
+                    onChange={handleChange}
+                    margin="normal"
+                    InputLabelProps={{ shrink: true }}
+                    InputProps={{
+                      startAdornment: <CalendarToday sx={{ color: 'white' }} />
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Occupation"
+                    name="occupation"
+                    value={formData.occupation}
+                    onChange={handleChange}
+                    margin="normal"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                    margin="normal"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Bio"
+                    name="bio"
+                    value={formData.bio}
+                    onChange={handleChange}
+                    margin="normal"
+                    multiline
+                    rows={3}
+                    placeholder="Tell us about yourself"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Divider sx={{ my: 2 }} />
+                  <Typography variant="h6" fontWeight="bold" mb={2}>
+                    Address Information
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    margin="normal"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="City"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    margin="normal"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Country"
+                    name="country"
+                    value={formData.country}
+                    onChange={handleChange}
+                    margin="normal"
+                    sx={{
+                      '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' },
+                      '& .MuiInputBase-input': { color: 'white' },
+                      '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
+                      '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.5)' },
+                      '& .MuiSvgIcon-root': { color: 'white' }
+                    }}
+                  />
+                </Grid>
+              </>
+            )}
           </Grid>
           
-          {editMode && (
-            <Box display="flex" justifyContent="flex-end" gap={2} mt={3}>
-              <Button
-                variant="outlined"
-                color="error"
-                startIcon={<Cancel />}
-                onClick={handleCancel}
-              >
-                Cancel
-              </Button>
+          {/* Edit/Save buttons */}
+          <Box display="flex" justifyContent="flex-end" gap={2} mt={3}>
+            {!editMode ? (
               <Button
                 variant="contained"
                 color="primary"
-                type="submit"
-                startIcon={<Save />}
-                disabled={loading}
+                startIcon={<Edit />}
+                onClick={() => setEditMode(true)}
               >
-                {loading ? <CircularProgress size={24} /> : "Save Changes"}
+                Edit Profile
               </Button>
-            </Box>
-          )}
+            ) : (
+              <>
+                <Button
+                  variant="outlined"
+                  color="error"
+                  startIcon={<Cancel />}
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  startIcon={<Save />}
+                  disabled={loading}
+                >
+                  {loading ? <CircularProgress size={24} /> : "Save Changes"}
+                </Button>
+              </>
+            )}
+          </Box>
         </Grid>
       </Grid>
     </form>
@@ -524,7 +685,7 @@ const UserProfile = () => {
   const renderAccountInfoTab = () => (
     <Grid container spacing={3}>
       <Grid item xs={12} md={6}>
-        <Card elevation={2}>
+        <Card elevation={2} sx={{ bgcolor: '#76767625', color: 'white' }}>
           <CardContent>
             <Box display="flex" alignItems="center" mb={2}>
               <AccountBalanceWallet color="primary" sx={{ mr: 1 }} />
@@ -533,15 +694,15 @@ const UserProfile = () => {
               </Typography>
             </Box>
             <List disablePadding>
-              <ListItem divider>
+              <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemText 
-                  primary="Account ID" 
-                  secondary={user?._id?.substring(0, 8) || "N/A"} 
+                  primary={<Typography color="white">Account ID</Typography>}
+                  secondary={<Typography color="rgba(255,255,255,0.7)">{user?._id?.substring(0, 8) || "N/A"}</Typography>}
                 />
               </ListItem>
-              <ListItem divider>
+              <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemText 
-                  primary="Account Type" 
+                  primary={<Typography color="white">Account Type</Typography>}
                   secondary={
                     <Chip 
                       label={user?.role || "Standard"} 
@@ -552,9 +713,9 @@ const UserProfile = () => {
                   } 
                 />
               </ListItem>
-              <ListItem divider>
+              <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemText 
-                  primary="Account Status" 
+                  primary={<Typography color="white">Account Status</Typography>}
                   secondary={
                     <Chip 
                       label={user?.status || "Active"} 
@@ -565,9 +726,9 @@ const UserProfile = () => {
                   } 
                 />
               </ListItem>
-              <ListItem divider>
+              <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemText 
-                  primary="Email Verification" 
+                  primary={<Typography color="white">Email Verification</Typography>}
                   secondary={
                     <Chip 
                       label={user?.emailVerified ? "Verified" : "Not Verified"} 
@@ -578,9 +739,9 @@ const UserProfile = () => {
                   } 
                 />
               </ListItem>
-              <ListItem>
+              <ListItem sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemText 
-                  primary="Two-Factor Authentication" 
+                  primary={<Typography color="white">Two-Factor Authentication</Typography>}
                   secondary={
                     <Chip 
                       label={user?.twoFactorEnabled ? "Enabled" : "Disabled"} 
@@ -597,7 +758,7 @@ const UserProfile = () => {
       </Grid>
       
       <Grid item xs={12} md={6}>
-        <Card elevation={2}>
+        <Card elevation={2} sx={{ bgcolor: '#76767625', color: 'white' }}>
           <CardContent>
             <Box display="flex" alignItems="center" mb={2}>
               <Security color="primary" sx={{ mr: 1 }} />
@@ -606,10 +767,10 @@ const UserProfile = () => {
               </Typography>
             </Box>
             <List disablePadding>
-              <ListItem divider>
+              <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemText 
-                  primary="Password" 
-                  secondary="Last changed 30 days ago" 
+                  primary={<Typography color="white">Password</Typography>}
+                  secondary={<Typography color="rgba(255,255,255,0.7)">Last changed 30 days ago</Typography>}
                 />
                 <Button 
                   variant="outlined" 
@@ -620,10 +781,10 @@ const UserProfile = () => {
                   Change
                 </Button>
               </ListItem>
-              <ListItem divider>
+              <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemText 
-                  primary="Recovery Email" 
-                  secondary={user?.recoveryEmail || "Not set"} 
+                  primary={<Typography color="white">Recovery Email</Typography>}
+                  secondary={<Typography color="rgba(255,255,255,0.7)">{user?.recoveryEmail || "Not set"}</Typography>}
                 />
                 <Button 
                   variant="outlined" 
@@ -634,10 +795,10 @@ const UserProfile = () => {
                   Update
                 </Button>
               </ListItem>
-              <ListItem>
+              <ListItem sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemText 
-                  primary="Security Questions" 
-                  secondary={user?.securityQuestionsSet ? "Set" : "Not set"} 
+                  primary={<Typography color="white">Security Questions</Typography>}
+                  secondary={<Typography color="rgba(255,255,255,0.7)">{user?.securityQuestionsSet ? "Set" : "Not set"}</Typography>}
                 />
                 <Button 
                   variant="outlined" 
@@ -668,7 +829,7 @@ const UserProfile = () => {
   );
 
   const renderActivityTab = () => (
-    <Card elevation={2}>
+    <Card elevation={2} sx={{ bgcolor: '#76767625', color: 'white' }}>
       <CardContent>
         <Box display="flex" alignItems="center" mb={3}>
           <History color="primary" sx={{ mr: 1 }} />
@@ -684,7 +845,7 @@ const UserProfile = () => {
         ) : recentActivity.length > 0 ? (
           <List>
             {recentActivity.map((activity) => (
-              <ListItem key={activity.id} divider>
+              <ListItem key={activity.id} divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
                 <ListItemAvatar>
                   <Avatar sx={{ bgcolor: 
                     activity.type === 'login' ? 'primary.light' : 
@@ -697,8 +858,12 @@ const UserProfile = () => {
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                  primary={activity.description}
-                  secondary={new Date(activity.timestamp).toLocaleString()}
+                  primary={<Typography color="white">{activity.description}</Typography>}
+                  secondary={
+                    <Typography color="rgba(255,255,255,0.7)">
+                      {new Date(activity.timestamp).toLocaleString()}
+                    </Typography>
+                  }
                 />
                 {activity.amount && (
                   <Chip 
@@ -732,7 +897,7 @@ const UserProfile = () => {
   );
 
   const renderNotificationsTab = () => (
-    <Card elevation={2}>
+    <Card elevation={2} sx={{ bgcolor: '#76767625', color: 'white' }}>
       <CardContent>
         <Box display="flex" alignItems="center" mb={3}>
           <Notifications color="primary" sx={{ mr: 1 }} />
@@ -742,13 +907,17 @@ const UserProfile = () => {
         </Box>
         
         <List>
-          <ListItem divider>
-            <ListItemIcon>
+          <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
+            <ListItemIcon sx={{ color: 'white' }}>
               <Email />
             </ListItemIcon>
             <ListItemText 
-              primary="Email Notifications" 
-              secondary="Receive important updates via email" 
+              primary={<Typography color="white">Email Notifications</Typography>}
+              secondary={
+                <Typography color="rgba(255,255,255,0.7)">
+                  Receive important updates via email
+                </Typography>
+              }
             />
             <Switch 
               checked={user?.notifications?.email || false} 
@@ -760,15 +929,23 @@ const UserProfile = () => {
                   icon: "info"
                 });
               }}
+              sx={{
+                '& .MuiSwitch-track': { backgroundColor: 'rgba(255,255,255,0.3)' },
+                '& .MuiSwitch-thumb': { backgroundColor: 'white' }
+              }}
             />
           </ListItem>
-          <ListItem divider>
-            <ListItemIcon>
+          <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
+            <ListItemIcon sx={{ color: 'white' }}>
               <Phone />
             </ListItemIcon>
             <ListItemText 
-              primary="SMS Notifications" 
-              secondary="Receive important updates via SMS" 
+              primary={<Typography color="white">SMS Notifications</Typography>}
+              secondary={
+                <Typography color="rgba(255,255,255,0.7)">
+                  Receive important updates via SMS
+                </Typography>
+              }
             />
             <Switch 
               checked={user?.notifications?.sms || false}
@@ -780,15 +957,23 @@ const UserProfile = () => {
                   icon: "info"
                 });
               }}
+              sx={{
+                '& .MuiSwitch-track': { backgroundColor: 'rgba(255,255,255,0.3)' },
+                '& .MuiSwitch-thumb': { backgroundColor: 'white' }
+              }}
             />
           </ListItem>
-          <ListItem divider>
-            <ListItemIcon>
+          <ListItem divider sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
+            <ListItemIcon sx={{ color: 'white' }}>
               <AccountBalanceWallet />
             </ListItemIcon>
             <ListItemText 
-              primary="Transaction Alerts" 
-              secondary="Get notified about account transactions" 
+              primary={<Typography color="white">Transaction Alerts</Typography>}
+              secondary={
+                <Typography color="rgba(255,255,255,0.7)">
+                  Get notified about account transactions
+                </Typography>
+              }
             />
             <Switch 
               checked={user?.notifications?.transactions || true}
@@ -800,15 +985,23 @@ const UserProfile = () => {
                   icon: "info"
                 });
               }}
+              sx={{
+                '& .MuiSwitch-track': { backgroundColor: 'rgba(255,255,255,0.3)' },
+                '& .MuiSwitch-thumb': { backgroundColor: 'white' }
+              }}
             />
           </ListItem>
-          <ListItem>
-            <ListItemIcon>
+          <ListItem sx={{ borderColor: 'rgba(255,255,255,0.12)' }}>
+            <ListItemIcon sx={{ color: 'white' }}>
               <Security />
             </ListItemIcon>
             <ListItemText 
-              primary="Security Alerts" 
-              secondary="Get notified about security-related events" 
+              primary={<Typography color="white">Security Alerts</Typography>}
+              secondary={
+                <Typography color="rgba(255,255,255,0.7)">
+                  Get notified about security-related events
+                </Typography>
+              }
             />
             <Switch 
               checked={user?.notifications?.security || true}
@@ -819,6 +1012,10 @@ const UserProfile = () => {
                   text: "This feature will be available soon.",
                   icon: "info"
                 });
+              }}
+              sx={{
+                '& .MuiSwitch-track': { backgroundColor: 'rgba(255,255,255,0.3)' },
+                '& .MuiSwitch-thumb': { backgroundColor: 'white' }
               }}
             />
           </ListItem>
@@ -849,13 +1046,13 @@ const UserProfile = () => {
       <div className="p-4">
         <SectionHeader heading="My Profile" />
         
-        <Paper elevation={3} className="p-6">
+        <Paper  elevation={3} className="p-6 !bg-[#76767625] text-white">
           <Tabs 
             value={activeTab} 
             onChange={handleTabChange} 
             variant="scrollable"
             scrollButtons="auto"
-            sx={{ mb: 4, borderBottom: 1, borderColor: 'divider' }}
+            sx={{ mb: 4, borderBottom: 1, borderColor: 'divider', }}
           >
             <Tab icon={<Person />} label="Personal Info" />
             <Tab icon={<AccountBalanceWallet />} label="Account Info" />

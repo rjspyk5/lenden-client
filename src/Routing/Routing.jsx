@@ -56,11 +56,12 @@ export const Routing = createBrowserRouter([
             <SendMoney />
           </UserPrivateRoute>
         ),
-      },{
+      },
+      {
         path: "/profile",
         element: (
           <UserPrivateRoute>
-              <UserProfile/>
+            <UserProfile />
           </UserPrivateRoute>
         ),
       },
