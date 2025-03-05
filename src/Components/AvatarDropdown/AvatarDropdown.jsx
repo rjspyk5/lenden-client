@@ -32,12 +32,6 @@ export function AvatarDropdown() {
       route: "/profile",
     },
     {
-      label: "Edit Profile",
-      icon: Cog6ToothIcon,
-      route: "/profile",
-    },
-
-    {
       label: "Sign Out",
       icon: PowerIcon,
       route: "/login",
@@ -73,7 +67,7 @@ export function AvatarDropdown() {
                       logout();
                       return navigate("/login");
                     }
-                  : ()=>navigate(route)
+                  : () => navigate(route)
               }
               className={`flex items-center gap-2 rounded ${
                 isLastItem
