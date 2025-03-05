@@ -13,7 +13,6 @@ import axios from "axios";
 import { useState } from "react";
 
 const CustomSelect = styled(Select)(() => ({
-
   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
     borderColor: "white",
   },
@@ -33,24 +32,24 @@ const CustomSelect = styled(Select)(() => ({
     borderColor: "white",
   },
   "& .MuiOutlinedInput-input": {
-    height: "40px", 
-    padding: "10px", 
+    height: "40px",
+    padding: "10px",
   },
-  
+
   "& .MuiSvgIcon-root": {
     color: "white",
-  }
+  },
 }));
 
 const CustomInputLabel = styled(InputLabel)(() => ({
   "&.Mui-focused": {
-    color: "white", 
+    color: "white",
   },
-  color: "white", 
+  color: "white",
 }));
 
-
-const customInputClass = "material-tailwind-input !border-white focus:!border-white text-white placeholder:text-gray-600 placeholder:opacity-100";
+const customInputClass =
+  "material-tailwind-input !border-white focus:!border-white text-white placeholder:text-gray-600 placeholder:opacity-100";
 
 export const Registration = () => {
   const { registration, logout } = useAuth();
@@ -64,11 +63,10 @@ export const Registration = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-   
     data.accountStatus = "pending";
 
     try {
-      setloading(true)
+      setloading(true);
       const isValidEmail = await axios.get(
         `${import.meta.env.VITE_EMAIL_CHECKER}/emailcheck?email=${data?.email}`
       );
@@ -79,9 +77,7 @@ export const Registration = () => {
       //   }&email=${data?.email}`
       // );
 
-      if (
-        !isValidEmail?.data?.result
-      ) {
+      if (!isValidEmail?.data?.result) {
         return Swal.fire({
           icon: "error",
           text: "Seems not a valid email.Try with another email",
@@ -106,15 +102,14 @@ export const Registration = () => {
         icon: "error",
         text: "Something went wrong.Please try again.",
       });
-    }finally{
-      setloading(false)
+    } finally {
+      setloading(false);
     }
   };
 
   return (
     <div>
       <Card color="transparent" shadow={false}>
-    
         <Typography color="white" className="mt-2 text-center font-normal">
           Nice to meet you! Enter your details to register.
         </Typography>
@@ -158,13 +153,11 @@ export const Registration = () => {
                     className: "before:content-none after:content-none",
                   }}
                 />
-
                 {errors.email?.type === "pattern" && (
                   <span className="text-red-500">Enter a valid email </span>
                 )}
               </div>
             </div>
-
             <div className="flex flex-col md:flex-row gap-6">
               <div className="md:w-1/2 input-field-container">
                 <Typography variant="h6" color="white">
@@ -269,9 +262,9 @@ export const Registration = () => {
                           sx: {
                             "& .MuiMenuItem-root": {
                               color: "black",
-                            }
-                          }
-                        }
+                            },
+                          },
+                        },
                       }}
                     >
                       <MenuItem value="user">User</MenuItem>
@@ -287,12 +280,12 @@ export const Registration = () => {
             </div>
           </div>
           <Button
-          disabled={loading}
+            disabled={loading}
             type="submit"
             className="mt-6 bg-gradient-to-tr from-[#0317fc] to-blue-500 hover:bg-gradient-to-tl"
             fullWidth
           >
-            {loading?"Processing....":"Sign Up"}
+            {loading ? "Processing...." : "Sign Up"}
           </Button>
         </form>
       </Card>

@@ -29,15 +29,18 @@ export function AvatarDropdown() {
     {
       label: userDetails?.name || "Anonymous",
       icon: UserCircleIcon,
+      route: "/profile",
     },
     {
       label: "Edit Profile",
       icon: Cog6ToothIcon,
+      route: "/profile",
     },
 
     {
       label: "Sign Out",
       icon: PowerIcon,
+      route: "/login",
     },
   ];
   return (
@@ -59,7 +62,7 @@ export function AvatarDropdown() {
         </Button>
       </MenuHandler>
       <MenuList className="p-1  backdrop-blur-xl bg-[#6e6e6e28]">
-        {profileMenuItems.map(({ label, icon }, key) => {
+        {profileMenuItems.map(({ label, icon, route }, key) => {
           const isLastItem = key === profileMenuItems.length - 1;
           return (
             <MenuItem
@@ -70,7 +73,7 @@ export function AvatarDropdown() {
                       logout();
                       return navigate("/login");
                     }
-                  : closeMenu
+                  : ()=>navigate(route)
               }
               className={`flex items-center gap-2 rounded ${
                 isLastItem
