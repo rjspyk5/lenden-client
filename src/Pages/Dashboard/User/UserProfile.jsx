@@ -6,13 +6,8 @@ import { Person, History, AccountBalanceWallet } from "@mui/icons-material";
 import PersonalInfo from "./PersonalInfo/PersonalInfo";
 import AccountInfo from "./AccountInfo/AccountInfo";
 import RecentActivity from "./RecentActivity/RecentActivity";
-
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const handleTabChange = (event, newValue) => {
-    setActiveTab(newValue);
-  };
-
   return (
     <Fade>
       <div className="p-4">
@@ -25,9 +20,9 @@ const UserProfile = () => {
             scrollButtons="auto"
             sx={{ mb: 4, borderBottom: 1, borderColor: "divider" }}
           >
-            <Tab icon={<Person />} label="Personal Info" />
-            <Tab icon={<AccountBalanceWallet />} label="Account Info" />
-            <Tab icon={<History />} label="Activity" />
+            <Tab sx={{color:"white"}} icon={<Person />} label="Personal Info" />
+            <Tab sx={{color:"white"}} icon={<AccountBalanceWallet />} label="Account Info" />
+            <Tab sx={{color:"white"}} icon={<History />} label="Activity" />
           </Tabs>
           {activeTab === 0 && <PersonalInfo />}
           {activeTab === 1 && <AccountInfo />}

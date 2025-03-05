@@ -1,75 +1,72 @@
 import {
-    CircularProgress,
-    Paper,
-    Typography,
-    Button,
-    Avatar,
-    Box,
-    Tabs,
-    Tab,
-    List,
-    ListItem,
-    ListItemText,
-    ListItemAvatar,
-    Card,
-    CardContent,
-    Chip,
-  } from "@mui/material";
-  import {
-    Edit,
-    Person,
-    History,
-    AccountBalanceWallet,
-  } from "@mui/icons-material";
+  CircularProgress,
+  Typography,
+  Button,
+  Avatar,
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Card,
+  CardContent,
+  Chip,
+} from "@mui/material";
+import {
+  Edit,
+  Person,
+  History,
+  AccountBalanceWallet,
+} from "@mui/icons-material";
 import { useUser } from "../../../../Hooks/useUser";
 import { useAxiosSequre } from "../../../../Hooks/useAxiosSequre";
 import { useEffect, useState } from "react";
 
 const RecentActivity = () => {
-      const { user } = useUser();
-      const axiosSecure = useAxiosSequre();
-    useEffect(() => {
-        if (user) {
-          fetchUserActivity();
-        }
-      }, [user]);
-    
-      const [recentActivity, setRecentActivity] = useState([]);
-      const [activityLoading, setActivityLoading] = useState(false);
-      const fetchUserActivity = async () => {
-        if (!user?.email) return;
-        setActivityLoading(true);
-        try {
-          const response = await axiosSecure.get(`/users/${user._id}/activity`);
-          setRecentActivity(response.data || []);
-        } catch (error) {
-          console.error("Error fetching user activity:", error);
-          setRecentActivity([
-            {
-              id: 1,
-              type: "login",
-              description: "Logged in from Chrome on Windows",
-              timestamp: new Date(Date.now() - 1000 * 60 * 30), // 30 minutes ago
-            },
-            {
-              id: 2,
-              type: "profile_update",
-              description: "Updated profile information",
-              timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24), // 1 day ago
-            },
-            {
-              id: 3,
-              type: "transaction",
-              description: "Sent money to john@example.com",
-              amount: 500,
-              timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2), // 2 days ago
-            },
-          ]);
-        } finally {
-          setActivityLoading(false);
-        }
-      };
-    
+  const { user } = useUser();
+  const axiosSecure = useAxiosSequre();
+  useEffect(() => {
+    if (user) {
+      fetchUserActivity();
+    }
+  }, [user]);
+
+  const [recentActivity, setRecentActivity] = useState([]);
+  const [activityLoading, setActivityLoading] = useState(false);
+  const fetchUserActivity = async () => {
+    if (!user?.email) return;
+    setActivityLoading(true);
+    try {
+      const response = await axiosSecure.get(`/users/${user._id}/activity`);
+      setRecentActivity(response.data || []);
+    } catch (error) {
+      console.error("Error fetching user activity:", error);
+      setRecentActivity([
+        {
+          id: 1,
+          type: "login",
+          description: "Logged in from Chrome on Windows",
+          timestamp: new Date(Date.now() - 1000 * 60 * 30), // 30 minutes ago
+        },
+        {
+          id: 2,
+          type: "profile_update",
+          description: "Updated profile information",
+          timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24), // 1 day ago
+        },
+        {
+          id: 3,
+          type: "transaction",
+          description: "Sent money to john@example.com",
+          amount: 500,
+          timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2), // 2 days ago
+        },
+      ]);
+    } finally {
+      setActivityLoading(false);
+    }
+  };
+
   return (
     <Card elevation={2} sx={{ bgcolor: "#76767625", color: "white" }}>
       <CardContent>
@@ -153,7 +150,7 @@ const RecentActivity = () => {
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default RecentActivity
+export default RecentActivity;

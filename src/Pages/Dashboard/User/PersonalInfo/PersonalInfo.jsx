@@ -19,13 +19,13 @@ import {
   Divider,
   Grid,
   IconButton,
-  TextField,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useUser } from "../../../../Hooks/useUser";
 import { useAxiosSequre } from "../../../../Hooks/useAxiosSequre";
+import EditProfile from "./EditProfile/EditProfile";
 
 const PersonalInfo = () => {
   const [formData, setFormData] = useState({
@@ -84,14 +84,6 @@ const PersonalInfo = () => {
         }
       }
     });
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
   };
 
   const handleSubmit = (e) => {
@@ -183,12 +175,10 @@ const PersonalInfo = () => {
             mt={1}
           >
             <VerifiedUser color="primary" fontSize="small" sx={{ mr: 0.5 }} />
-            <Typography variant="body2" color="text.secondary">
-              Verified Account
-            </Typography>
+            <Typography variant="body2">Verified Account</Typography>
           </Box>
 
-          <Typography variant="body2" color="text.secondary" mt={1}>
+          <Typography variant="body2" mt={1}>
             Member since:{" "}
             {user?.createdAt
               ? new Date(user.createdAt).toLocaleDateString()
@@ -196,14 +186,13 @@ const PersonalInfo = () => {
           </Typography>
         </Grid>
 
-        {/* Profile Details Section - Modified */}
+        {/* Right side */}
         <Grid item xs={12} md={8}>
           <Typography variant="h6" fontWeight="bold" mb={2} color="white">
             Personal Information
           </Typography>
 
           <Grid container spacing={2}>
-            {/* When not in edit mode, show as text */}
             {!editMode ? (
               <>
                 <Grid item xs={12} sm={6}>
@@ -386,239 +375,7 @@ const PersonalInfo = () => {
                 </Grid>
               </>
             ) : (
-              // When in edit mode, show as input fields (existing code)
-              <>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Full Name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    margin="normal"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Email"
-                    value={user?.email || ""}
-                    disabled={true}
-                    margin="normal"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Phone Number"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    margin="normal"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Date of Birth"
-                    name="dateOfBirth"
-                    type="date"
-                    value={formData.dateOfBirth}
-                    onChange={handleChange}
-                    margin="normal"
-                    InputLabelProps={{ shrink: true }}
-                    InputProps={{
-                      startAdornment: <CalendarToday sx={{ color: "white" }} />,
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Occupation"
-                    name="occupation"
-                    value={formData.occupation}
-                    onChange={handleChange}
-                    margin="normal"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Website"
-                    name="website"
-                    value={formData.website}
-                    onChange={handleChange}
-                    margin="normal"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Bio"
-                    name="bio"
-                    value={formData.bio}
-                    onChange={handleChange}
-                    margin="normal"
-                    multiline
-                    rows={3}
-                    placeholder="Tell us about yourself"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Divider sx={{ my: 2 }} />
-                  <Typography variant="h6" fontWeight="bold" mb={2}>
-                    Address Information
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Address"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    margin="normal"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="City"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    margin="normal"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Country"
-                    name="country"
-                    value={formData.country}
-                    onChange={handleChange}
-                    margin="normal"
-                    sx={{
-                      "& .MuiInputLabel-root": {
-                        color: "rgba(255,255,255,0.7)",
-                      },
-                      "& .MuiInputBase-input": { color: "white" },
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.3)",
-                      },
-                      "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255,255,255,0.5)",
-                      },
-                      "& .MuiSvgIcon-root": { color: "white" },
-                    }}
-                  />
-                </Grid>
-              </>
+              <EditProfile />
             )}
           </Grid>
 
